@@ -1,0 +1,13 @@
+﻿@using Microsoft.AspNetCore.Http.Extensions
+@inherits BlazorLibrary.Code.MyComponentBase
+@page "/"
+
+@inject NavigationManager uriHelper
+
+@code{
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        uriHelper.NavigateTo("/login");
+    }
+}

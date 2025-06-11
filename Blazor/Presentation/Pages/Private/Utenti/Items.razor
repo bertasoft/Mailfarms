@@ -1,0 +1,62 @@
+﻿@page "/private/utenti/items"
+@layout PrivateLayout
+@using MailFarmsBlazor.Code
+@inherits PageComponent
+@inject LayoutService layoutService
+
+@code
+{
+    protected override void OnInitialized()
+    {
+        layoutService.OnTitlePageCallback.InvokeAsync("Utenti - Elenco");
+    }
+}
+
+<LoginComponent />
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel">
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Cognome</th>
+                            <th>Email</th>
+                            <th style="width: 90px; text-align: center">Admin</th>
+                            <th style="width: 90px; text-align: center">Attivo</th>
+                            <th style="width:80px"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @{
+                            var utenti = Business.Collection.UtentiCollection.GetList(orderPredicate: "Cognome ASC");
+
+                            foreach (var utente in utenti)
+                            {
+                                <tr>
+                                    <td>@utente.Nome</td>
+                                    <td>@utente.Cognome</td>
+                                    <td>@utente.Email</td>
+                                    <td style="text-align:center">
+                                        <CheckBox Checked="utente.Admin" Object="utente" OnChangeCallback="AdminOnChangeCallback" Style="width:20px!important; text-align: center" />
+                                    </td>
+                                    <td style="text-align:center">
+                                        <CheckBox Checked="utente.Attivo" Object="utente" OnChangeCallback="AttivoOnChangeCallback" Style="width:20px!important; text-align: center" />
+                                    </td>
+                                    <td style="text-align:center">
+                                        <a style="margin-right:8px" href="/private/utenti/editor?UtentiId=@utente.Id"><i class="fa fa-edit"></i></a>
+                                        <BlazorLibrary.Component.LinkButton Object="utente" ConfirmMessage="Vuoi eliminare l'utente?" OnClickCallback="EliminaUtenteClick"><i class="fa fa-remove"></i></BlazorLibrary.Component.LinkButton>
+                                    </td>
+                                </tr>
+                            }
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

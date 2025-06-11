@@ -1,0 +1,42 @@
+
+Menu alto a dx
+
+- Crediti -> link aggiungi crediti
+
+- Utente (immagine personale)
+	Esci
+	Dati personali
+	Pagamenti
+
+- Icona (Notifiche)
+
+
+Menu a sx	
+
+- Dashboard
+
+- Campagne
+	Aggiungi (Selezione lista, selezione Newsletter, Impostazione sender, Scheduling orario/data, statistiche invio su singola email attiva quando email è in invio, statistiche |Rimbalzi|Click|Disiscritti|Letture|% di invio  )
+	Elenco
+	Domini verificati (usati come mittenti)
+
+- Liste Email
+	Aggiungi
+	Elenco	(Numero iscritti, % Aperture email, % Click)	-> Selezione di una voce della lista e poi editing, uguale ad aggiungi con tab | Elenco email con data iscrizione, ip | Import/Export | Associazione informazioni texbox,check,radio.. | Moduli HTML iscrizione | Elenco disiscritti con motivazione | Personalizzazione pagina disicrizione, logo, colori | Grafico con iscrizione/eliminazione da form basato su date
+	Informazioni	(Nome, Descrizione, Tipo di controllo)
+
+- Newsletter
+	Editor	
+	Elenco
+
+- Account
+	Dati personali
+	Pagamenti/Fatturazione
+	Referral
+
+- Supporto	
+	Nuova richiesta
+	Elenco richieste
+	Domande frequenti
+
+

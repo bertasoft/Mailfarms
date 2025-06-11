@@ -1,0 +1,53 @@
+﻿CREATE TABLE Email (
+  Id                             integer NOT NULL PRIMARY KEY AUTOINCREMENT,
+  UniqueIdentifier               varchar NOT NULL COLLATE NOCASE,
+  MittenteNome                   varchar NOT NULL COLLATE NOCASE,
+  MittenteEmail                  varchar NOT NULL COLLATE NOCASE,
+  DestinatarioNome               varchar NOT NULL COLLATE NOCASE,
+  DestinatarioEmail              varchar NOT NULL COLLATE NOCASE,
+  DestinatarioDataRegistrazione  integer NOT NULL COLLATE NOCASE,
+  Oggetto                        varchar NOT NULL COLLATE NOCASE,
+  Contenuto	                     varchar NOT NULL COLLATE NOCASE,
+  DataArrivo                     integer NOT NULL COLLATE NOCASE,
+  DataUltimoTentativo            integer NOT NULL COLLATE NOCASE,
+  DataProssimoTentativo          integer NOT NULL COLLATE NOCASE,  
+  NumeroTentativi                integer NOT NULL COLLATE NOCASE,
+  Stato			                 integer NOT NULL COLLATE NOCASE,
+  UrlEliminazione                varchar NOT NULL COLLATE NOCASE,  
+  StatusCode4xx5xx               varchar NOT NULL COLLATE NOCASE,  
+  Immediata                      boolean NOT NULL COLLATE NOCASE,  
+  RispondiA                      varchar NOT NULL COLLATE NOCASE,  
+  UNIQUE (UniqueIdentifier)
+);
+
+CREATE TABLE EmailAllegati (
+  Id                             integer NOT NULL PRIMARY KEY AUTOINCREMENT,
+  IdEmail						 integer NOT NULL COLLATE NOCASE,
+  Dimensione					 integer NOT NULL COLLATE NOCASE,
+  NomeFile		                 varchar NOT NULL COLLATE NOCASE,  
+  FOREIGN KEY (IdEmail) REFERENCES Email(Id) ON DELETE RESTRICT ON UPDATE RESTRICT
+);
+
+CREATE TABLE EmailLog (
+  Id                integer NOT NULL PRIMARY KEY AUTOINCREMENT,
+  IdEmail           integer NOT NULL COLLATE NOCASE,
+  Data		        integer NOT NULL COLLATE NOCASE,
+  Testo             varchar NOT NULL COLLATE NOCASE,    
+  UniqueIdentifier  varchar NOT NULL COLLATE NOCASE,    
+  FOREIGN KEY (IdEmail) REFERENCES Email(Id) ON DELETE RESTRICT ON UPDATE RESTRICT
+);
+
+CREATE INDEX index_table_EmailLog_Data_asc ON EmailLog (Data);
+
+CREATE TABLE Impostazioni (
+  Id      integer NOT NULL PRIMARY KEY AUTOINCREMENT,
+  Nome    varchar NOT NULL COLLATE NOCASE,
+  Valore  varchar NOT NULL COLLATE NOCASE,  
+  UNIQUE (Nome)
+);
+
+CREATE INDEX "index_table_Email_Stato_asc_DataProssimoTentativo_asc" ON "Email" ("Stato" ASC, "DataProssimoTentativo" ASC);
+CREATE INDEX "index_table_Email_DataUltimoTentativo_asc_Stato_asc" ON "Email" ("DataUltimoTentativo" ASC, "Stato" ASC);
+CREATE INDEX "index_table_EmailLog_IdEmail_asc" ON "EmailLog" ("IdEmail" ASC);
+CREATE INDEX "index_table_EmailAllegati_IdEmail_asc" ON "EmailAllegati" ("IdEmail" ASC);
+CREATE INDEX "index_table_Email_Stato_asc_DataProssimoTentativo_asc_Immediata_desc" ON "Email" ("Stato" ASC, "DataProssimoTentativo" ASC, "Immediata" DESC);

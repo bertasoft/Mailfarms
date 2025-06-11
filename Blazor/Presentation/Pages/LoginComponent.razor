@@ -1,0 +1,9 @@
+﻿@inject SessionDictionary sessionDictionary
+@inject NavigationManager navigationManager
+
+@{
+    if (!sessionDictionary.TryGetValue("email", out string email))
+    {
+        navigationManager.NavigateTo("/login", true);
+    }
+}

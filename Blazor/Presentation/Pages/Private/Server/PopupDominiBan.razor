@@ -1,0 +1,100 @@
+﻿@layout PopupLayout
+@using Business.Collection
+@using CommonNetCore
+@using MailFarms_SharedWeb.Code
+@inherits PageComponent
+@page "/private/server/popupdominiban"
+
+@code
+{
+    protected override void OnInitialized()
+    {
+        Id = GetQueryLong("ServerId");
+
+        var server = Business.Entity.Server.GetItem(Id);
+    }
+
+    public void DeleteClick(LinkButton sender)
+    {
+        var server = (ServerDominiBannati)sender.Object;
+
+        ServerDominiBannati.Delete(server);
+
+        StateHasChanged();
+    }
+
+    public void AggiungiDominioClick(MyButton button)
+    {
+        if (!button.ConfirmResponse)
+            return;
+
+        Id = GetQueryLong("ServerId");
+
+        var server = Business.Entity.Server.GetItem(Id);
+
+        var dominioBannato = new ServerDominiBannati();
+        dominioBannato.Dominio = __TextBox_Dominio.Value;
+        dominioBannato.Server = server;
+
+        if (!dominioBannato.Save(out Avviso))
+        {
+            AlertFail(Avviso);
+            return;
+        }
+
+        __TextBox_Dominio.Value = string.Empty;
+
+        StateHasChanged();
+    }
+
+    TextBox __TextBox_Dominio;
+}
+
+<div class="row" style="background-color: #fff; min-height: 100vh;">
+
+    <div class="col-lg-12" style="padding: 20px 6px">
+
+        <div class="panel-body">
+            <div class="form-inline">
+                <div class="form-group">
+                    <TextBox class="form-control" @ref="__TextBox_Dominio" />
+                </div>
+                <MyButton Class="btn btn-primary" OnClickCallback="AggiungiDominioClick" Text="Salva" />
+            </div>
+        </div>
+
+    </div>
+    <div class="col-lg-12" style="padding: 0 20px 20px 20px">
+
+        @{
+            Id = GetQueryLong("ServerId");
+
+            var server = Business.Entity.Server.GetItem(Id);
+
+            if (server != null)
+            {
+                var domini = ServerDominiBannatiCollection.GetList(wherePredicate: "IdServer = " + server.Id);
+
+                if (domini.Any())
+                {
+                    <table class="table table-bordered table-striped table-ultracondensed">
+
+                        @foreach (var dominio in domini)
+                        {
+                            <tr>
+                                <td style="padding: 10px">@dominio.Dominio</td>
+                                <td style="width: 80px; padding: 10px; text-align: center"><LinkButton Object="dominio" OnClickCallback="DeleteClick"><i class="fa fa-remove"></i></LinkButton></td>
+                            </tr>
+                        }
+
+                    </table>
+                }
+                else
+                {
+                    <p>Non ci sono domini registrati come bannati su questo server.</p>
+                }
+            }
+        }
+
+    </div>
+</div>

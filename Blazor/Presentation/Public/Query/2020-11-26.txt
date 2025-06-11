@@ -1,0 +1,75 @@
+SELECT [Utenti].[Nome], [Utenti].[Cognome], [Utenti].[Email], [Utenti].[Password], [Utenti].[Attivo], [Utenti].[Admin], [Utenti].[Id] FROM [Utenti] WHERE [Utenti].[Email] = @0, time to execute ms.:3.9778
+SELECT [BloccoAccesso].[Email], [BloccoAccesso].[NumTentativo], [BloccoAccesso].[DataTentativo], [BloccoAccesso].[Id] FROM [BloccoAccesso] WHERE [BloccoAccesso].[Email] = @0, time to execute ms.:0.0792
+SELECT [BloccoIp].[Ip], [BloccoIp].[UserAgent], [BloccoIp].[Data], [BloccoIp].[Tentativi], [BloccoIp].[Id] FROM [BloccoIp] WHERE [BloccoIp].[Ip] = @0, time to execute ms.:0.0875
+INSERT INTO [UtentiAccessi] ([IdUtenti], [DataAccesso], [IpAccesso]) VALUES (@0, @1, @2); SELECT last_insert_rowid();, time to execute ms.:0.4557
+SELECT [Server].[Ip], [Server].[Attivo], [Server].[Riceve], [Server].[Inviate], [Server].[Errate], [Server].[Id] FROM [Server], time to execute ms.:1.7711
+SELECT [ServerStatistiche].[IdServer], [ServerStatistiche].[Data], [ServerStatistiche].[Inviate], [ServerStatistiche].[Errate], [ServerStatistiche].[Id] FROM [ServerStatistiche] WHERE [ServerStatistiche].[IdServer] = @0 AND [ServerStatistiche].[Data] > @1 AND [ServerStatistiche].[Data] <= @2, time to execute ms.:0.4227
+SELECT [ServerStatistiche].[IdServer], [ServerStatistiche].[Data], [ServerStatistiche].[Inviate], [ServerStatistiche].[Errate], [ServerStatistiche].[Id] FROM [ServerStatistiche] WHERE [ServerStatistiche].[IdServer] = @0 AND [ServerStatistiche].[Data] > @1 AND [ServerStatistiche].[Data] <= @2, time to execute ms.:0.023
+SELECT [ServerStatistiche].[IdServer], [ServerStatistiche].[Data], [ServerStatistiche].[Inviate], [ServerStatistiche].[Errate], [ServerStatistiche].[Id] FROM [ServerStatistiche] WHERE [ServerStatistiche].[IdServer] = @0 AND [ServerStatistiche].[Data] > @1 AND [ServerStatistiche].[Data] <= @2, time to execute ms.:0.0151
+SELECT [ServerStatistiche].[IdServer], [ServerStatistiche].[Data], [ServerStatistiche].[Inviate], [ServerStatistiche].[Errate], [ServerStatistiche].[Id] FROM [ServerStatistiche] WHERE [ServerStatistiche].[IdServer] = @0 AND [ServerStatistiche].[Data] > @1 AND [ServerStatistiche].[Data] <= @2, time to execute ms.:0.0198
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Stato] = @0, time to execute ms.:0.3202
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Stato] = @0, time to execute ms.:0.0454
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Stato] = @0, time to execute ms.:0.0331
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Server] = @0 AND [Email].[Stato] = @1, time to execute ms.:0.2995
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Server] = @0 AND [Email].[Stato] = @1, time to execute ms.:0.0694
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Server] = @0 AND [Email].[Stato] = @1, time to execute ms.:0.0842
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Server] = @0 AND [Email].[Stato] = @1, time to execute ms.:0.0809
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Server] = @0 AND [Email].[Stato] = @1, time to execute ms.:0.0579
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Server] = @0 AND [Email].[Stato] = @1, time to execute ms.:0.0514
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Server] = @0 AND [Email].[Stato] = @1, time to execute ms.:0.0818
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Server] = @0 AND [Email].[Stato] = @1, time to execute ms.:0.042
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Server] = @0 AND [Email].[Stato] = @1, time to execute ms.:0.0396
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Server] = @0 AND [Email].[Stato] = @1, time to execute ms.:0.09
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Server] = @0 AND [Email].[Stato] = @1, time to execute ms.:0.0752
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Server] = @0 AND [Email].[Stato] = @1, time to execute ms.:0.0604
+SELECT [BloccoAccesso].[Email], [BloccoAccesso].[NumTentativo], [BloccoAccesso].[DataTentativo], [BloccoAccesso].[Id] FROM [BloccoAccesso] WHERE [BloccoAccesso].[DataTentativo] < @0, time to execute ms.:0,1231
+SELECT [BloccoIp].[Ip], [BloccoIp].[UserAgent], [BloccoIp].[Data], [BloccoIp].[Tentativi], [BloccoIp].[Id] FROM [BloccoIp] WHERE [BloccoIp].[Data] < @0, time to execute ms.:0,1256
+SELECT [Impostazioni].[Nome], [Impostazioni].[Valore], [Impostazioni].[Id] FROM [Impostazioni] WHERE [Impostazioni].[Nome] = @0, time to execute ms.:0,4118
+SELECT [Email].[UniqueIdentifier], [Email].[Server], [Email].[MittenteEmail], [Email].[MittenteNome], [Email].[DestinatarioEmail], [Email].[DestinatarioNome], [Email].[DestinatarioDataRegistrazione], [Email].[Oggetto], [Email].[Contenuto], [Email].[DataArrivo], [Email].[DataInvio], [Email].[DataUltimoTentativo], [Email].[DataProssimoTentativo], [Email].[DataVisualizzazione], [Email].[DataClick], [Email].[NumeroTentativi], [Email].[UrlEliminazione], [Email].[StatusCode4xx5xx], [Email].[Stato], [Email].[Immediata], [Email].[RispondiA], [Email].[Id] FROM [Email] WHERE [Email].[Stato] <> @0 AND [Email].[DataUltimoTentativo] < @1, time to execute ms.:0,3551
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Server] = @0, time to execute ms.:0,2919
+SELECT [Server].[Ip], [Server].[Attivo], [Server].[Riceve], [Server].[Inviate], [Server].[Errate], [Server].[Id] FROM [Server] ORDER BY [Server].[Ip] ASC, time to execute ms.:1.6299
+SELECT COUNT(([ServerDominiBannati].[Id])) FROM [ServerDominiBannati] WHERE [ServerDominiBannati].[IdServer] = @0, time to execute ms.:0.1136
+SELECT COUNT(([ServerDominiBannati].[Id])) FROM [ServerDominiBannati] WHERE [ServerDominiBannati].[IdServer] = @0, time to execute ms.:0.0712
+SELECT COUNT(([ServerDominiBannati].[Id])) FROM [ServerDominiBannati] WHERE [ServerDominiBannati].[IdServer] = @0, time to execute ms.:0.0728
+SELECT COUNT(([ServerDominiBannati].[Id])) FROM [ServerDominiBannati] WHERE [ServerDominiBannati].[IdServer] = @0, time to execute ms.:0.1432
+SELECT [Server].[Ip], [Server].[Attivo], [Server].[Riceve], [Server].[Inviate], [Server].[Errate], [Server].[Id] FROM [Server] ORDER BY [Server].[Ip] ASC, time to execute ms.:10.505
+SELECT COUNT(([ServerDominiBannati].[Id])) FROM [ServerDominiBannati] WHERE [ServerDominiBannati].[IdServer] = @0, time to execute ms.:1.5497
+SELECT COUNT(([ServerDominiBannati].[Id])) FROM [ServerDominiBannati] WHERE [ServerDominiBannati].[IdServer] = @0, time to execute ms.:0.0685
+SELECT COUNT(([ServerDominiBannati].[Id])) FROM [ServerDominiBannati] WHERE [ServerDominiBannati].[IdServer] = @0, time to execute ms.:0.1711
+SELECT COUNT(([ServerDominiBannati].[Id])) FROM [ServerDominiBannati] WHERE [ServerDominiBannati].[IdServer] = @0, time to execute ms.:0.1204
+SELECT [Utenti].[Nome], [Utenti].[Cognome], [Utenti].[Email], [Utenti].[Password], [Utenti].[Attivo], [Utenti].[Admin], [Utenti].[Id] FROM [Utenti] WHERE [Utenti].[Email] = @0, time to execute ms.:0.5898
+SELECT [BloccoAccesso].[Email], [BloccoAccesso].[NumTentativo], [BloccoAccesso].[DataTentativo], [BloccoAccesso].[Id] FROM [BloccoAccesso] WHERE [BloccoAccesso].[Email] = @0, time to execute ms.:0.0797
+SELECT [BloccoIp].[Ip], [BloccoIp].[UserAgent], [BloccoIp].[Data], [BloccoIp].[Tentativi], [BloccoIp].[Id] FROM [BloccoIp] WHERE [BloccoIp].[Ip] = @0, time to execute ms.:0.1369
+INSERT INTO [UtentiAccessi] ([IdUtenti], [DataAccesso], [IpAccesso]) VALUES (@0, @1, @2); SELECT last_insert_rowid();, time to execute ms.:0.5965
+SELECT [Server].[Ip], [Server].[Attivo], [Server].[Riceve], [Server].[Inviate], [Server].[Errate], [Server].[Id] FROM [Server], time to execute ms.:0.538
+SELECT [ServerStatistiche].[IdServer], [ServerStatistiche].[Data], [ServerStatistiche].[Inviate], [ServerStatistiche].[Errate], [ServerStatistiche].[Id] FROM [ServerStatistiche] WHERE [ServerStatistiche].[IdServer] = @0 AND [ServerStatistiche].[Data] > @1 AND [ServerStatistiche].[Data] <= @2, time to execute ms.:0.1074
+SELECT [ServerStatistiche].[IdServer], [ServerStatistiche].[Data], [ServerStatistiche].[Inviate], [ServerStatistiche].[Errate], [ServerStatistiche].[Id] FROM [ServerStatistiche] WHERE [ServerStatistiche].[IdServer] = @0 AND [ServerStatistiche].[Data] > @1 AND [ServerStatistiche].[Data] <= @2, time to execute ms.:0.052
+SELECT [ServerStatistiche].[IdServer], [ServerStatistiche].[Data], [ServerStatistiche].[Inviate], [ServerStatistiche].[Errate], [ServerStatistiche].[Id] FROM [ServerStatistiche] WHERE [ServerStatistiche].[IdServer] = @0 AND [ServerStatistiche].[Data] > @1 AND [ServerStatistiche].[Data] <= @2, time to execute ms.:0.0172
+SELECT [ServerStatistiche].[IdServer], [ServerStatistiche].[Data], [ServerStatistiche].[Inviate], [ServerStatistiche].[Errate], [ServerStatistiche].[Id] FROM [ServerStatistiche] WHERE [ServerStatistiche].[IdServer] = @0 AND [ServerStatistiche].[Data] > @1 AND [ServerStatistiche].[Data] <= @2, time to execute ms.:0.0171
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Stato] = @0, time to execute ms.:0.1014
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Stato] = @0, time to execute ms.:0.039
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Stato] = @0, time to execute ms.:0.0312
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Server] = @0 AND [Email].[Stato] = @1, time to execute ms.:0.07
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Server] = @0 AND [Email].[Stato] = @1, time to execute ms.:0.0567
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Server] = @0 AND [Email].[Stato] = @1, time to execute ms.:0.0549
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Server] = @0 AND [Email].[Stato] = @1, time to execute ms.:0.0828
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Server] = @0 AND [Email].[Stato] = @1, time to execute ms.:0.0494
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Server] = @0 AND [Email].[Stato] = @1, time to execute ms.:0.0394
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Server] = @0 AND [Email].[Stato] = @1, time to execute ms.:0.0818
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Server] = @0 AND [Email].[Stato] = @1, time to execute ms.:0.0489
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Server] = @0 AND [Email].[Stato] = @1, time to execute ms.:0.0392
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Server] = @0 AND [Email].[Stato] = @1, time to execute ms.:0.0831
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Server] = @0 AND [Email].[Stato] = @1, time to execute ms.:0.0526
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Server] = @0 AND [Email].[Stato] = @1, time to execute ms.:0.0395
+SELECT [BloccoAccesso].[Email], [BloccoAccesso].[NumTentativo], [BloccoAccesso].[DataTentativo], [BloccoAccesso].[Id] FROM [BloccoAccesso] WHERE [BloccoAccesso].[DataTentativo] < @0, time to execute ms.:0,0905
+SELECT [BloccoIp].[Ip], [BloccoIp].[UserAgent], [BloccoIp].[Data], [BloccoIp].[Tentativi], [BloccoIp].[Id] FROM [BloccoIp] WHERE [BloccoIp].[Data] < @0, time to execute ms.:0,0652
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Server] = @0, time to execute ms.:0,0963
+UPDATE [Server] SET [Riceve] = @0 WHERE [Id] = @Id, time to execute ms.:0.3406
+SELECT [ServerImpostazioni].[Nome], [ServerImpostazioni].[Valore], [ServerImpostazioni].[Id] FROM [ServerImpostazioni] WHERE [ServerImpostazioni].[Nome] = @0, time to execute ms.:31.2476
+SELECT [ServerImpostazioni].[Nome], [ServerImpostazioni].[Valore], [ServerImpostazioni].[Id] FROM [ServerImpostazioni] WHERE [ServerImpostazioni].[Nome] = @0, time to execute ms.:0.0492
+SELECT [ServerImpostazioni].[Nome], [ServerImpostazioni].[Valore], [ServerImpostazioni].[Id] FROM [ServerImpostazioni] WHERE [ServerImpostazioni].[Nome] = @0, time to execute ms.:0.0441
+SELECT [ServerImpostazioni].[Nome], [ServerImpostazioni].[Valore], [ServerImpostazioni].[Id] FROM [ServerImpostazioni] WHERE [ServerImpostazioni].[Nome] = @0, time to execute ms.:0.1103
+SELECT [ServerImpostazioni].[Nome], [ServerImpostazioni].[Valore], [ServerImpostazioni].[Id] FROM [ServerImpostazioni] WHERE [ServerImpostazioni].[Nome] = @0, time to execute ms.:0.2137
+SELECT [ServerImpostazioni].[Nome], [ServerImpostazioni].[Valore], [ServerImpostazioni].[Id] FROM [ServerImpostazioni] WHERE [ServerImpostazioni].[Nome] = @0, time to execute ms.:0.5519
+UPDATE [Server] SET [Riceve] = @0 WHERE [Id] = @Id, time to execute ms.:0.1561
+INSERT INTO [UtentiAccessi] ([IdUtenti], [DataAccesso], [IpAccesso]) VALUES (@0, @1, @2); SELECT last_insert_rowid();, time to execute ms.:0.2347

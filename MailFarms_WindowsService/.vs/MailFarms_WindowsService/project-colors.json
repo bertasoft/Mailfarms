@@ -1,0 +1,31 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Miscellaneous Files",
+      "ColorIndex": -1
+    },
+    "6d1266d8-2c8b-432d-a48b-603d8a020ecd": {
+      "ProjectGuid": "6d1266d8-2c8b-432d-a48b-603d8a020ecd",
+      "DisplayName": "SmtpRelayer",
+      "ColorIndex": 0
+    },
+    "b362dc63-c2f9-4ea1-9539-3c632c970958": {
+      "ProjectGuid": "b362dc63-c2f9-4ea1-9539-3c632c970958",
+      "DisplayName": "MailFarms_SharedService",
+      "ColorIndex": 1
+    },
+    "cfe43f6d-d28f-44b6-bcd7-3e5f23d50651": {
+      "ProjectGuid": "cfe43f6d-d28f-44b6-bcd7-3e5f23d50651",
+      "DisplayName": "Business",
+      "ColorIndex": 2
+    },
+    "9f6cebec-4dc8-4002-8448-c0ce66c8dc0b": {
+      "ProjectGuid": "9f6cebec-4dc8-4002-8448-c0ce66c8dc0b",
+      "DisplayName": "CommonNetCore",
+      "ColorIndex": 3
+    }
+  },
+  "NextColorIndex": 4
+}

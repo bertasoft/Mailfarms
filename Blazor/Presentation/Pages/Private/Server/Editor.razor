@@ -1,0 +1,111 @@
+﻿@page "/private/server/editor"
+@layout PrivateLayout
+@using MailFarmsBlazor.Code
+@inherits PageComponent
+@inject LayoutService layoutService
+
+@code {
+    TextBox __TextBox_IpPorta;
+    TextBox __TextBox_Helo;
+    TextBox __TextBox_Mittente;
+    TextBox __TextBox_Destinatario;
+    TextBox __TextBox_Oggetto;
+    TextBox __TextBox_Contenuto;
+    BlazorLibrary.Component.CheckBox __CheckBox_Attivo;
+
+    protected override void OnInitialized()
+    {
+        layoutService.OnTitlePageCallback.InvokeAsync("Server - Editor");
+    }
+}
+
+<LoginComponent />
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel">
+
+            <div class="panel-body form-horizontal">
+                <div class="form-group">
+                    <label class="col-md-3 control-label">IP</label>
+                    <div class="col-md-3">
+                        <TextBox @ref="__TextBox_IpPorta" class="form-control" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-3 control-label">HELO/EHLO Reverse DNS</label>
+                    <div class="col-md-3">
+                        <TextBox @ref="__TextBox_Helo" class="form-control" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-3 control-label">Attivo</label>
+                    <div class="col-md-9">
+                        <div class="col-md-6 pad-no form-block">
+                            <CheckBox @ref="__CheckBox_Attivo" Style="height:28px" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-12 col-md-push-3">
+                        <MyButton OnClickCallback="SalvaClick" Text="Salva" Class="btn btn-primary" />
+                        <MyButton OnClickCallback="NuovoClick" Text="Nuovo" Class="btn btn-primary" />
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel">
+
+
+            <div class="panel-body form-horizontal">
+                
+                <p>Invia una email di prova</p>
+
+                <div class="form-group">
+                    <label class="col-md-3 control-label">Mittente</label>
+                    <div class="col-md-3">
+                        <TextBox @ref="__TextBox_Mittente" class="form-control"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-3 control-label">Destinatario</label>
+                    <div class="col-md-3">
+                        <TextBox @ref="__TextBox_Destinatario" class="form-control"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-3 control-label">Oggetto</label>
+                    <div class="col-md-3">
+                        <TextBox @ref="__TextBox_Oggetto" class="form-control"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-3 control-label">Messaggio</label>
+                    <div class="col-md-3">
+                        <TextBox @ref="__TextBox_Contenuto" class="form-control"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-12 col-md-push-3">
+                        <MyButton OnClickCallback="InviaClick" Text="Invia" Class="btn btn-primary"/>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+

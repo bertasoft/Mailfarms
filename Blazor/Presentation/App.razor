@@ -1,0 +1,30 @@
+@using MailFarmsBlazor.Pages.Private
+@using MailFarmsBlazor.Pages.Public
+@inject NavigationManager uriHelper
+@inject IJSRuntime JsRuntime
+@inject SessionDictionary sessionDictionary
+
+<Router AppAssembly="@typeof(Program).Assembly">
+    <Found Context="routeData">
+        <AuthorizeRouteView RouteData="@routeData" DefaultLayout="@typeof(PublicLayout)">
+            <NotAuthorized>
+                @{
+                    //if (!sessionDictionary.ContainsKey("email"))
+                    //{
+                      //  uriHelper.NavigateTo("login");
+                    //}
+                }
+            </NotAuthorized>
+            <Authorizing>
+                <p>Just checking with the boss you can come in.</p>
+            </Authorizing>
+        </AuthorizeRouteView>
+
+
+    </Found>
+    <NotFound>
+        <LayoutView Layout="@typeof(PublicLayout)">
+            <p>404. Not Found File</p>
+        </LayoutView>
+    </NotFound>
+</Router>

@@ -1,0 +1,39 @@
+- Footer automatico tramite informazioni aziendali
+- Timezone per lo schedulamento campagne
+- List
+	Hanno un messaggio footer es.: Sei iscritto alla mail perchè fai parte di bachecaweb
+	Hanno un from/mittente dedicato (email e nome)
+	Notifiche dedicate, mail immediata per ogni iscrizione, mail immediata per ogni cancellazione, mail sommaria giornaliera con iscrizione eliminazione, email destinatari specifiche per tutti i tre tipi di messaggio conferma
+
+	Creazione di signup form
+
+	opzione, Possibilità di scegliere da parte di tente se ricevere html o solo text	
+	opzione, Inviare email di conferma per registrazione completate
+	opzione, Inviare email di conferma eliminazione per eliminazione completata
+
+- Verifica dominio mittente (noreply@bachecaweb.net) tramite codice e email
+	
+
+Liste email:
+- Traccia di ip, orario degli utenti iscritti
+- Member rating 
+- Data inserimento
+- Data aggiornamento
+
+
+Lista -> Segmenti
+	-> Gruppi
+	
+
+Open tracking http://kb.mailchimp.com/reports/about-open-tracking?&_ga=1.95565721.447301365.1446196657
+
+HTML Email Basics
+http://templates.mailchimp.com/getting-started/html-email-basics/?_ga=1.105003782.447301365.1446196657
+
+
+http://www.mailforce.it/
+
+- Orario di invio effettivo, recuperato da winservice
+- Orario di lettura, apertura della gif dentro la mail
+- Numero di cancellazioni dalla mailing list
+- Numero di click sui link presenti nella mailing list

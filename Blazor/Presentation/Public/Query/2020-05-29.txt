@@ -1,0 +1,614 @@
+SELECT [Utenti].[Nome], [Utenti].[Cognome], [Utenti].[Email], [Utenti].[Password], [Utenti].[Attivo], [Utenti].[Admin], [Utenti].[Id] FROM [Utenti] WHERE [Utenti].[Email] = @0, time to execute ms.:8,0054
+SELECT [BloccoAccesso].[Email], [BloccoAccesso].[NumTentativo], [BloccoAccesso].[DataTentativo], [BloccoAccesso].[Id] FROM [BloccoAccesso] WHERE [BloccoAccesso].[Email] = @0, time to execute ms.:0,2175
+SELECT [BloccoIp].[Ip], [BloccoIp].[UserAgent], [BloccoIp].[Data], [BloccoIp].[Tentativi], [BloccoIp].[Id] FROM [BloccoIp] WHERE [BloccoIp].[Ip] = @0, time to execute ms.:0,216
+INSERT INTO [UtentiAccessi] ([IdUtenti], [DataAccesso], [IpAccesso]) VALUES (@0, @1, @2); SELECT last_insert_rowid();, time to execute ms.:1,1652
+SELECT [Server].[Ip], [Server].[Attivo], [Server].[Riceve], [Server].[Inviate], [Server].[Errate], [Server].[Id] FROM [Server], time to execute ms.:4,1324
+SELECT [ServerStatistiche].[IdServer], [ServerStatistiche].[Data], [ServerStatistiche].[Inviate], [ServerStatistiche].[Errate], [ServerStatistiche].[Id] FROM [ServerStatistiche] WHERE [ServerStatistiche].[IdServer] = @0 AND [ServerStatistiche].[Data] > @1 AND [ServerStatistiche].[Data] <= @2, time to execute ms.:4,1777
+SELECT [ServerStatistiche].[IdServer], [ServerStatistiche].[Data], [ServerStatistiche].[Inviate], [ServerStatistiche].[Errate], [ServerStatistiche].[Id] FROM [ServerStatistiche] WHERE [ServerStatistiche].[IdServer] = @0 AND [ServerStatistiche].[Data] > @1 AND [ServerStatistiche].[Data] <= @2, time to execute ms.:0,8512
+SELECT [ServerStatistiche].[IdServer], [ServerStatistiche].[Data], [ServerStatistiche].[Inviate], [ServerStatistiche].[Errate], [ServerStatistiche].[Id] FROM [ServerStatistiche] WHERE [ServerStatistiche].[IdServer] = @0 AND [ServerStatistiche].[Data] > @1 AND [ServerStatistiche].[Data] <= @2, time to execute ms.:0,8164
+SELECT [ServerStatistiche].[IdServer], [ServerStatistiche].[Data], [ServerStatistiche].[Inviate], [ServerStatistiche].[Errate], [ServerStatistiche].[Id] FROM [ServerStatistiche] WHERE [ServerStatistiche].[IdServer] = @0 AND [ServerStatistiche].[Data] > @1 AND [ServerStatistiche].[Data] <= @2, time to execute ms.:0,9791
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Stato] = @0, time to execute ms.:0,3251
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Stato] = @0, time to execute ms.:4,667
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Stato] = @0, time to execute ms.:1,221
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Server] = @0 AND [Email].[Stato] = @1, time to execute ms.:0,2762
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Server] = @0 AND [Email].[Stato] = @1, time to execute ms.:2,1692
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Server] = @0 AND [Email].[Stato] = @1, time to execute ms.:0,6921
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Server] = @0 AND [Email].[Stato] = @1, time to execute ms.:0,216
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Server] = @0 AND [Email].[Stato] = @1, time to execute ms.:1,6293
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Server] = @0 AND [Email].[Stato] = @1, time to execute ms.:0,4407
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Server] = @0 AND [Email].[Stato] = @1, time to execute ms.:0,2789
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Server] = @0 AND [Email].[Stato] = @1, time to execute ms.:2,3815
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Server] = @0 AND [Email].[Stato] = @1, time to execute ms.:0,8003
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Server] = @0 AND [Email].[Stato] = @1, time to execute ms.:0,4086
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Server] = @0 AND [Email].[Stato] = @1, time to execute ms.:2,7269
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Server] = @0 AND [Email].[Stato] = @1, time to execute ms.:0,6516
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Stato] = @0, time to execute ms.:0,214
+SELECT [Impostazioni].[Nome], [Impostazioni].[Valore], [Impostazioni].[Id] FROM [Impostazioni] WHERE [Impostazioni].[Nome] = @0, time to execute ms.:0,9211
+SELECT [Email].[UniqueIdentifier], [Email].[Server], [Email].[MittenteEmail], [Email].[MittenteNome], [Email].[DestinatarioEmail], [Email].[DestinatarioNome], [Email].[DestinatarioDataRegistrazione], [Email].[Oggetto], [Email].[Contenuto], [Email].[DataArrivo], [Email].[DataInvio], [Email].[DataUltimoTentativo], [Email].[DataProssimoTentativo], [Email].[DataVisualizzazione], [Email].[DataClick], [Email].[NumeroTentativi], [Email].[UrlEliminazione], [Email].[StatusCode4xx5xx], [Email].[Stato], [Email].[Immediata], [Email].[RispondiA], [Email].[Id] FROM [Email] WHERE [Email].[Stato] <> @0 AND [Email].[DataUltimoTentativo] < @1, time to execute ms.:818,3346
+SELECT [BloccoAccesso].[Email], [BloccoAccesso].[NumTentativo], [BloccoAccesso].[DataTentativo], [BloccoAccesso].[Id] FROM [BloccoAccesso] WHERE [BloccoAccesso].[DataTentativo] < @0, time to execute ms.:0,2615
+SELECT [BloccoIp].[Ip], [BloccoIp].[UserAgent], [BloccoIp].[Data], [BloccoIp].[Tentativi], [BloccoIp].[Id] FROM [BloccoIp] WHERE [BloccoIp].[Data] < @0, time to execute ms.:0,2351
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Server] = @0, time to execute ms.:0,2407
+SELECT [EmailLog].[IdEmail], [EmailLog].[Data], [EmailLog].[Testo], [EmailLog].[UniqueIdentifier], [EmailLog].[Id] FROM [EmailLog] WHERE [EmailLog].[IdEmail] = @0, time to execute ms.:3,3986
+DELETE FROM [EmailLog] WHERE [Id] = @Id, time to execute ms.:0,4587
+SELECT [Server].[Ip], [Server].[Attivo], [Server].[Riceve], [Server].[Inviate], [Server].[Errate], [Server].[Id] FROM [Server] WHERE [Server].[Riceve] = @0, time to execute ms.:9,5837
+SELECT [EmailAllegati].[IdEmail], [EmailAllegati].[NomeFile], [EmailAllegati].[Dimensione], [EmailAllegati].[Id] FROM [EmailAllegati] WHERE [EmailAllegati].[IdEmail] = @0, time to execute ms.:0,2511
+DELETE FROM [Email] WHERE [Id] = @Id, time to execute ms.:0,9799
+SELECT [EmailLog].[IdEmail], [EmailLog].[Data], [EmailLog].[Testo], [EmailLog].[UniqueIdentifier], [EmailLog].[Id] FROM [EmailLog] WHERE [EmailLog].[IdEmail] = @0, time to execute ms.:0,3588
+DELETE FROM [EmailLog] WHERE [Id] = @Id, time to execute ms.:0,1196
+SELECT [EmailAllegati].[IdEmail], [EmailAllegati].[NomeFile], [EmailAllegati].[Dimensione], [EmailAllegati].[Id] FROM [EmailAllegati] WHERE [EmailAllegati].[IdEmail] = @0, time to execute ms.:0,1419
+DELETE FROM [Email] WHERE [Id] = @Id, time to execute ms.:0,4029
+SELECT [EmailLog].[IdEmail], [EmailLog].[Data], [EmailLog].[Testo], [EmailLog].[UniqueIdentifier], [EmailLog].[Id] FROM [EmailLog] WHERE [EmailLog].[IdEmail] = @0, time to execute ms.:0,2254
+DELETE FROM [EmailLog] WHERE [Id] = @Id, time to execute ms.:0,1789
+SELECT [EmailAllegati].[IdEmail], [EmailAllegati].[NomeFile], [EmailAllegati].[Dimensione], [EmailAllegati].[Id] FROM [EmailAllegati] WHERE [EmailAllegati].[IdEmail] = @0, time to execute ms.:0,0905
+DELETE FROM [Email] WHERE [Id] = @Id, time to execute ms.:0,4567
+SELECT [EmailLog].[IdEmail], [EmailLog].[Data], [EmailLog].[Testo], [EmailLog].[UniqueIdentifier], [EmailLog].[Id] FROM [EmailLog] WHERE [EmailLog].[IdEmail] = @0, time to execute ms.:0,2122
+DELETE FROM [EmailLog] WHERE [Id] = @Id, time to execute ms.:0,096
+SELECT [EmailAllegati].[IdEmail], [EmailAllegati].[NomeFile], [EmailAllegati].[Dimensione], [EmailAllegati].[Id] FROM [EmailAllegati] WHERE [EmailAllegati].[IdEmail] = @0, time to execute ms.:0,0968
+DELETE FROM [Email] WHERE [Id] = @Id, time to execute ms.:0,3434
+SELECT [EmailLog].[IdEmail], [EmailLog].[Data], [EmailLog].[Testo], [EmailLog].[UniqueIdentifier], [EmailLog].[Id] FROM [EmailLog] WHERE [EmailLog].[IdEmail] = @0, time to execute ms.:0,1719
+DELETE FROM [EmailLog] WHERE [Id] = @Id, time to execute ms.:0,2165
+SELECT [EmailAllegati].[IdEmail], [EmailAllegati].[NomeFile], [EmailAllegati].[Dimensione], [EmailAllegati].[Id] FROM [EmailAllegati] WHERE [EmailAllegati].[IdEmail] = @0, time to execute ms.:1,5281
+DELETE FROM [EmailAllegati] WHERE [Id] = @Id, time to execute ms.:0,2849
+DELETE FROM [Email] WHERE [Id] = @Id, time to execute ms.:0,4831
+SELECT [EmailLog].[IdEmail], [EmailLog].[Data], [EmailLog].[Testo], [EmailLog].[UniqueIdentifier], [EmailLog].[Id] FROM [EmailLog] WHERE [EmailLog].[IdEmail] = @0, time to execute ms.:0,4011
+DELETE FROM [EmailLog] WHERE [Id] = @Id, time to execute ms.:0,1235
+SELECT [EmailAllegati].[IdEmail], [EmailAllegati].[NomeFile], [EmailAllegati].[Dimensione], [EmailAllegati].[Id] FROM [EmailAllegati] WHERE [EmailAllegati].[IdEmail] = @0, time to execute ms.:0,1325
+DELETE FROM [Email] WHERE [Id] = @Id, time to execute ms.:0,57
+SELECT [EmailLog].[IdEmail], [EmailLog].[Data], [EmailLog].[Testo], [EmailLog].[UniqueIdentifier], [EmailLog].[Id] FROM [EmailLog] WHERE [EmailLog].[IdEmail] = @0, time to execute ms.:0,2346
+DELETE FROM [EmailLog] WHERE [Id] = @Id, time to execute ms.:0,0778
+SELECT [EmailAllegati].[IdEmail], [EmailAllegati].[NomeFile], [EmailAllegati].[Dimensione], [EmailAllegati].[Id] FROM [EmailAllegati] WHERE [EmailAllegati].[IdEmail] = @0, time to execute ms.:0,1719
+DELETE FROM [EmailAllegati] WHERE [Id] = @Id, time to execute ms.:0,0814
+DELETE FROM [Email] WHERE [Id] = @Id, time to execute ms.:0,5808
+SELECT [EmailLog].[IdEmail], [EmailLog].[Data], [EmailLog].[Testo], [EmailLog].[UniqueIdentifier], [EmailLog].[Id] FROM [EmailLog] WHERE [EmailLog].[IdEmail] = @0, time to execute ms.:0,232
+DELETE FROM [EmailLog] WHERE [Id] = @Id, time to execute ms.:0,247
+SELECT [EmailAllegati].[IdEmail], [EmailAllegati].[NomeFile], [EmailAllegati].[Dimensione], [EmailAllegati].[Id] FROM [EmailAllegati] WHERE [EmailAllegati].[IdEmail] = @0, time to execute ms.:0,2475
+DELETE FROM [Email] WHERE [Id] = @Id, time to execute ms.:0,5392
+SELECT [EmailLog].[IdEmail], [EmailLog].[Data], [EmailLog].[Testo], [EmailLog].[UniqueIdentifier], [EmailLog].[Id] FROM [EmailLog] WHERE [EmailLog].[IdEmail] = @0, time to execute ms.:0,2371
+DELETE FROM [EmailLog] WHERE [Id] = @Id, time to execute ms.:0,1939
+SELECT [EmailAllegati].[IdEmail], [EmailAllegati].[NomeFile], [EmailAllegati].[Dimensione], [EmailAllegati].[Id] FROM [EmailAllegati] WHERE [EmailAllegati].[IdEmail] = @0, time to execute ms.:0,1064
+DELETE FROM [Email] WHERE [Id] = @Id, time to execute ms.:0,4396
+SELECT [EmailLog].[IdEmail], [EmailLog].[Data], [EmailLog].[Testo], [EmailLog].[UniqueIdentifier], [EmailLog].[Id] FROM [EmailLog] WHERE [EmailLog].[IdEmail] = @0, time to execute ms.:0,2253
+DELETE FROM [EmailLog] WHERE [Id] = @Id, time to execute ms.:0,3925
+SELECT [EmailAllegati].[IdEmail], [EmailAllegati].[NomeFile], [EmailAllegati].[Dimensione], [EmailAllegati].[Id] FROM [EmailAllegati] WHERE [EmailAllegati].[IdEmail] = @0, time to execute ms.:0,1188
+DELETE FROM [Email] WHERE [Id] = @Id, time to execute ms.:0,4157
+SELECT [EmailLog].[IdEmail], [EmailLog].[Data], [EmailLog].[Testo], [EmailLog].[UniqueIdentifier], [EmailLog].[Id] FROM [EmailLog] WHERE [EmailLog].[IdEmail] = @0, time to execute ms.:0,1889
+DELETE FROM [EmailLog] WHERE [Id] = @Id, time to execute ms.:0,068
+SELECT [EmailAllegati].[IdEmail], [EmailAllegati].[NomeFile], [EmailAllegati].[Dimensione], [EmailAllegati].[Id] FROM [EmailAllegati] WHERE [EmailAllegati].[IdEmail] = @0, time to execute ms.:0,1471
+DELETE FROM [Email] WHERE [Id] = @Id, time to execute ms.:0,6444
+SELECT [EmailLog].[IdEmail], [EmailLog].[Data], [EmailLog].[Testo], [EmailLog].[UniqueIdentifier], [EmailLog].[Id] FROM [EmailLog] WHERE [EmailLog].[IdEmail] = @0, time to execute ms.:0,2919
+DELETE FROM [EmailLog] WHERE [Id] = @Id, time to execute ms.:0,1031
+SELECT [EmailAllegati].[IdEmail], [EmailAllegati].[NomeFile], [EmailAllegati].[Dimensione], [EmailAllegati].[Id] FROM [EmailAllegati] WHERE [EmailAllegati].[IdEmail] = @0, time to execute ms.:0,1782
+DELETE FROM [Email] WHERE [Id] = @Id, time to execute ms.:0,3875
+SELECT [EmailLog].[IdEmail], [EmailLog].[Data], [EmailLog].[Testo], [EmailLog].[UniqueIdentifier], [EmailLog].[Id] FROM [EmailLog] WHERE [EmailLog].[IdEmail] = @0, time to execute ms.:0,2511
+DELETE FROM [EmailLog] WHERE [Id] = @Id, time to execute ms.:0,159
+SELECT [EmailAllegati].[IdEmail], [EmailAllegati].[NomeFile], [EmailAllegati].[Dimensione], [EmailAllegati].[Id] FROM [EmailAllegati] WHERE [EmailAllegati].[IdEmail] = @0, time to execute ms.:0,0822
+DELETE FROM [Email] WHERE [Id] = @Id, time to execute ms.:0,5858
+SELECT [EmailLog].[IdEmail], [EmailLog].[Data], [EmailLog].[Testo], [EmailLog].[UniqueIdentifier], [EmailLog].[Id] FROM [EmailLog] WHERE [EmailLog].[IdEmail] = @0, time to execute ms.:0,1902
+DELETE FROM [EmailLog] WHERE [Id] = @Id, time to execute ms.:0,4511
+SELECT [EmailAllegati].[IdEmail], [EmailAllegati].[NomeFile], [EmailAllegati].[Dimensione], [EmailAllegati].[Id] FROM [EmailAllegati] WHERE [EmailAllegati].[IdEmail] = @0, time to execute ms.:0,2887
+DELETE FROM [EmailAllegati] WHERE [Id] = @Id, time to execute ms.:0,0769
+DELETE FROM [Email] WHERE [Id] = @Id, time to execute ms.:0,5151
+SELECT [EmailLog].[IdEmail], [EmailLog].[Data], [EmailLog].[Testo], [EmailLog].[UniqueIdentifier], [EmailLog].[Id] FROM [EmailLog] WHERE [EmailLog].[IdEmail] = @0, time to execute ms.:0,2714
+DELETE FROM [EmailLog] WHERE [Id] = @Id, time to execute ms.:0,1776
+SELECT [EmailAllegati].[IdEmail], [EmailAllegati].[NomeFile], [EmailAllegati].[Dimensione], [EmailAllegati].[Id] FROM [EmailAllegati] WHERE [EmailAllegati].[IdEmail] = @0, time to execute ms.:0,0815
+DELETE FROM [Email] WHERE [Id] = @Id, time to execute ms.:0,479
+SELECT [EmailLog].[IdEmail], [EmailLog].[Data], [EmailLog].[Testo], [EmailLog].[UniqueIdentifier], [EmailLog].[Id] FROM [EmailLog] WHERE [EmailLog].[IdEmail] = @0, time to execute ms.:0,2867
+DELETE FROM [EmailLog] WHERE [Id] = @Id, time to execute ms.:0,1037
+SELECT [EmailAllegati].[IdEmail], [EmailAllegati].[NomeFile], [EmailAllegati].[Dimensione], [EmailAllegati].[Id] FROM [EmailAllegati] WHERE [EmailAllegati].[IdEmail] = @0, time to execute ms.:0,0929
+DELETE FROM [Email] WHERE [Id] = @Id, time to execute ms.:0,6424
+SELECT [EmailLog].[IdEmail], [EmailLog].[Data], [EmailLog].[Testo], [EmailLog].[UniqueIdentifier], [EmailLog].[Id] FROM [EmailLog] WHERE [EmailLog].[IdEmail] = @0, time to execute ms.:0,2503
+DELETE FROM [EmailLog] WHERE [Id] = @Id, time to execute ms.:1,0863
+SELECT [EmailAllegati].[IdEmail], [EmailAllegati].[NomeFile], [EmailAllegati].[Dimensione], [EmailAllegati].[Id] FROM [EmailAllegati] WHERE [EmailAllegati].[IdEmail] = @0, time to execute ms.:16,9254
+DELETE FROM [Email] WHERE [Id] = @Id, time to execute ms.:1,3106
+SELECT [EmailLog].[IdEmail], [EmailLog].[Data], [EmailLog].[Testo], [EmailLog].[UniqueIdentifier], [EmailLog].[Id] FROM [EmailLog] WHERE [EmailLog].[IdEmail] = @0, time to execute ms.:0,4669
+DELETE FROM [EmailLog] WHERE [Id] = @Id, time to execute ms.:0,1067
+SELECT [EmailAllegati].[IdEmail], [EmailAllegati].[NomeFile], [EmailAllegati].[Dimensione], [EmailAllegati].[Id] FROM [EmailAllegati] WHERE [EmailAllegati].[IdEmail] = @0, time to execute ms.:0,2963
+DELETE FROM [Email] WHERE [Id] = @Id, time to execute ms.:1,1459
+SELECT [EmailLog].[IdEmail], [EmailLog].[Data], [EmailLog].[Testo], [EmailLog].[UniqueIdentifier], [EmailLog].[Id] FROM [EmailLog] WHERE [EmailLog].[IdEmail] = @0, time to execute ms.:0,329
+DELETE FROM [EmailLog] WHERE [Id] = @Id, time to execute ms.:0,1371
+SELECT [EmailAllegati].[IdEmail], [EmailAllegati].[NomeFile], [EmailAllegati].[Dimensione], [EmailAllegati].[Id] FROM [EmailAllegati] WHERE [EmailAllegati].[IdEmail] = @0, time to execute ms.:0,332
+DELETE FROM [Email] WHERE [Id] = @Id, time to execute ms.:1,0592
+SELECT [EmailLog].[IdEmail], [EmailLog].[Data], [EmailLog].[Testo], [EmailLog].[UniqueIdentifier], [EmailLog].[Id] FROM [EmailLog] WHERE [EmailLog].[IdEmail] = @0, time to execute ms.:0,3148
+DELETE FROM [EmailLog] WHERE [Id] = @Id, time to execute ms.:0,1284
+SELECT [EmailAllegati].[IdEmail], [EmailAllegati].[NomeFile], [EmailAllegati].[Dimensione], [EmailAllegati].[Id] FROM [EmailAllegati] WHERE [EmailAllegati].[IdEmail] = @0, time to execute ms.:0,1312
+DELETE FROM [Email] WHERE [Id] = @Id, time to execute ms.:0,9641
+SELECT [EmailLog].[IdEmail], [EmailLog].[Data], [EmailLog].[Testo], [EmailLog].[UniqueIdentifier], [EmailLog].[Id] FROM [EmailLog] WHERE [EmailLog].[IdEmail] = @0, time to execute ms.:0,3426
+DELETE FROM [EmailLog] WHERE [Id] = @Id, time to execute ms.:0,3563
+SELECT [EmailAllegati].[IdEmail], [EmailAllegati].[NomeFile], [EmailAllegati].[Dimensione], [EmailAllegati].[Id] FROM [EmailAllegati] WHERE [EmailAllegati].[IdEmail] = @0, time to execute ms.:0,2839
+DELETE FROM [Email] WHERE [Id] = @Id, time to execute ms.:0,3826
+SELECT [EmailLog].[IdEmail], [EmailLog].[Data], [EmailLog].[Testo], [EmailLog].[UniqueIdentifier], [EmailLog].[Id] FROM [EmailLog] WHERE [EmailLog].[IdEmail] = @0, time to execute ms.:0,3583
+DELETE FROM [EmailLog] WHERE [Id] = @Id, time to execute ms.:0,1565
+SELECT [EmailAllegati].[IdEmail], [EmailAllegati].[NomeFile], [EmailAllegati].[Dimensione], [EmailAllegati].[Id] FROM [EmailAllegati] WHERE [EmailAllegati].[IdEmail] = @0, time to execute ms.:9,8089
+DELETE FROM [Email] WHERE [Id] = @Id, time to execute ms.:0,6377
+SELECT [EmailLog].[IdEmail], [EmailLog].[Data], [EmailLog].[Testo], [EmailLog].[UniqueIdentifier], [EmailLog].[Id] FROM [EmailLog] WHERE [EmailLog].[IdEmail] = @0, time to execute ms.:1,8794
+DELETE FROM [EmailLog] WHERE [Id] = @Id, time to execute ms.:6,3933
+SELECT [EmailAllegati].[IdEmail], [EmailAllegati].[NomeFile], [EmailAllegati].[Dimensione], [EmailAllegati].[Id] FROM [EmailAllegati] WHERE [EmailAllegati].[IdEmail] = @0, time to execute ms.:0,3162
+DELETE FROM [Email] WHERE [Id] = @Id, time to execute ms.:0,8072
+SELECT [EmailLog].[IdEmail], [EmailLog].[Data], [EmailLog].[Testo], [EmailLog].[UniqueIdentifier], [EmailLog].[Id] FROM [EmailLog] WHERE [EmailLog].[IdEmail] = @0, time to execute ms.:0,2078
+DELETE FROM [EmailLog] WHERE [Id] = @Id, time to execute ms.:0,0719
+SELECT [EmailAllegati].[IdEmail], [EmailAllegati].[NomeFile], [EmailAllegati].[Dimensione], [EmailAllegati].[Id] FROM [EmailAllegati] WHERE [EmailAllegati].[IdEmail] = @0, time to execute ms.:0,2723
+DELETE FROM [EmailAllegati] WHERE [Id] = @Id, time to execute ms.:0,0702
+DELETE FROM [EmailAllegati] WHERE [Id] = @Id, time to execute ms.:0,1695
+DELETE FROM [EmailAllegati] WHERE [Id] = @Id, time to execute ms.:0,1175
+DELETE FROM [Email] WHERE [Id] = @Id, time to execute ms.:0,4847
+SELECT [EmailLog].[IdEmail], [EmailLog].[Data], [EmailLog].[Testo], [EmailLog].[UniqueIdentifier], [EmailLog].[Id] FROM [EmailLog] WHERE [EmailLog].[IdEmail] = @0, time to execute ms.:0,3389
+DELETE FROM [EmailLog] WHERE [Id] = @Id, time to execute ms.:0,2002
+SELECT [EmailAllegati].[IdEmail], [EmailAllegati].[NomeFile], [EmailAllegati].[Dimensione], [EmailAllegati].[Id] FROM [EmailAllegati] WHERE [EmailAllegati].[IdEmail] = @0, time to execute ms.:0,2662
+DELETE FROM [EmailAllegati] WHERE [Id] = @Id, time to execute ms.:0,0677
+DELETE FROM [EmailAllegati] WHERE [Id] = @Id, time to execute ms.:0,0668
+DELETE FROM [EmailAllegati] WHERE [Id] = @Id, time to execute ms.:0,1328
+DELETE FROM [Email] WHERE [Id] = @Id, time to execute ms.:0,5301
+SELECT [EmailLog].[IdEmail], [EmailLog].[Data], [EmailLog].[Testo], [EmailLog].[UniqueIdentifier], [EmailLog].[Id] FROM [EmailLog] WHERE [EmailLog].[IdEmail] = @0, time to execute ms.:0,2472
+DELETE FROM [EmailLog] WHERE [Id] = @Id, time to execute ms.:0,3338
+SELECT [EmailAllegati].[IdEmail], [EmailAllegati].[NomeFile], [EmailAllegati].[Dimensione], [EmailAllegati].[Id] FROM [EmailAllegati] WHERE [EmailAllegati].[IdEmail] = @0, time to execute ms.:0,2966
+DELETE FROM [EmailAllegati] WHERE [Id] = @Id, time to execute ms.:0,0565
+DELETE FROM [EmailAllegati] WHERE [Id] = @Id, time to execute ms.:0,0705
+DELETE FROM [EmailAllegati] WHERE [Id] = @Id, time to execute ms.:0,0669
+DELETE FROM [Email] WHERE [Id] = @Id, time to execute ms.:0,3812
+SELECT [EmailLog].[IdEmail], [EmailLog].[Data], [EmailLog].[Testo], [EmailLog].[UniqueIdentifier], [EmailLog].[Id] FROM [EmailLog] WHERE [EmailLog].[IdEmail] = @0, time to execute ms.:0,2746
+DELETE FROM [EmailLog] WHERE [Id] = @Id, time to execute ms.:0,2933
+SELECT [EmailAllegati].[IdEmail], [EmailAllegati].[NomeFile], [EmailAllegati].[Dimensione], [EmailAllegati].[Id] FROM [EmailAllegati] WHERE [EmailAllegati].[IdEmail] = @0, time to execute ms.:0,2285
+DELETE FROM [EmailAllegati] WHERE [Id] = @Id, time to execute ms.:0,0566
+DELETE FROM [Email] WHERE [Id] = @Id, time to execute ms.:0,4169
+SELECT [EmailLog].[IdEmail], [EmailLog].[Data], [EmailLog].[Testo], [EmailLog].[UniqueIdentifier], [EmailLog].[Id] FROM [EmailLog] WHERE [EmailLog].[IdEmail] = @0, time to execute ms.:0,2474
+DELETE FROM [EmailLog] WHERE [Id] = @Id, time to execute ms.:0,2395
+SELECT [EmailAllegati].[IdEmail], [EmailAllegati].[NomeFile], [EmailAllegati].[Dimensione], [EmailAllegati].[Id] FROM [EmailAllegati] WHERE [EmailAllegati].[IdEmail] = @0, time to execute ms.:0,2683
+DELETE FROM [EmailAllegati] WHERE [Id] = @Id, time to execute ms.:0,0739
+DELETE FROM [Email] WHERE [Id] = @Id, time to execute ms.:0,4711
+SELECT [EmailLog].[IdEmail], [EmailLog].[Data], [EmailLog].[Testo], [EmailLog].[UniqueIdentifier], [EmailLog].[Id] FROM [EmailLog] WHERE [EmailLog].[IdEmail] = @0, time to execute ms.:0,2934
+DELETE FROM [EmailLog] WHERE [Id] = @Id, time to execute ms.:0,1572
+SELECT [EmailAllegati].[IdEmail], [EmailAllegati].[NomeFile], [EmailAllegati].[Dimensione], [EmailAllegati].[Id] FROM [EmailAllegati] WHERE [EmailAllegati].[IdEmail] = @0, time to execute ms.:0,2546
+DELETE FROM [Email] WHERE [Id] = @Id, time to execute ms.:7,1819
+SELECT [EmailLog].[IdEmail], [EmailLog].[Data], [EmailLog].[Testo], [EmailLog].[UniqueIdentifier], [EmailLog].[Id] FROM [EmailLog] WHERE [EmailLog].[IdEmail] = @0, time to execute ms.:6,8617
+DELETE FROM [EmailLog] WHERE [Id] = @Id, time to execute ms.:0,2568
+SELECT [EmailAllegati].[IdEmail], [EmailAllegati].[NomeFile], [EmailAllegati].[Dimensione], [EmailAllegati].[Id] FROM [EmailAllegati] WHERE [EmailAllegati].[IdEmail] = @0, time to execute ms.:0,2481
+DELETE FROM [Email] WHERE [Id] = @Id, time to execute ms.:0,6095
+SELECT [EmailLog].[IdEmail], [EmailLog].[Data], [EmailLog].[Testo], [EmailLog].[UniqueIdentifier], [EmailLog].[Id] FROM [EmailLog] WHERE [EmailLog].[IdEmail] = @0, time to execute ms.:0,272
+DELETE FROM [EmailLog] WHERE [Id] = @Id, time to execute ms.:0,2403
+SELECT [EmailAllegati].[IdEmail], [EmailAllegati].[NomeFile], [EmailAllegati].[Dimensione], [EmailAllegati].[Id] FROM [EmailAllegati] WHERE [EmailAllegati].[IdEmail] = @0, time to execute ms.:0,1546
+DELETE FROM [Email] WHERE [Id] = @Id, time to execute ms.:0,5272
+SELECT [EmailLog].[IdEmail], [EmailLog].[Data], [EmailLog].[Testo], [EmailLog].[UniqueIdentifier], [EmailLog].[Id] FROM [EmailLog] WHERE [EmailLog].[IdEmail] = @0, time to execute ms.:0,261
+DELETE FROM [EmailLog] WHERE [Id] = @Id, time to execute ms.:0,2858
+SELECT [EmailAllegati].[IdEmail], [EmailAllegati].[NomeFile], [EmailAllegati].[Dimensione], [EmailAllegati].[Id] FROM [EmailAllegati] WHERE [EmailAllegati].[IdEmail] = @0, time to execute ms.:0,1535
+DELETE FROM [Email] WHERE [Id] = @Id, time to execute ms.:0,2737
+SELECT [EmailLog].[IdEmail], [EmailLog].[Data], [EmailLog].[Testo], [EmailLog].[UniqueIdentifier], [EmailLog].[Id] FROM [EmailLog] WHERE [EmailLog].[IdEmail] = @0, time to execute ms.:0,2776
+DELETE FROM [EmailLog] WHERE [Id] = @Id, time to execute ms.:0,1889
+SELECT [EmailAllegati].[IdEmail], [EmailAllegati].[NomeFile], [EmailAllegati].[Dimensione], [EmailAllegati].[Id] FROM [EmailAllegati] WHERE [EmailAllegati].[IdEmail] = @0, time to execute ms.:0,175
+DELETE FROM [Email] WHERE [Id] = @Id, time to execute ms.:0,6508
+SELECT [EmailLog].[IdEmail], [EmailLog].[Data], [EmailLog].[Testo], [EmailLog].[UniqueIdentifier], [EmailLog].[Id] FROM [EmailLog] WHERE [EmailLog].[IdEmail] = @0, time to execute ms.:0,3312
+DELETE FROM [EmailLog] WHERE [Id] = @Id, time to execute ms.:0,1294
+SELECT [EmailAllegati].[IdEmail], [EmailAllegati].[NomeFile], [EmailAllegati].[Dimensione], [EmailAllegati].[Id] FROM [EmailAllegati] WHERE [EmailAllegati].[IdEmail] = @0, time to execute ms.:0,1414
+DELETE FROM [Email] WHERE [Id] = @Id, time to execute ms.:0,4204
+SELECT [EmailLog].[IdEmail], [EmailLog].[Data], [EmailLog].[Testo], [EmailLog].[UniqueIdentifier], [EmailLog].[Id] FROM [EmailLog] WHERE [EmailLog].[IdEmail] = @0, time to execute ms.:0,1465
+DELETE FROM [EmailLog] WHERE [Id] = @Id, time to execute ms.:0,285
+SELECT [EmailAllegati].[IdEmail], [EmailAllegati].[NomeFile], [EmailAllegati].[Dimensione], [EmailAllegati].[Id] FROM [EmailAllegati] WHERE [EmailAllegati].[IdEmail] = @0, time to execute ms.:0,1118
+DELETE FROM [Email] WHERE [Id] = @Id, time to execute ms.:0,3183
+SELECT [EmailLog].[IdEmail], [EmailLog].[Data], [EmailLog].[Testo], [EmailLog].[UniqueIdentifier], [EmailLog].[Id] FROM [EmailLog] WHERE [EmailLog].[IdEmail] = @0, time to execute ms.:0,1657
+DELETE FROM [EmailLog] WHERE [Id] = @Id, time to execute ms.:0,1001
+SELECT [EmailAllegati].[IdEmail], [EmailAllegati].[NomeFile], [EmailAllegati].[Dimensione], [EmailAllegati].[Id] FROM [EmailAllegati] WHERE [EmailAllegati].[IdEmail] = @0, time to execute ms.:0,0887
+DELETE FROM [Email] WHERE [Id] = @Id, time to execute ms.:0,5232
+SELECT [EmailLog].[IdEmail], [EmailLog].[Data], [EmailLog].[Testo], [EmailLog].[UniqueIdentifier], [EmailLog].[Id] FROM [EmailLog] WHERE [EmailLog].[IdEmail] = @0, time to execute ms.:0,1818
+DELETE FROM [EmailLog] WHERE [Id] = @Id, time to execute ms.:0,0904
+SELECT [EmailAllegati].[IdEmail], [EmailAllegati].[NomeFile], [EmailAllegati].[Dimensione], [EmailAllegati].[Id] FROM [EmailAllegati] WHERE [EmailAllegati].[IdEmail] = @0, time to execute ms.:0,0737
+DELETE FROM [Email] WHERE [Id] = @Id, time to execute ms.:0,2775
+SELECT [EmailLog].[IdEmail], [EmailLog].[Data], [EmailLog].[Testo], [EmailLog].[UniqueIdentifier], [EmailLog].[Id] FROM [EmailLog] WHERE [EmailLog].[IdEmail] = @0, time to execute ms.:0,2121
+DELETE FROM [EmailLog] WHERE [Id] = @Id, time to execute ms.:0,4123
+SELECT [EmailAllegati].[IdEmail], [EmailAllegati].[NomeFile], [EmailAllegati].[Dimensione], [EmailAllegati].[Id] FROM [EmailAllegati] WHERE [EmailAllegati].[IdEmail] = @0, time to execute ms.:0,1057
+DELETE FROM [Email] WHERE [Id] = @Id, time to execute ms.:0,3978
+SELECT [EmailLog].[IdEmail], [EmailLog].[Data], [EmailLog].[Testo], [EmailLog].[UniqueIdentifier], [EmailLog].[Id] FROM [EmailLog] WHERE [EmailLog].[IdEmail] = @0, time to execute ms.:0,1751
+DELETE FROM [EmailLog] WHERE [Id] = @Id, time to execute ms.:0,0981
+SELECT [EmailAllegati].[IdEmail], [EmailAllegati].[NomeFile], [EmailAllegati].[Dimensione], [EmailAllegati].[Id] FROM [EmailAllegati] WHERE [EmailAllegati].[IdEmail] = @0, time to execute ms.:0,107
+DELETE FROM [Email] WHERE [Id] = @Id, time to execute ms.:0,3667
+SELECT [EmailLog].[IdEmail], [EmailLog].[Data], [EmailLog].[Testo], [EmailLog].[UniqueIdentifier], [EmailLog].[Id] FROM [EmailLog] WHERE [EmailLog].[IdEmail] = @0, time to execute ms.:0,2192
+DELETE FROM [EmailLog] WHERE [Id] = @Id, time to execute ms.:0,0986
+SELECT [EmailAllegati].[IdEmail], [EmailAllegati].[NomeFile], [EmailAllegati].[Dimensione], [EmailAllegati].[Id] FROM [EmailAllegati] WHERE [EmailAllegati].[IdEmail] = @0, time to execute ms.:0,1083
+DELETE FROM [Email] WHERE [Id] = @Id, time to execute ms.:0,5246
+SELECT [EmailLog].[IdEmail], [EmailLog].[Data], [EmailLog].[Testo], [EmailLog].[UniqueIdentifier], [EmailLog].[Id] FROM [EmailLog] WHERE [EmailLog].[IdEmail] = @0, time to execute ms.:0,22
+DELETE FROM [EmailLog] WHERE [Id] = @Id, time to execute ms.:0,1726
+SELECT [EmailAllegati].[IdEmail], [EmailAllegati].[NomeFile], [EmailAllegati].[Dimensione], [EmailAllegati].[Id] FROM [EmailAllegati] WHERE [EmailAllegati].[IdEmail] = @0, time to execute ms.:0,097
+DELETE FROM [Email] WHERE [Id] = @Id, time to execute ms.:0,5519
+SELECT [EmailLog].[IdEmail], [EmailLog].[Data], [EmailLog].[Testo], [EmailLog].[UniqueIdentifier], [EmailLog].[Id] FROM [EmailLog] WHERE [EmailLog].[IdEmail] = @0, time to execute ms.:32,1305
+DELETE FROM [EmailLog] WHERE [Id] = @Id, time to execute ms.:0,4599
+SELECT [EmailAllegati].[IdEmail], [EmailAllegati].[NomeFile], [EmailAllegati].[Dimensione], [EmailAllegati].[Id] FROM [EmailAllegati] WHERE [EmailAllegati].[IdEmail] = @0, time to execute ms.:0,2154
+DELETE FROM [Email] WHERE [Id] = @Id, time to execute ms.:37,5106
+SELECT [EmailLog].[IdEmail], [EmailLog].[Data], [EmailLog].[Testo], [EmailLog].[UniqueIdentifier], [EmailLog].[Id] FROM [EmailLog] WHERE [EmailLog].[IdEmail] = @0, time to execute ms.:0,3533
+DELETE FROM [EmailLog] WHERE [Id] = @Id, time to execute ms.:0,1798
+SELECT [EmailAllegati].[IdEmail], [EmailAllegati].[NomeFile], [EmailAllegati].[Dimensione], [EmailAllegati].[Id] FROM [EmailAllegati] WHERE [EmailAllegati].[IdEmail] = @0, time to execute ms.:0,168
+DELETE FROM [Email] WHERE [Id] = @Id, time to execute ms.:35,3279
+SELECT [EmailLog].[IdEmail], [EmailLog].[Data], [EmailLog].[Testo], [EmailLog].[UniqueIdentifier], [EmailLog].[Id] FROM [EmailLog] WHERE [EmailLog].[IdEmail] = @0, time to execute ms.:4,8597
+DELETE FROM [EmailLog] WHERE [Id] = @Id, time to execute ms.:0,1352
+SELECT [EmailAllegati].[IdEmail], [EmailAllegati].[NomeFile], [EmailAllegati].[Dimensione], [EmailAllegati].[Id] FROM [EmailAllegati] WHERE [EmailAllegati].[IdEmail] = @0, time to execute ms.:0,1024
+DELETE FROM [Email] WHERE [Id] = @Id, time to execute ms.:0,4686
+SELECT [EmailLog].[IdEmail], [EmailLog].[Data], [EmailLog].[Testo], [EmailLog].[UniqueIdentifier], [EmailLog].[Id] FROM [EmailLog] WHERE [EmailLog].[IdEmail] = @0, time to execute ms.:0,2542
+DELETE FROM [EmailLog] WHERE [Id] = @Id, time to execute ms.:0,3477
+SELECT [EmailAllegati].[IdEmail], [EmailAllegati].[NomeFile], [EmailAllegati].[Dimensione], [EmailAllegati].[Id] FROM [EmailAllegati] WHERE [EmailAllegati].[IdEmail] = @0, time to execute ms.:10,3636
+DELETE FROM [Email] WHERE [Id] = @Id, time to execute ms.:95,2968
+SELECT [EmailLog].[IdEmail], [EmailLog].[Data], [EmailLog].[Testo], [EmailLog].[UniqueIdentifier], [EmailLog].[Id] FROM [EmailLog] WHERE [EmailLog].[IdEmail] = @0, time to execute ms.:0,299
+DELETE FROM [EmailLog] WHERE [Id] = @Id, time to execute ms.:0,1229
+SELECT [EmailAllegati].[IdEmail], [EmailAllegati].[NomeFile], [EmailAllegati].[Dimensione], [EmailAllegati].[Id] FROM [EmailAllegati] WHERE [EmailAllegati].[IdEmail] = @0, time to execute ms.:0,1049
+DELETE FROM [Email] WHERE [Id] = @Id, time to execute ms.:0,4505
+SELECT [EmailLog].[IdEmail], [EmailLog].[Data], [EmailLog].[Testo], [EmailLog].[UniqueIdentifier], [EmailLog].[Id] FROM [EmailLog] WHERE [EmailLog].[IdEmail] = @0, time to execute ms.:0,2125
+DELETE FROM [EmailLog] WHERE [Id] = @Id, time to execute ms.:0,1685
+SELECT [EmailAllegati].[IdEmail], [EmailAllegati].[NomeFile], [EmailAllegati].[Dimensione], [EmailAllegati].[Id] FROM [EmailAllegati] WHERE [EmailAllegati].[IdEmail] = @0, time to execute ms.:0,267
+DELETE FROM [Email] WHERE [Id] = @Id, time to execute ms.:0,6557
+SELECT [EmailLog].[IdEmail], [EmailLog].[Data], [EmailLog].[Testo], [EmailLog].[UniqueIdentifier], [EmailLog].[Id] FROM [EmailLog] WHERE [EmailLog].[IdEmail] = @0, time to execute ms.:0,2722
+DELETE FROM [EmailLog] WHERE [Id] = @Id, time to execute ms.:0,1062
+SELECT [EmailAllegati].[IdEmail], [EmailAllegati].[NomeFile], [EmailAllegati].[Dimensione], [EmailAllegati].[Id] FROM [EmailAllegati] WHERE [EmailAllegati].[IdEmail] = @0, time to execute ms.:0,143
+DELETE FROM [Email] WHERE [Id] = @Id, time to execute ms.:0,4347
+SELECT [EmailLog].[IdEmail], [EmailLog].[Data], [EmailLog].[Testo], [EmailLog].[UniqueIdentifier], [EmailLog].[Id] FROM [EmailLog] WHERE [EmailLog].[IdEmail] = @0, time to execute ms.:0,2496
+DELETE FROM [EmailLog] WHERE [Id] = @Id, time to execute ms.:0,271
+SELECT [EmailAllegati].[IdEmail], [EmailAllegati].[NomeFile], [EmailAllegati].[Dimensione], [EmailAllegati].[Id] FROM [EmailAllegati] WHERE [EmailAllegati].[IdEmail] = @0, time to execute ms.:0,1852
+DELETE FROM [EmailAllegati] WHERE [Id] = @Id, time to execute ms.:0,0787
+DELETE FROM [Email] WHERE [Id] = @Id, time to execute ms.:125,0158
+SELECT [EmailLog].[IdEmail], [EmailLog].[Data], [EmailLog].[Testo], [EmailLog].[UniqueIdentifier], [EmailLog].[Id] FROM [EmailLog] WHERE [EmailLog].[IdEmail] = @0, time to execute ms.:0,487
+DELETE FROM [EmailLog] WHERE [Id] = @Id, time to execute ms.:0,221
+SELECT [EmailAllegati].[IdEmail], [EmailAllegati].[NomeFile], [EmailAllegati].[Dimensione], [EmailAllegati].[Id] FROM [EmailAllegati] WHERE [EmailAllegati].[IdEmail] = @0, time to execute ms.:0,1091
+DELETE FROM [Email] WHERE [Id] = @Id, time to execute ms.:0,474
+SELECT [EmailLog].[IdEmail], [EmailLog].[Data], [EmailLog].[Testo], [EmailLog].[UniqueIdentifier], [EmailLog].[Id] FROM [EmailLog] WHERE [EmailLog].[IdEmail] = @0, time to execute ms.:0,1906
+DELETE FROM [EmailLog] WHERE [Id] = @Id, time to execute ms.:0,1403
+SELECT [EmailAllegati].[IdEmail], [EmailAllegati].[NomeFile], [EmailAllegati].[Dimensione], [EmailAllegati].[Id] FROM [EmailAllegati] WHERE [EmailAllegati].[IdEmail] = @0, time to execute ms.:0,2119
+DELETE FROM [EmailAllegati] WHERE [Id] = @Id, time to execute ms.:0,074
+DELETE FROM [Email] WHERE [Id] = @Id, time to execute ms.:0,4138
+SELECT [EmailLog].[IdEmail], [EmailLog].[Data], [EmailLog].[Testo], [EmailLog].[UniqueIdentifier], [EmailLog].[Id] FROM [EmailLog] WHERE [EmailLog].[IdEmail] = @0, time to execute ms.:0,333
+DELETE FROM [EmailLog] WHERE [Id] = @Id, time to execute ms.:0,1066
+SELECT [EmailAllegati].[IdEmail], [EmailAllegati].[NomeFile], [EmailAllegati].[Dimensione], [EmailAllegati].[Id] FROM [EmailAllegati] WHERE [EmailAllegati].[IdEmail] = @0, time to execute ms.:0,3357
+DELETE FROM [EmailAllegati] WHERE [Id] = @Id, time to execute ms.:0,0712
+DELETE FROM [EmailAllegati] WHERE [Id] = @Id, time to execute ms.:0,0685
+DELETE FROM [EmailAllegati] WHERE [Id] = @Id, time to execute ms.:0,0697
+DELETE FROM [Email] WHERE [Id] = @Id, time to execute ms.:0,2777
+SELECT [EmailLog].[IdEmail], [EmailLog].[Data], [EmailLog].[Testo], [EmailLog].[UniqueIdentifier], [EmailLog].[Id] FROM [EmailLog] WHERE [EmailLog].[IdEmail] = @0, time to execute ms.:0,3714
+DELETE FROM [EmailLog] WHERE [Id] = @Id, time to execute ms.:0,132
+SELECT [EmailAllegati].[IdEmail], [EmailAllegati].[NomeFile], [EmailAllegati].[Dimensione], [EmailAllegati].[Id] FROM [EmailAllegati] WHERE [EmailAllegati].[IdEmail] = @0, time to execute ms.:0,3376
+DELETE FROM [EmailAllegati] WHERE [Id] = @Id, time to execute ms.:0,0739
+DELETE FROM [Email] WHERE [Id] = @Id, time to execute ms.:0,3552
+SELECT [EmailLog].[IdEmail], [EmailLog].[Data], [EmailLog].[Testo], [EmailLog].[UniqueIdentifier], [EmailLog].[Id] FROM [EmailLog] WHERE [EmailLog].[IdEmail] = @0, time to execute ms.:0,3172
+DELETE FROM [EmailLog] WHERE [Id] = @Id, time to execute ms.:0,1018
+SELECT [EmailAllegati].[IdEmail], [EmailAllegati].[NomeFile], [EmailAllegati].[Dimensione], [EmailAllegati].[Id] FROM [EmailAllegati] WHERE [EmailAllegati].[IdEmail] = @0, time to execute ms.:0,09
+DELETE FROM [Email] WHERE [Id] = @Id, time to execute ms.:0,3874
+SELECT [EmailLog].[IdEmail], [EmailLog].[Data], [EmailLog].[Testo], [EmailLog].[UniqueIdentifier], [EmailLog].[Id] FROM [EmailLog] WHERE [EmailLog].[IdEmail] = @0, time to execute ms.:0,3175
+DELETE FROM [EmailLog] WHERE [Id] = @Id, time to execute ms.:0,316
+SELECT [EmailAllegati].[IdEmail], [EmailAllegati].[NomeFile], [EmailAllegati].[Dimensione], [EmailAllegati].[Id] FROM [EmailAllegati] WHERE [EmailAllegati].[IdEmail] = @0, time to execute ms.:0,1335
+DELETE FROM [Email] WHERE [Id] = @Id, time to execute ms.:0,3603
+SELECT [EmailLog].[IdEmail], [EmailLog].[Data], [EmailLog].[Testo], [EmailLog].[UniqueIdentifier], [EmailLog].[Id] FROM [EmailLog] WHERE [EmailLog].[IdEmail] = @0, time to execute ms.:0,3058
+DELETE FROM [EmailLog] WHERE [Id] = @Id, time to execute ms.:0,0966
+SELECT [EmailAllegati].[IdEmail], [EmailAllegati].[NomeFile], [EmailAllegati].[Dimensione], [EmailAllegati].[Id] FROM [EmailAllegati] WHERE [EmailAllegati].[IdEmail] = @0, time to execute ms.:0,1233
+DELETE FROM [Email] WHERE [Id] = @Id, time to execute ms.:0,3787
+SELECT [EmailLog].[IdEmail], [EmailLog].[Data], [EmailLog].[Testo], [EmailLog].[UniqueIdentifier], [EmailLog].[Id] FROM [EmailLog] WHERE [EmailLog].[IdEmail] = @0, time to execute ms.:0,319
+DELETE FROM [EmailLog] WHERE [Id] = @Id, time to execute ms.:0,1594
+SELECT [EmailAllegati].[IdEmail], [EmailAllegati].[NomeFile], [EmailAllegati].[Dimensione], [EmailAllegati].[Id] FROM [EmailAllegati] WHERE [EmailAllegati].[IdEmail] = @0, time to execute ms.:0,1031
+DELETE FROM [Email] WHERE [Id] = @Id, time to execute ms.:0,4051
+SELECT [EmailLog].[IdEmail], [EmailLog].[Data], [EmailLog].[Testo], [EmailLog].[UniqueIdentifier], [EmailLog].[Id] FROM [EmailLog] WHERE [EmailLog].[IdEmail] = @0, time to execute ms.:0,2365
+DELETE FROM [EmailLog] WHERE [Id] = @Id, time to execute ms.:0,087
+SELECT [EmailAllegati].[IdEmail], [EmailAllegati].[NomeFile], [EmailAllegati].[Dimensione], [EmailAllegati].[Id] FROM [EmailAllegati] WHERE [EmailAllegati].[IdEmail] = @0, time to execute ms.:0,1434
+DELETE FROM [Email] WHERE [Id] = @Id, time to execute ms.:0,4325
+SELECT [EmailLog].[IdEmail], [EmailLog].[Data], [EmailLog].[Testo], [EmailLog].[UniqueIdentifier], [EmailLog].[Id] FROM [EmailLog] WHERE [EmailLog].[IdEmail] = @0, time to execute ms.:0,3077
+DELETE FROM [EmailLog] WHERE [Id] = @Id, time to execute ms.:0,1418
+SELECT [EmailAllegati].[IdEmail], [EmailAllegati].[NomeFile], [EmailAllegati].[Dimensione], [EmailAllegati].[Id] FROM [EmailAllegati] WHERE [EmailAllegati].[IdEmail] = @0, time to execute ms.:0,1521
+DELETE FROM [Email] WHERE [Id] = @Id, time to execute ms.:0,4238
+SELECT [EmailLog].[IdEmail], [EmailLog].[Data], [EmailLog].[Testo], [EmailLog].[UniqueIdentifier], [EmailLog].[Id] FROM [EmailLog] WHERE [EmailLog].[IdEmail] = @0, time to execute ms.:0,1719
+DELETE FROM [EmailLog] WHERE [Id] = @Id, time to execute ms.:0,092
+SELECT [EmailAllegati].[IdEmail], [EmailAllegati].[NomeFile], [EmailAllegati].[Dimensione], [EmailAllegati].[Id] FROM [EmailAllegati] WHERE [EmailAllegati].[IdEmail] = @0, time to execute ms.:0,2694
+DELETE FROM [Email] WHERE [Id] = @Id, time to execute ms.:0,3125
+SELECT [EmailLog].[IdEmail], [EmailLog].[Data], [EmailLog].[Testo], [EmailLog].[UniqueIdentifier], [EmailLog].[Id] FROM [EmailLog] WHERE [EmailLog].[IdEmail] = @0, time to execute ms.:0,192
+DELETE FROM [EmailLog] WHERE [Id] = @Id, time to execute ms.:0,0667
+SELECT [EmailAllegati].[IdEmail], [EmailAllegati].[NomeFile], [EmailAllegati].[Dimensione], [EmailAllegati].[Id] FROM [EmailAllegati] WHERE [EmailAllegati].[IdEmail] = @0, time to execute ms.:0,0625
+DELETE FROM [Email] WHERE [Id] = @Id, time to execute ms.:0,2513
+SELECT [EmailLog].[IdEmail], [EmailLog].[Data], [EmailLog].[Testo], [EmailLog].[UniqueIdentifier], [EmailLog].[Id] FROM [EmailLog] WHERE [EmailLog].[IdEmail] = @0, time to execute ms.:0,0992
+DELETE FROM [EmailLog] WHERE [Id] = @Id, time to execute ms.:0,121
+SELECT [EmailAllegati].[IdEmail], [EmailAllegati].[NomeFile], [EmailAllegati].[Dimensione], [EmailAllegati].[Id] FROM [EmailAllegati] WHERE [EmailAllegati].[IdEmail] = @0, time to execute ms.:0,1147
+DELETE FROM [Email] WHERE [Id] = @Id, time to execute ms.:0,4316
+SELECT [EmailLog].[IdEmail], [EmailLog].[Data], [EmailLog].[Testo], [EmailLog].[UniqueIdentifier], [EmailLog].[Id] FROM [EmailLog] WHERE [EmailLog].[IdEmail] = @0, time to execute ms.:0,7665
+DELETE FROM [EmailLog] WHERE [Id] = @Id, time to execute ms.:0,2247
+SELECT [EmailAllegati].[IdEmail], [EmailAllegati].[NomeFile], [EmailAllegati].[Dimensione], [EmailAllegati].[Id] FROM [EmailAllegati] WHERE [EmailAllegati].[IdEmail] = @0, time to execute ms.:0,2193
+DELETE FROM [Email] WHERE [Id] = @Id, time to execute ms.:0,3652
+SELECT [EmailLog].[IdEmail], [EmailLog].[Data], [EmailLog].[Testo], [EmailLog].[UniqueIdentifier], [EmailLog].[Id] FROM [EmailLog] WHERE [EmailLog].[IdEmail] = @0, time to execute ms.:0,2533
+DELETE FROM [EmailLog] WHERE [Id] = @Id, time to execute ms.:0,0666
+SELECT [EmailAllegati].[IdEmail], [EmailAllegati].[NomeFile], [EmailAllegati].[Dimensione], [EmailAllegati].[Id] FROM [EmailAllegati] WHERE [EmailAllegati].[IdEmail] = @0, time to execute ms.:0,0953
+DELETE FROM [Email] WHERE [Id] = @Id, time to execute ms.:0,5077
+SELECT [EmailLog].[IdEmail], [EmailLog].[Data], [EmailLog].[Testo], [EmailLog].[UniqueIdentifier], [EmailLog].[Id] FROM [EmailLog] WHERE [EmailLog].[IdEmail] = @0, time to execute ms.:0,2581
+DELETE FROM [EmailLog] WHERE [Id] = @Id, time to execute ms.:0,1275
+SELECT [EmailAllegati].[IdEmail], [EmailAllegati].[NomeFile], [EmailAllegati].[Dimensione], [EmailAllegati].[Id] FROM [EmailAllegati] WHERE [EmailAllegati].[IdEmail] = @0, time to execute ms.:0,0756
+DELETE FROM [Email] WHERE [Id] = @Id, time to execute ms.:0,4203
+SELECT [EmailLog].[IdEmail], [EmailLog].[Data], [EmailLog].[Testo], [EmailLog].[UniqueIdentifier], [EmailLog].[Id] FROM [EmailLog] WHERE [EmailLog].[IdEmail] = @0, time to execute ms.:0,4064
+DELETE FROM [EmailLog] WHERE [Id] = @Id, time to execute ms.:0,1115
+SELECT [EmailAllegati].[IdEmail], [EmailAllegati].[NomeFile], [EmailAllegati].[Dimensione], [EmailAllegati].[Id] FROM [EmailAllegati] WHERE [EmailAllegati].[IdEmail] = @0, time to execute ms.:0,1249
+DELETE FROM [Email] WHERE [Id] = @Id, time to execute ms.:0,3577
+SELECT [EmailLog].[IdEmail], [EmailLog].[Data], [EmailLog].[Testo], [EmailLog].[UniqueIdentifier], [EmailLog].[Id] FROM [EmailLog] WHERE [EmailLog].[IdEmail] = @0, time to execute ms.:0,2322
+DELETE FROM [EmailLog] WHERE [Id] = @Id, time to execute ms.:0,0859
+SELECT [EmailAllegati].[IdEmail], [EmailAllegati].[NomeFile], [EmailAllegati].[Dimensione], [EmailAllegati].[Id] FROM [EmailAllegati] WHERE [EmailAllegati].[IdEmail] = @0, time to execute ms.:0,2341
+DELETE FROM [Email] WHERE [Id] = @Id, time to execute ms.:0,5725
+SELECT [EmailLog].[IdEmail], [EmailLog].[Data], [EmailLog].[Testo], [EmailLog].[UniqueIdentifier], [EmailLog].[Id] FROM [EmailLog] WHERE [EmailLog].[IdEmail] = @0, time to execute ms.:0,2513
+DELETE FROM [EmailLog] WHERE [Id] = @Id, time to execute ms.:0,1621
+SELECT [EmailAllegati].[IdEmail], [EmailAllegati].[NomeFile], [EmailAllegati].[Dimensione], [EmailAllegati].[Id] FROM [EmailAllegati] WHERE [EmailAllegati].[IdEmail] = @0, time to execute ms.:0,1553
+DELETE FROM [Email] WHERE [Id] = @Id, time to execute ms.:0,3826
+SELECT [EmailLog].[IdEmail], [EmailLog].[Data], [EmailLog].[Testo], [EmailLog].[UniqueIdentifier], [EmailLog].[Id] FROM [EmailLog] WHERE [EmailLog].[IdEmail] = @0, time to execute ms.:0,2517
+DELETE FROM [EmailLog] WHERE [Id] = @Id, time to execute ms.:0,0649
+SELECT [EmailAllegati].[IdEmail], [EmailAllegati].[NomeFile], [EmailAllegati].[Dimensione], [EmailAllegati].[Id] FROM [EmailAllegati] WHERE [EmailAllegati].[IdEmail] = @0, time to execute ms.:0,0827
+DELETE FROM [Email] WHERE [Id] = @Id, time to execute ms.:0,4189
+SELECT [EmailLog].[IdEmail], [EmailLog].[Data], [EmailLog].[Testo], [EmailLog].[UniqueIdentifier], [EmailLog].[Id] FROM [EmailLog] WHERE [EmailLog].[IdEmail] = @0, time to execute ms.:0,2418
+DELETE FROM [EmailLog] WHERE [Id] = @Id, time to execute ms.:0,0892
+SELECT [EmailAllegati].[IdEmail], [EmailAllegati].[NomeFile], [EmailAllegati].[Dimensione], [EmailAllegati].[Id] FROM [EmailAllegati] WHERE [EmailAllegati].[IdEmail] = @0, time to execute ms.:0,0833
+DELETE FROM [Email] WHERE [Id] = @Id, time to execute ms.:0,2358
+SELECT [EmailLog].[IdEmail], [EmailLog].[Data], [EmailLog].[Testo], [EmailLog].[UniqueIdentifier], [EmailLog].[Id] FROM [EmailLog] WHERE [EmailLog].[IdEmail] = @0, time to execute ms.:0,3064
+DELETE FROM [EmailLog] WHERE [Id] = @Id, time to execute ms.:0,168
+SELECT [EmailAllegati].[IdEmail], [EmailAllegati].[NomeFile], [EmailAllegati].[Dimensione], [EmailAllegati].[Id] FROM [EmailAllegati] WHERE [EmailAllegati].[IdEmail] = @0, time to execute ms.:0,1594
+DELETE FROM [Email] WHERE [Id] = @Id, time to execute ms.:0,3637
+SELECT [EmailLog].[IdEmail], [EmailLog].[Data], [EmailLog].[Testo], [EmailLog].[UniqueIdentifier], [EmailLog].[Id] FROM [EmailLog] WHERE [EmailLog].[IdEmail] = @0, time to execute ms.:0,2518
+DELETE FROM [EmailLog] WHERE [Id] = @Id, time to execute ms.:0,0659
+SELECT [EmailAllegati].[IdEmail], [EmailAllegati].[NomeFile], [EmailAllegati].[Dimensione], [EmailAllegati].[Id] FROM [EmailAllegati] WHERE [EmailAllegati].[IdEmail] = @0, time to execute ms.:0,0762
+DELETE FROM [Email] WHERE [Id] = @Id, time to execute ms.:0,414
+SELECT [EmailLog].[IdEmail], [EmailLog].[Data], [EmailLog].[Testo], [EmailLog].[UniqueIdentifier], [EmailLog].[Id] FROM [EmailLog] WHERE [EmailLog].[IdEmail] = @0, time to execute ms.:0,2482
+DELETE FROM [EmailLog] WHERE [Id] = @Id, time to execute ms.:0,0774
+SELECT [EmailAllegati].[IdEmail], [EmailAllegati].[NomeFile], [EmailAllegati].[Dimensione], [EmailAllegati].[Id] FROM [EmailAllegati] WHERE [EmailAllegati].[IdEmail] = @0, time to execute ms.:0,1196
+DELETE FROM [Email] WHERE [Id] = @Id, time to execute ms.:0,508
+SELECT [EmailLog].[IdEmail], [EmailLog].[Data], [EmailLog].[Testo], [EmailLog].[UniqueIdentifier], [EmailLog].[Id] FROM [EmailLog] WHERE [EmailLog].[IdEmail] = @0, time to execute ms.:0,2603
+DELETE FROM [EmailLog] WHERE [Id] = @Id, time to execute ms.:0,105
+SELECT [EmailAllegati].[IdEmail], [EmailAllegati].[NomeFile], [EmailAllegati].[Dimensione], [EmailAllegati].[Id] FROM [EmailAllegati] WHERE [EmailAllegati].[IdEmail] = @0, time to execute ms.:0,1571
+DELETE FROM [Email] WHERE [Id] = @Id, time to execute ms.:0,4498
+SELECT [EmailLog].[IdEmail], [EmailLog].[Data], [EmailLog].[Testo], [EmailLog].[UniqueIdentifier], [EmailLog].[Id] FROM [EmailLog] WHERE [EmailLog].[IdEmail] = @0, time to execute ms.:0,2417
+DELETE FROM [EmailLog] WHERE [Id] = @Id, time to execute ms.:0,0914
+SELECT [EmailAllegati].[IdEmail], [EmailAllegati].[NomeFile], [EmailAllegati].[Dimensione], [EmailAllegati].[Id] FROM [EmailAllegati] WHERE [EmailAllegati].[IdEmail] = @0, time to execute ms.:0,1374
+DELETE FROM [Email] WHERE [Id] = @Id, time to execute ms.:0,5033
+SELECT [EmailLog].[IdEmail], [EmailLog].[Data], [EmailLog].[Testo], [EmailLog].[UniqueIdentifier], [EmailLog].[Id] FROM [EmailLog] WHERE [EmailLog].[IdEmail] = @0, time to execute ms.:0,2685
+DELETE FROM [EmailLog] WHERE [Id] = @Id, time to execute ms.:0,0662
+SELECT [EmailAllegati].[IdEmail], [EmailAllegati].[NomeFile], [EmailAllegati].[Dimensione], [EmailAllegati].[Id] FROM [EmailAllegati] WHERE [EmailAllegati].[IdEmail] = @0, time to execute ms.:0,0807
+DELETE FROM [Email] WHERE [Id] = @Id, time to execute ms.:0,5268
+SELECT [EmailLog].[IdEmail], [EmailLog].[Data], [EmailLog].[Testo], [EmailLog].[UniqueIdentifier], [EmailLog].[Id] FROM [EmailLog] WHERE [EmailLog].[IdEmail] = @0, time to execute ms.:0,2554
+DELETE FROM [EmailLog] WHERE [Id] = @Id, time to execute ms.:0,103
+SELECT [EmailAllegati].[IdEmail], [EmailAllegati].[NomeFile], [EmailAllegati].[Dimensione], [EmailAllegati].[Id] FROM [EmailAllegati] WHERE [EmailAllegati].[IdEmail] = @0, time to execute ms.:0,0874
+DELETE FROM [Email] WHERE [Id] = @Id, time to execute ms.:0,3773
+SELECT [EmailLog].[IdEmail], [EmailLog].[Data], [EmailLog].[Testo], [EmailLog].[UniqueIdentifier], [EmailLog].[Id] FROM [EmailLog] WHERE [EmailLog].[IdEmail] = @0, time to execute ms.:0,247
+DELETE FROM [EmailLog] WHERE [Id] = @Id, time to execute ms.:0,0652
+SELECT [EmailAllegati].[IdEmail], [EmailAllegati].[NomeFile], [EmailAllegati].[Dimensione], [EmailAllegati].[Id] FROM [EmailAllegati] WHERE [EmailAllegati].[IdEmail] = @0, time to execute ms.:0,076
+DELETE FROM [Email] WHERE [Id] = @Id, time to execute ms.:0,379
+SELECT [EmailLog].[IdEmail], [EmailLog].[Data], [EmailLog].[Testo], [EmailLog].[UniqueIdentifier], [EmailLog].[Id] FROM [EmailLog] WHERE [EmailLog].[IdEmail] = @0, time to execute ms.:0,2575
+DELETE FROM [EmailLog] WHERE [Id] = @Id, time to execute ms.:0,0708
+SELECT [EmailAllegati].[IdEmail], [EmailAllegati].[NomeFile], [EmailAllegati].[Dimensione], [EmailAllegati].[Id] FROM [EmailAllegati] WHERE [EmailAllegati].[IdEmail] = @0, time to execute ms.:0,0859
+DELETE FROM [Email] WHERE [Id] = @Id, time to execute ms.:0,3615
+SELECT [EmailLog].[IdEmail], [EmailLog].[Data], [EmailLog].[Testo], [EmailLog].[UniqueIdentifier], [EmailLog].[Id] FROM [EmailLog] WHERE [EmailLog].[IdEmail] = @0, time to execute ms.:0,2302
+DELETE FROM [EmailLog] WHERE [Id] = @Id, time to execute ms.:0,134
+SELECT [EmailAllegati].[IdEmail], [EmailAllegati].[NomeFile], [EmailAllegati].[Dimensione], [EmailAllegati].[Id] FROM [EmailAllegati] WHERE [EmailAllegati].[IdEmail] = @0, time to execute ms.:0,0824
+DELETE FROM [Email] WHERE [Id] = @Id, time to execute ms.:0,4847
+SELECT [EmailLog].[IdEmail], [EmailLog].[Data], [EmailLog].[Testo], [EmailLog].[UniqueIdentifier], [EmailLog].[Id] FROM [EmailLog] WHERE [EmailLog].[IdEmail] = @0, time to execute ms.:0,2011
+DELETE FROM [EmailLog] WHERE [Id] = @Id, time to execute ms.:0,0799
+SELECT [EmailAllegati].[IdEmail], [EmailAllegati].[NomeFile], [EmailAllegati].[Dimensione], [EmailAllegati].[Id] FROM [EmailAllegati] WHERE [EmailAllegati].[IdEmail] = @0, time to execute ms.:0,1617
+DELETE FROM [Email] WHERE [Id] = @Id, time to execute ms.:0,5935
+SELECT [EmailLog].[IdEmail], [EmailLog].[Data], [EmailLog].[Testo], [EmailLog].[UniqueIdentifier], [EmailLog].[Id] FROM [EmailLog] WHERE [EmailLog].[IdEmail] = @0, time to execute ms.:0,1927
+DELETE FROM [EmailLog] WHERE [Id] = @Id, time to execute ms.:0,1003
+SELECT [EmailAllegati].[IdEmail], [EmailAllegati].[NomeFile], [EmailAllegati].[Dimensione], [EmailAllegati].[Id] FROM [EmailAllegati] WHERE [EmailAllegati].[IdEmail] = @0, time to execute ms.:0,0783
+DELETE FROM [Email] WHERE [Id] = @Id, time to execute ms.:0,2036
+SELECT [EmailLog].[IdEmail], [EmailLog].[Data], [EmailLog].[Testo], [EmailLog].[UniqueIdentifier], [EmailLog].[Id] FROM [EmailLog] WHERE [EmailLog].[IdEmail] = @0, time to execute ms.:0,1599
+DELETE FROM [EmailLog] WHERE [Id] = @Id, time to execute ms.:0,1083
+SELECT [EmailAllegati].[IdEmail], [EmailAllegati].[NomeFile], [EmailAllegati].[Dimensione], [EmailAllegati].[Id] FROM [EmailAllegati] WHERE [EmailAllegati].[IdEmail] = @0, time to execute ms.:0,0832
+DELETE FROM [Email] WHERE [Id] = @Id, time to execute ms.:0,2111
+SELECT [EmailLog].[IdEmail], [EmailLog].[Data], [EmailLog].[Testo], [EmailLog].[UniqueIdentifier], [EmailLog].[Id] FROM [EmailLog] WHERE [EmailLog].[IdEmail] = @0, time to execute ms.:0,1666
+DELETE FROM [EmailLog] WHERE [Id] = @Id, time to execute ms.:0,1431
+SELECT [EmailAllegati].[IdEmail], [EmailAllegati].[NomeFile], [EmailAllegati].[Dimensione], [EmailAllegati].[Id] FROM [EmailAllegati] WHERE [EmailAllegati].[IdEmail] = @0, time to execute ms.:0,0958
+DELETE FROM [Email] WHERE [Id] = @Id, time to execute ms.:0,3378
+SELECT [EmailLog].[IdEmail], [EmailLog].[Data], [EmailLog].[Testo], [EmailLog].[UniqueIdentifier], [EmailLog].[Id] FROM [EmailLog] WHERE [EmailLog].[IdEmail] = @0, time to execute ms.:0,1629
+DELETE FROM [EmailLog] WHERE [Id] = @Id, time to execute ms.:0,0655
+SELECT [EmailAllegati].[IdEmail], [EmailAllegati].[NomeFile], [EmailAllegati].[Dimensione], [EmailAllegati].[Id] FROM [EmailAllegati] WHERE [EmailAllegati].[IdEmail] = @0, time to execute ms.:0,097
+DELETE FROM [Email] WHERE [Id] = @Id, time to execute ms.:0,2101
+SELECT [EmailLog].[IdEmail], [EmailLog].[Data], [EmailLog].[Testo], [EmailLog].[UniqueIdentifier], [EmailLog].[Id] FROM [EmailLog] WHERE [EmailLog].[IdEmail] = @0, time to execute ms.:0,149
+DELETE FROM [EmailLog] WHERE [Id] = @Id, time to execute ms.:0,0947
+SELECT [EmailAllegati].[IdEmail], [EmailAllegati].[NomeFile], [EmailAllegati].[Dimensione], [EmailAllegati].[Id] FROM [EmailAllegati] WHERE [EmailAllegati].[IdEmail] = @0, time to execute ms.:0,0622
+DELETE FROM [Email] WHERE [Id] = @Id, time to execute ms.:0,2436
+SELECT [EmailLog].[IdEmail], [EmailLog].[Data], [EmailLog].[Testo], [EmailLog].[UniqueIdentifier], [EmailLog].[Id] FROM [EmailLog] WHERE [EmailLog].[IdEmail] = @0, time to execute ms.:0,1541
+DELETE FROM [EmailLog] WHERE [Id] = @Id, time to execute ms.:0,159
+SELECT [EmailAllegati].[IdEmail], [EmailAllegati].[NomeFile], [EmailAllegati].[Dimensione], [EmailAllegati].[Id] FROM [EmailAllegati] WHERE [EmailAllegati].[IdEmail] = @0, time to execute ms.:0,0607
+DELETE FROM [Email] WHERE [Id] = @Id, time to execute ms.:0,2222
+SELECT [EmailLog].[IdEmail], [EmailLog].[Data], [EmailLog].[Testo], [EmailLog].[UniqueIdentifier], [EmailLog].[Id] FROM [EmailLog] WHERE [EmailLog].[IdEmail] = @0, time to execute ms.:0,1413
+DELETE FROM [EmailLog] WHERE [Id] = @Id, time to execute ms.:0,0955
+SELECT [EmailAllegati].[IdEmail], [EmailAllegati].[NomeFile], [EmailAllegati].[Dimensione], [EmailAllegati].[Id] FROM [EmailAllegati] WHERE [EmailAllegati].[IdEmail] = @0, time to execute ms.:0,0596
+DELETE FROM [Email] WHERE [Id] = @Id, time to execute ms.:0,1819
+SELECT [EmailLog].[IdEmail], [EmailLog].[Data], [EmailLog].[Testo], [EmailLog].[UniqueIdentifier], [EmailLog].[Id] FROM [EmailLog] WHERE [EmailLog].[IdEmail] = @0, time to execute ms.:0,1375
+DELETE FROM [EmailLog] WHERE [Id] = @Id, time to execute ms.:0,054
+SELECT [EmailAllegati].[IdEmail], [EmailAllegati].[NomeFile], [EmailAllegati].[Dimensione], [EmailAllegati].[Id] FROM [EmailAllegati] WHERE [EmailAllegati].[IdEmail] = @0, time to execute ms.:0,144
+DELETE FROM [EmailAllegati] WHERE [Id] = @Id, time to execute ms.:0,0638
+DELETE FROM [Email] WHERE [Id] = @Id, time to execute ms.:0,2206
+SELECT [EmailLog].[IdEmail], [EmailLog].[Data], [EmailLog].[Testo], [EmailLog].[UniqueIdentifier], [EmailLog].[Id] FROM [EmailLog] WHERE [EmailLog].[IdEmail] = @0, time to execute ms.:0,1961
+DELETE FROM [EmailLog] WHERE [Id] = @Id, time to execute ms.:0,1365
+SELECT [EmailAllegati].[IdEmail], [EmailAllegati].[NomeFile], [EmailAllegati].[Dimensione], [EmailAllegati].[Id] FROM [EmailAllegati] WHERE [EmailAllegati].[IdEmail] = @0, time to execute ms.:0,1677
+DELETE FROM [EmailAllegati] WHERE [Id] = @Id, time to execute ms.:0,0548
+DELETE FROM [Email] WHERE [Id] = @Id, time to execute ms.:0,2423
+SELECT [EmailLog].[IdEmail], [EmailLog].[Data], [EmailLog].[Testo], [EmailLog].[UniqueIdentifier], [EmailLog].[Id] FROM [EmailLog] WHERE [EmailLog].[IdEmail] = @0, time to execute ms.:1,2902
+DELETE FROM [EmailLog] WHERE [Id] = @Id, time to execute ms.:0,0892
+SELECT [EmailAllegati].[IdEmail], [EmailAllegati].[NomeFile], [EmailAllegati].[Dimensione], [EmailAllegati].[Id] FROM [EmailAllegati] WHERE [EmailAllegati].[IdEmail] = @0, time to execute ms.:0,0989
+DELETE FROM [Email] WHERE [Id] = @Id, time to execute ms.:0,6844
+SELECT [EmailLog].[IdEmail], [EmailLog].[Data], [EmailLog].[Testo], [EmailLog].[UniqueIdentifier], [EmailLog].[Id] FROM [EmailLog] WHERE [EmailLog].[IdEmail] = @0, time to execute ms.:0,1974
+DELETE FROM [EmailLog] WHERE [Id] = @Id, time to execute ms.:0,1847
+SELECT [EmailAllegati].[IdEmail], [EmailAllegati].[NomeFile], [EmailAllegati].[Dimensione], [EmailAllegati].[Id] FROM [EmailAllegati] WHERE [EmailAllegati].[IdEmail] = @0, time to execute ms.:0,2543
+DELETE FROM [Email] WHERE [Id] = @Id, time to execute ms.:0,358
+SELECT [EmailLog].[IdEmail], [EmailLog].[Data], [EmailLog].[Testo], [EmailLog].[UniqueIdentifier], [EmailLog].[Id] FROM [EmailLog] WHERE [EmailLog].[IdEmail] = @0, time to execute ms.:0,2715
+DELETE FROM [EmailLog] WHERE [Id] = @Id, time to execute ms.:0,0558
+SELECT [EmailAllegati].[IdEmail], [EmailAllegati].[NomeFile], [EmailAllegati].[Dimensione], [EmailAllegati].[Id] FROM [EmailAllegati] WHERE [EmailAllegati].[IdEmail] = @0, time to execute ms.:0,0843
+DELETE FROM [Email] WHERE [Id] = @Id, time to execute ms.:0,4744
+SELECT [EmailLog].[IdEmail], [EmailLog].[Data], [EmailLog].[Testo], [EmailLog].[UniqueIdentifier], [EmailLog].[Id] FROM [EmailLog] WHERE [EmailLog].[IdEmail] = @0, time to execute ms.:0,2638
+DELETE FROM [EmailLog] WHERE [Id] = @Id, time to execute ms.:0,1054
+SELECT [EmailAllegati].[IdEmail], [EmailAllegati].[NomeFile], [EmailAllegati].[Dimensione], [EmailAllegati].[Id] FROM [EmailAllegati] WHERE [EmailAllegati].[IdEmail] = @0, time to execute ms.:0,1964
+DELETE FROM [Email] WHERE [Id] = @Id, time to execute ms.:0,4176
+SELECT [Server].[Ip], [Server].[Attivo], [Server].[Riceve], [Server].[Inviate], [Server].[Errate], [Server].[Id] FROM [Server], time to execute ms.:28,8461
+SELECT [ServerStatistiche].[IdServer], [ServerStatistiche].[Data], [ServerStatistiche].[Inviate], [ServerStatistiche].[Errate], [ServerStatistiche].[Id] FROM [ServerStatistiche] WHERE [ServerStatistiche].[IdServer] = @0 AND [ServerStatistiche].[Data] > @1 AND [ServerStatistiche].[Data] <= @2, time to execute ms.:14,8855
+SELECT [ServerStatistiche].[IdServer], [ServerStatistiche].[Data], [ServerStatistiche].[Inviate], [ServerStatistiche].[Errate], [ServerStatistiche].[Id] FROM [ServerStatistiche] WHERE [ServerStatistiche].[IdServer] = @0 AND [ServerStatistiche].[Data] > @1 AND [ServerStatistiche].[Data] <= @2, time to execute ms.:0,9529
+SELECT [ServerStatistiche].[IdServer], [ServerStatistiche].[Data], [ServerStatistiche].[Inviate], [ServerStatistiche].[Errate], [ServerStatistiche].[Id] FROM [ServerStatistiche] WHERE [ServerStatistiche].[IdServer] = @0 AND [ServerStatistiche].[Data] > @1 AND [ServerStatistiche].[Data] <= @2, time to execute ms.:1,0006
+SELECT [ServerStatistiche].[IdServer], [ServerStatistiche].[Data], [ServerStatistiche].[Inviate], [ServerStatistiche].[Errate], [ServerStatistiche].[Id] FROM [ServerStatistiche] WHERE [ServerStatistiche].[IdServer] = @0 AND [ServerStatistiche].[Data] > @1 AND [ServerStatistiche].[Data] <= @2, time to execute ms.:2,2147
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Stato] = @0, time to execute ms.:0,3387
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Stato] = @0, time to execute ms.:9,0399
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Stato] = @0, time to execute ms.:1,4133
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Server] = @0 AND [Email].[Stato] = @1, time to execute ms.:0,3248
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Server] = @0 AND [Email].[Stato] = @1, time to execute ms.:2,4227
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Server] = @0 AND [Email].[Stato] = @1, time to execute ms.:0,7741
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Server] = @0 AND [Email].[Stato] = @1, time to execute ms.:0,2662
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Server] = @0 AND [Email].[Stato] = @1, time to execute ms.:2,8119
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Server] = @0 AND [Email].[Stato] = @1, time to execute ms.:0,8089
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Server] = @0 AND [Email].[Stato] = @1, time to execute ms.:0,4146
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Server] = @0 AND [Email].[Stato] = @1, time to execute ms.:2,5152
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Server] = @0 AND [Email].[Stato] = @1, time to execute ms.:0,7971
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Server] = @0 AND [Email].[Stato] = @1, time to execute ms.:0,444
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Server] = @0 AND [Email].[Stato] = @1, time to execute ms.:2,5738
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Server] = @0 AND [Email].[Stato] = @1, time to execute ms.:0,7237
+SELECT [Utenti].[Nome], [Utenti].[Cognome], [Utenti].[Email], [Utenti].[Password], [Utenti].[Attivo], [Utenti].[Admin], [Utenti].[Id] FROM [Utenti] WHERE [Utenti].[Email] = @0, time to execute ms.:2,762
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Stato] = @0, time to execute ms.:0,2801
+SELECT [BloccoAccesso].[Email], [BloccoAccesso].[NumTentativo], [BloccoAccesso].[DataTentativo], [BloccoAccesso].[Id] FROM [BloccoAccesso] WHERE [BloccoAccesso].[DataTentativo] < @0, time to execute ms.:0,2223
+SELECT [BloccoIp].[Ip], [BloccoIp].[UserAgent], [BloccoIp].[Data], [BloccoIp].[Tentativi], [BloccoIp].[Id] FROM [BloccoIp] WHERE [BloccoIp].[Data] < @0, time to execute ms.:0,2065
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Server] = @0, time to execute ms.:0,2523
+SELECT [Server].[Ip], [Server].[Attivo], [Server].[Riceve], [Server].[Inviate], [Server].[Errate], [Server].[Id] FROM [Server] WHERE [Server].[Riceve] = @0, time to execute ms.:0,3588
+SELECT [Server].[Ip], [Server].[Attivo], [Server].[Riceve], [Server].[Inviate], [Server].[Errate], [Server].[Id] FROM [Server], time to execute ms.:25,0701
+SELECT [ServerStatistiche].[IdServer], [ServerStatistiche].[Data], [ServerStatistiche].[Inviate], [ServerStatistiche].[Errate], [ServerStatistiche].[Id] FROM [ServerStatistiche] WHERE [ServerStatistiche].[IdServer] = @0 AND [ServerStatistiche].[Data] > @1 AND [ServerStatistiche].[Data] <= @2, time to execute ms.:8,2906
+SELECT [ServerStatistiche].[IdServer], [ServerStatistiche].[Data], [ServerStatistiche].[Inviate], [ServerStatistiche].[Errate], [ServerStatistiche].[Id] FROM [ServerStatistiche] WHERE [ServerStatistiche].[IdServer] = @0 AND [ServerStatistiche].[Data] > @1 AND [ServerStatistiche].[Data] <= @2, time to execute ms.:1,259
+SELECT [ServerStatistiche].[IdServer], [ServerStatistiche].[Data], [ServerStatistiche].[Inviate], [ServerStatistiche].[Errate], [ServerStatistiche].[Id] FROM [ServerStatistiche] WHERE [ServerStatistiche].[IdServer] = @0 AND [ServerStatistiche].[Data] > @1 AND [ServerStatistiche].[Data] <= @2, time to execute ms.:1,1303
+SELECT [ServerStatistiche].[IdServer], [ServerStatistiche].[Data], [ServerStatistiche].[Inviate], [ServerStatistiche].[Errate], [ServerStatistiche].[Id] FROM [ServerStatistiche] WHERE [ServerStatistiche].[IdServer] = @0 AND [ServerStatistiche].[Data] > @1 AND [ServerStatistiche].[Data] <= @2, time to execute ms.:0,8894
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Stato] = @0, time to execute ms.:0,2443
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Stato] = @0, time to execute ms.:5,9578
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Stato] = @0, time to execute ms.:1,313
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Server] = @0 AND [Email].[Stato] = @1, time to execute ms.:0,2633
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Server] = @0 AND [Email].[Stato] = @1, time to execute ms.:1,6535
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Server] = @0 AND [Email].[Stato] = @1, time to execute ms.:0,5612
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Server] = @0 AND [Email].[Stato] = @1, time to execute ms.:0,26
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Server] = @0 AND [Email].[Stato] = @1, time to execute ms.:1,9813
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Server] = @0 AND [Email].[Stato] = @1, time to execute ms.:0,5426
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Server] = @0 AND [Email].[Stato] = @1, time to execute ms.:0,2751
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Server] = @0 AND [Email].[Stato] = @1, time to execute ms.:2,4324
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Server] = @0 AND [Email].[Stato] = @1, time to execute ms.:0,6782
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Server] = @0 AND [Email].[Stato] = @1, time to execute ms.:0,25
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Server] = @0 AND [Email].[Stato] = @1, time to execute ms.:2,3192
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Server] = @0 AND [Email].[Stato] = @1, time to execute ms.:0,6657
+SELECT [BloccoAccesso].[Email], [BloccoAccesso].[NumTentativo], [BloccoAccesso].[DataTentativo], [BloccoAccesso].[Id] FROM [BloccoAccesso] WHERE [BloccoAccesso].[DataTentativo] < @0, time to execute ms.:0,2217
+SELECT [BloccoIp].[Ip], [BloccoIp].[UserAgent], [BloccoIp].[Data], [BloccoIp].[Tentativi], [BloccoIp].[Id] FROM [BloccoIp] WHERE [BloccoIp].[Data] < @0, time to execute ms.:0,2197
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Server] = @0, time to execute ms.:0,3386
+SELECT [Server].[Ip], [Server].[Attivo], [Server].[Riceve], [Server].[Inviate], [Server].[Errate], [Server].[Id] FROM [Server] WHERE [Server].[Riceve] = @0, time to execute ms.:12,168
+SELECT [Server].[Ip], [Server].[Attivo], [Server].[Riceve], [Server].[Inviate], [Server].[Errate], [Server].[Id] FROM [Server], time to execute ms.:40,6405
+SELECT [ServerStatistiche].[IdServer], [ServerStatistiche].[Data], [ServerStatistiche].[Inviate], [ServerStatistiche].[Errate], [ServerStatistiche].[Id] FROM [ServerStatistiche] WHERE [ServerStatistiche].[IdServer] = @0 AND [ServerStatistiche].[Data] > @1 AND [ServerStatistiche].[Data] <= @2, time to execute ms.:10,2482
+SELECT [ServerStatistiche].[IdServer], [ServerStatistiche].[Data], [ServerStatistiche].[Inviate], [ServerStatistiche].[Errate], [ServerStatistiche].[Id] FROM [ServerStatistiche] WHERE [ServerStatistiche].[IdServer] = @0 AND [ServerStatistiche].[Data] > @1 AND [ServerStatistiche].[Data] <= @2, time to execute ms.:0,9956
+SELECT [ServerStatistiche].[IdServer], [ServerStatistiche].[Data], [ServerStatistiche].[Inviate], [ServerStatistiche].[Errate], [ServerStatistiche].[Id] FROM [ServerStatistiche] WHERE [ServerStatistiche].[IdServer] = @0 AND [ServerStatistiche].[Data] > @1 AND [ServerStatistiche].[Data] <= @2, time to execute ms.:1,2389
+SELECT [ServerStatistiche].[IdServer], [ServerStatistiche].[Data], [ServerStatistiche].[Inviate], [ServerStatistiche].[Errate], [ServerStatistiche].[Id] FROM [ServerStatistiche] WHERE [ServerStatistiche].[IdServer] = @0 AND [ServerStatistiche].[Data] > @1 AND [ServerStatistiche].[Data] <= @2, time to execute ms.:1,0541
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Stato] = @0, time to execute ms.:0,3247
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Stato] = @0, time to execute ms.:6,3192
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Stato] = @0, time to execute ms.:1,391
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Server] = @0 AND [Email].[Stato] = @1, time to execute ms.:0,3395
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Server] = @0 AND [Email].[Stato] = @1, time to execute ms.:2,3016
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Server] = @0 AND [Email].[Stato] = @1, time to execute ms.:0,586
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Server] = @0 AND [Email].[Stato] = @1, time to execute ms.:0,2779
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Server] = @0 AND [Email].[Stato] = @1, time to execute ms.:2,4135
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Server] = @0 AND [Email].[Stato] = @1, time to execute ms.:0,5831
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Server] = @0 AND [Email].[Stato] = @1, time to execute ms.:0,2529
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Server] = @0 AND [Email].[Stato] = @1, time to execute ms.:2,2049
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Server] = @0 AND [Email].[Stato] = @1, time to execute ms.:0,5389
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Server] = @0 AND [Email].[Stato] = @1, time to execute ms.:0,1918
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Server] = @0 AND [Email].[Stato] = @1, time to execute ms.:1,8624
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Server] = @0 AND [Email].[Stato] = @1, time to execute ms.:0,5637
+SELECT [Utenti].[Nome], [Utenti].[Cognome], [Utenti].[Email], [Utenti].[Password], [Utenti].[Attivo], [Utenti].[Admin], [Utenti].[Id] FROM [Utenti] WHERE [Utenti].[Email] = @0, time to execute ms.:2,3112
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Stato] = @0, time to execute ms.:0,2621
+SELECT [BloccoAccesso].[Email], [BloccoAccesso].[NumTentativo], [BloccoAccesso].[DataTentativo], [BloccoAccesso].[Id] FROM [BloccoAccesso] WHERE [BloccoAccesso].[DataTentativo] < @0, time to execute ms.:0,2629
+SELECT [BloccoIp].[Ip], [BloccoIp].[UserAgent], [BloccoIp].[Data], [BloccoIp].[Tentativi], [BloccoIp].[Id] FROM [BloccoIp] WHERE [BloccoIp].[Data] < @0, time to execute ms.:0,2102
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Server] = @0, time to execute ms.:0,3695
+SELECT [Server].[Ip], [Server].[Attivo], [Server].[Riceve], [Server].[Inviate], [Server].[Errate], [Server].[Id] FROM [Server] WHERE [Server].[Riceve] = @0, time to execute ms.:0,3767
+SELECT [Server].[Ip], [Server].[Attivo], [Server].[Riceve], [Server].[Inviate], [Server].[Errate], [Server].[Id] FROM [Server], time to execute ms.:28,1873
+SELECT [ServerStatistiche].[IdServer], [ServerStatistiche].[Data], [ServerStatistiche].[Inviate], [ServerStatistiche].[Errate], [ServerStatistiche].[Id] FROM [ServerStatistiche] WHERE [ServerStatistiche].[IdServer] = @0 AND [ServerStatistiche].[Data] > @1 AND [ServerStatistiche].[Data] <= @2, time to execute ms.:11,0034
+SELECT [ServerStatistiche].[IdServer], [ServerStatistiche].[Data], [ServerStatistiche].[Inviate], [ServerStatistiche].[Errate], [ServerStatistiche].[Id] FROM [ServerStatistiche] WHERE [ServerStatistiche].[IdServer] = @0 AND [ServerStatistiche].[Data] > @1 AND [ServerStatistiche].[Data] <= @2, time to execute ms.:0,9627
+SELECT [ServerStatistiche].[IdServer], [ServerStatistiche].[Data], [ServerStatistiche].[Inviate], [ServerStatistiche].[Errate], [ServerStatistiche].[Id] FROM [ServerStatistiche] WHERE [ServerStatistiche].[IdServer] = @0 AND [ServerStatistiche].[Data] > @1 AND [ServerStatistiche].[Data] <= @2, time to execute ms.:0,8311
+SELECT [ServerStatistiche].[IdServer], [ServerStatistiche].[Data], [ServerStatistiche].[Inviate], [ServerStatistiche].[Errate], [ServerStatistiche].[Id] FROM [ServerStatistiche] WHERE [ServerStatistiche].[IdServer] = @0 AND [ServerStatistiche].[Data] > @1 AND [ServerStatistiche].[Data] <= @2, time to execute ms.:1,1589
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Stato] = @0, time to execute ms.:0,3493
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Stato] = @0, time to execute ms.:8,8112
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Stato] = @0, time to execute ms.:1,1677
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Server] = @0 AND [Email].[Stato] = @1, time to execute ms.:0,3686
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Server] = @0 AND [Email].[Stato] = @1, time to execute ms.:2,2845
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Server] = @0 AND [Email].[Stato] = @1, time to execute ms.:0,5119
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Server] = @0 AND [Email].[Stato] = @1, time to execute ms.:0,2508
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Server] = @0 AND [Email].[Stato] = @1, time to execute ms.:2,3192
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Server] = @0 AND [Email].[Stato] = @1, time to execute ms.:0,5339
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Server] = @0 AND [Email].[Stato] = @1, time to execute ms.:0,2504
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Server] = @0 AND [Email].[Stato] = @1, time to execute ms.:2,2196
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Server] = @0 AND [Email].[Stato] = @1, time to execute ms.:0,5429
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Server] = @0 AND [Email].[Stato] = @1, time to execute ms.:0,2551
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Server] = @0 AND [Email].[Stato] = @1, time to execute ms.:2,4618
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Server] = @0 AND [Email].[Stato] = @1, time to execute ms.:0,5816
+SELECT [Utenti].[Nome], [Utenti].[Cognome], [Utenti].[Email], [Utenti].[Password], [Utenti].[Attivo], [Utenti].[Admin], [Utenti].[Id] FROM [Utenti] WHERE [Utenti].[Email] = @0, time to execute ms.:1,6503
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Stato] = @0, time to execute ms.:0,2742
+SELECT [BloccoAccesso].[Email], [BloccoAccesso].[NumTentativo], [BloccoAccesso].[DataTentativo], [BloccoAccesso].[Id] FROM [BloccoAccesso] WHERE [BloccoAccesso].[DataTentativo] < @0, time to execute ms.:0,2622
+SELECT [BloccoIp].[Ip], [BloccoIp].[UserAgent], [BloccoIp].[Data], [BloccoIp].[Tentativi], [BloccoIp].[Id] FROM [BloccoIp] WHERE [BloccoIp].[Data] < @0, time to execute ms.:0,2852
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Server] = @0, time to execute ms.:0,2995
+SELECT [Server].[Ip], [Server].[Attivo], [Server].[Riceve], [Server].[Inviate], [Server].[Errate], [Server].[Id] FROM [Server] WHERE [Server].[Riceve] = @0, time to execute ms.:2,7939
+SELECT [Server].[Ip], [Server].[Attivo], [Server].[Riceve], [Server].[Inviate], [Server].[Errate], [Server].[Id] FROM [Server], time to execute ms.:28,6162
+SELECT [ServerStatistiche].[IdServer], [ServerStatistiche].[Data], [ServerStatistiche].[Inviate], [ServerStatistiche].[Errate], [ServerStatistiche].[Id] FROM [ServerStatistiche] WHERE [ServerStatistiche].[IdServer] = @0 AND [ServerStatistiche].[Data] > @1 AND [ServerStatistiche].[Data] <= @2, time to execute ms.:12,7839
+SELECT [ServerStatistiche].[IdServer], [ServerStatistiche].[Data], [ServerStatistiche].[Inviate], [ServerStatistiche].[Errate], [ServerStatistiche].[Id] FROM [ServerStatistiche] WHERE [ServerStatistiche].[IdServer] = @0 AND [ServerStatistiche].[Data] > @1 AND [ServerStatistiche].[Data] <= @2, time to execute ms.:1,1785
+SELECT [ServerStatistiche].[IdServer], [ServerStatistiche].[Data], [ServerStatistiche].[Inviate], [ServerStatistiche].[Errate], [ServerStatistiche].[Id] FROM [ServerStatistiche] WHERE [ServerStatistiche].[IdServer] = @0 AND [ServerStatistiche].[Data] > @1 AND [ServerStatistiche].[Data] <= @2, time to execute ms.:2,3101
+SELECT [ServerStatistiche].[IdServer], [ServerStatistiche].[Data], [ServerStatistiche].[Inviate], [ServerStatistiche].[Errate], [ServerStatistiche].[Id] FROM [ServerStatistiche] WHERE [ServerStatistiche].[IdServer] = @0 AND [ServerStatistiche].[Data] > @1 AND [ServerStatistiche].[Data] <= @2, time to execute ms.:0,9426
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Stato] = @0, time to execute ms.:0,3116
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Stato] = @0, time to execute ms.:6,9831
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Stato] = @0, time to execute ms.:1,0814
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Server] = @0 AND [Email].[Stato] = @1, time to execute ms.:0,3317
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Server] = @0 AND [Email].[Stato] = @1, time to execute ms.:2,564
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Server] = @0 AND [Email].[Stato] = @1, time to execute ms.:0,6275
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Server] = @0 AND [Email].[Stato] = @1, time to execute ms.:0,254
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Server] = @0 AND [Email].[Stato] = @1, time to execute ms.:2,5069
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Server] = @0 AND [Email].[Stato] = @1, time to execute ms.:0,5869
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Server] = @0 AND [Email].[Stato] = @1, time to execute ms.:0,5335
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Server] = @0 AND [Email].[Stato] = @1, time to execute ms.:2,486
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Server] = @0 AND [Email].[Stato] = @1, time to execute ms.:0,6302
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Server] = @0 AND [Email].[Stato] = @1, time to execute ms.:0,2804
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Server] = @0 AND [Email].[Stato] = @1, time to execute ms.:2,4662
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Server] = @0 AND [Email].[Stato] = @1, time to execute ms.:0,5586
+SELECT [BloccoAccesso].[Email], [BloccoAccesso].[NumTentativo], [BloccoAccesso].[DataTentativo], [BloccoAccesso].[Id] FROM [BloccoAccesso] WHERE [BloccoAccesso].[DataTentativo] < @0, time to execute ms.:7,5203
+SELECT [BloccoIp].[Ip], [BloccoIp].[UserAgent], [BloccoIp].[Data], [BloccoIp].[Tentativi], [BloccoIp].[Id] FROM [BloccoIp] WHERE [BloccoIp].[Data] < @0, time to execute ms.:0,2342
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Server] = @0, time to execute ms.:0,3331
+SELECT [Server].[Ip], [Server].[Attivo], [Server].[Riceve], [Server].[Inviate], [Server].[Errate], [Server].[Id] FROM [Server] WHERE [Server].[Riceve] = @0, time to execute ms.:1,357
+SELECT [Utenti].[Nome], [Utenti].[Cognome], [Utenti].[Email], [Utenti].[Password], [Utenti].[Attivo], [Utenti].[Admin], [Utenti].[Id] FROM [Utenti] WHERE [Utenti].[Email] = @0, time to execute ms.:1,5575
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Stato] = @0, time to execute ms.:0,2212
+SELECT [BloccoAccesso].[Email], [BloccoAccesso].[NumTentativo], [BloccoAccesso].[DataTentativo], [BloccoAccesso].[Id] FROM [BloccoAccesso] WHERE [BloccoAccesso].[DataTentativo] < @0, time to execute ms.:0,2384
+SELECT [BloccoIp].[Ip], [BloccoIp].[UserAgent], [BloccoIp].[Data], [BloccoIp].[Tentativi], [BloccoIp].[Id] FROM [BloccoIp] WHERE [BloccoIp].[Data] < @0, time to execute ms.:0,2446
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Server] = @0, time to execute ms.:0,3386
+SELECT [Server].[Ip], [Server].[Attivo], [Server].[Riceve], [Server].[Inviate], [Server].[Errate], [Server].[Id] FROM [Server] WHERE [Server].[Riceve] = @0, time to execute ms.:8,8181
+SELECT [Server].[Ip], [Server].[Attivo], [Server].[Riceve], [Server].[Inviate], [Server].[Errate], [Server].[Id] FROM [Server], time to execute ms.:22,3455
+SELECT [ServerStatistiche].[IdServer], [ServerStatistiche].[Data], [ServerStatistiche].[Inviate], [ServerStatistiche].[Errate], [ServerStatistiche].[Id] FROM [ServerStatistiche] WHERE [ServerStatistiche].[IdServer] = @0 AND [ServerStatistiche].[Data] > @1 AND [ServerStatistiche].[Data] <= @2, time to execute ms.:6,0013
+SELECT [ServerStatistiche].[IdServer], [ServerStatistiche].[Data], [ServerStatistiche].[Inviate], [ServerStatistiche].[Errate], [ServerStatistiche].[Id] FROM [ServerStatistiche] WHERE [ServerStatistiche].[IdServer] = @0 AND [ServerStatistiche].[Data] > @1 AND [ServerStatistiche].[Data] <= @2, time to execute ms.:0,6225
+SELECT [ServerStatistiche].[IdServer], [ServerStatistiche].[Data], [ServerStatistiche].[Inviate], [ServerStatistiche].[Errate], [ServerStatistiche].[Id] FROM [ServerStatistiche] WHERE [ServerStatistiche].[IdServer] = @0 AND [ServerStatistiche].[Data] > @1 AND [ServerStatistiche].[Data] <= @2, time to execute ms.:0,8651
+SELECT [ServerStatistiche].[IdServer], [ServerStatistiche].[Data], [ServerStatistiche].[Inviate], [ServerStatistiche].[Errate], [ServerStatistiche].[Id] FROM [ServerStatistiche] WHERE [ServerStatistiche].[IdServer] = @0 AND [ServerStatistiche].[Data] > @1 AND [ServerStatistiche].[Data] <= @2, time to execute ms.:0,9121
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Stato] = @0, time to execute ms.:0,2478
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Stato] = @0, time to execute ms.:5,1008
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Stato] = @0, time to execute ms.:1,4871
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Server] = @0 AND [Email].[Stato] = @1, time to execute ms.:0,2482
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Server] = @0 AND [Email].[Stato] = @1, time to execute ms.:2,3005
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Server] = @0 AND [Email].[Stato] = @1, time to execute ms.:0,441
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Server] = @0 AND [Email].[Stato] = @1, time to execute ms.:0,2465
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Server] = @0 AND [Email].[Stato] = @1, time to execute ms.:1,777
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Server] = @0 AND [Email].[Stato] = @1, time to execute ms.:0,5404
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Server] = @0 AND [Email].[Stato] = @1, time to execute ms.:0,2097
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Server] = @0 AND [Email].[Stato] = @1, time to execute ms.:1,6878
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Server] = @0 AND [Email].[Stato] = @1, time to execute ms.:0,4958
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Server] = @0 AND [Email].[Stato] = @1, time to execute ms.:0,4338
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Server] = @0 AND [Email].[Stato] = @1, time to execute ms.:2,4671
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Server] = @0 AND [Email].[Stato] = @1, time to execute ms.:0,5817
+SELECT [Utenti].[Nome], [Utenti].[Cognome], [Utenti].[Email], [Utenti].[Password], [Utenti].[Attivo], [Utenti].[Admin], [Utenti].[Id] FROM [Utenti] WHERE [Utenti].[Email] = @0, time to execute ms.:1,1381
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Stato] = @0, time to execute ms.:0,266
+SELECT [BloccoAccesso].[Email], [BloccoAccesso].[NumTentativo], [BloccoAccesso].[DataTentativo], [BloccoAccesso].[Id] FROM [BloccoAccesso] WHERE [BloccoAccesso].[DataTentativo] < @0, time to execute ms.:0,3802
+SELECT [BloccoIp].[Ip], [BloccoIp].[UserAgent], [BloccoIp].[Data], [BloccoIp].[Tentativi], [BloccoIp].[Id] FROM [BloccoIp] WHERE [BloccoIp].[Data] < @0, time to execute ms.:0,2299
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Server] = @0, time to execute ms.:0,3619
+SELECT [Server].[Ip], [Server].[Attivo], [Server].[Riceve], [Server].[Inviate], [Server].[Errate], [Server].[Id] FROM [Server] WHERE [Server].[Riceve] = @0, time to execute ms.:0,5989
+SELECT [Server].[Ip], [Server].[Attivo], [Server].[Riceve], [Server].[Inviate], [Server].[Errate], [Server].[Id] FROM [Server], time to execute ms.:26,4992
+SELECT [ServerStatistiche].[IdServer], [ServerStatistiche].[Data], [ServerStatistiche].[Inviate], [ServerStatistiche].[Errate], [ServerStatistiche].[Id] FROM [ServerStatistiche] WHERE [ServerStatistiche].[IdServer] = @0 AND [ServerStatistiche].[Data] > @1 AND [ServerStatistiche].[Data] <= @2, time to execute ms.:11,5034
+SELECT [ServerStatistiche].[IdServer], [ServerStatistiche].[Data], [ServerStatistiche].[Inviate], [ServerStatistiche].[Errate], [ServerStatistiche].[Id] FROM [ServerStatistiche] WHERE [ServerStatistiche].[IdServer] = @0 AND [ServerStatistiche].[Data] > @1 AND [ServerStatistiche].[Data] <= @2, time to execute ms.:0,8221
+SELECT [ServerStatistiche].[IdServer], [ServerStatistiche].[Data], [ServerStatistiche].[Inviate], [ServerStatistiche].[Errate], [ServerStatistiche].[Id] FROM [ServerStatistiche] WHERE [ServerStatistiche].[IdServer] = @0 AND [ServerStatistiche].[Data] > @1 AND [ServerStatistiche].[Data] <= @2, time to execute ms.:2,6697
+SELECT [ServerStatistiche].[IdServer], [ServerStatistiche].[Data], [ServerStatistiche].[Inviate], [ServerStatistiche].[Errate], [ServerStatistiche].[Id] FROM [ServerStatistiche] WHERE [ServerStatistiche].[IdServer] = @0 AND [ServerStatistiche].[Data] > @1 AND [ServerStatistiche].[Data] <= @2, time to execute ms.:1,5451
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Stato] = @0, time to execute ms.:0,3189
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Stato] = @0, time to execute ms.:7,3337
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Stato] = @0, time to execute ms.:1,4467
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Server] = @0 AND [Email].[Stato] = @1, time to execute ms.:0,246
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Server] = @0 AND [Email].[Stato] = @1, time to execute ms.:1,6264
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Server] = @0 AND [Email].[Stato] = @1, time to execute ms.:0,6013
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Server] = @0 AND [Email].[Stato] = @1, time to execute ms.:0,2652
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Server] = @0 AND [Email].[Stato] = @1, time to execute ms.:2,8875
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Server] = @0 AND [Email].[Stato] = @1, time to execute ms.:0,5994
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Server] = @0 AND [Email].[Stato] = @1, time to execute ms.:0,2933
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Server] = @0 AND [Email].[Stato] = @1, time to execute ms.:2,3614
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Server] = @0 AND [Email].[Stato] = @1, time to execute ms.:0,5997
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Server] = @0 AND [Email].[Stato] = @1, time to execute ms.:0,2513
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Server] = @0 AND [Email].[Stato] = @1, time to execute ms.:3,0392
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Server] = @0 AND [Email].[Stato] = @1, time to execute ms.:0,7678
+SELECT [Utenti].[Nome], [Utenti].[Cognome], [Utenti].[Email], [Utenti].[Password], [Utenti].[Attivo], [Utenti].[Admin], [Utenti].[Id] FROM [Utenti] WHERE [Utenti].[Email] = @0, time to execute ms.:1,5166
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Stato] = @0, time to execute ms.:0,2749
+SELECT [BloccoAccesso].[Email], [BloccoAccesso].[NumTentativo], [BloccoAccesso].[DataTentativo], [BloccoAccesso].[Id] FROM [BloccoAccesso] WHERE [BloccoAccesso].[DataTentativo] < @0, time to execute ms.:0,2722
+SELECT [BloccoIp].[Ip], [BloccoIp].[UserAgent], [BloccoIp].[Data], [BloccoIp].[Tentativi], [BloccoIp].[Id] FROM [BloccoIp] WHERE [BloccoIp].[Data] < @0, time to execute ms.:0,2037
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Server] = @0, time to execute ms.:0,3075
+SELECT [Server].[Ip], [Server].[Attivo], [Server].[Riceve], [Server].[Inviate], [Server].[Errate], [Server].[Id] FROM [Server] WHERE [Server].[Riceve] = @0, time to execute ms.:0,44
+SELECT [Email].[UniqueIdentifier], [Email].[Server], [Email].[MittenteEmail], [Email].[MittenteNome], [Email].[DestinatarioEmail], [Email].[DestinatarioNome], [Email].[DestinatarioDataRegistrazione], [Email].[Oggetto], [Email].[Contenuto], [Email].[DataArrivo], [Email].[DataInvio], [Email].[DataUltimoTentativo], [Email].[DataProssimoTentativo], [Email].[DataVisualizzazione], [Email].[DataClick], [Email].[NumeroTentativi], [Email].[UrlEliminazione], [Email].[StatusCode4xx5xx], [Email].[Stato], [Email].[Immediata], [Email].[RispondiA], [Email].[Id] FROM [Email] WHERE [Email].[Server] = @0 ORDER BY [Email].[Immediata] DESC LIMIT @item4page OFFSET @item4page * @page, time to execute ms.:7,8865

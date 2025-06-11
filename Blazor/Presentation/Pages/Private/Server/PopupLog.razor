@@ -1,0 +1,94 @@
+﻿@layout PopupLayout
+@using CommonNetCore
+@using MailFarms_SharedWeb.Code
+@inherits PageComponent
+@page "/private/server/popuplog"
+@inject IJSRuntime JSRuntime
+
+@code
+{
+    public EventCallback<LinkButton> OnFancyLog { get; set; }
+
+    protected override void OnInitialized()
+    {
+        Id = GetQueryLong("ServerId");
+
+        var server = Business.Entity.Server.GetItem(Id);
+
+        OnFancyLog = new EventCallback<LinkButton>(null, (Action<LinkButton>)(p =>
+        {
+            var fileName = (string)p.Object;
+            JSRuntime.InvokeVoidAsync("blazorExtensions.FancyBox", CommonNetCore.Settings.Config.WebPath + "/private/server/popuplogfile?Ip=" + server.Ip + "&FileName=" + fileName);
+            StateHasChanged();
+        }));
+    }
+
+    public async Task DeleteClick(LinkButton sender)
+    {
+        Id = GetQueryLong("ServerId");
+
+        var server = Business.Entity.Server.GetItem(Id);
+
+        var fileName = sender.Object as string;
+
+        await MailFarms_SharedService.Code.RequestWindowsService.LogFileNameDelete(server.Ip, fileName);
+
+        StateHasChanged();
+    }
+
+    public async Task DeleteAllClick(MyButton button)
+    {
+        if (!button.ConfirmResponse)
+            return;
+
+        Id = GetQueryLong("ServerId");
+
+        var server = Business.Entity.Server.GetItem(Id);
+
+        await MailFarms_SharedService.Code.RequestWindowsService.LogFileNameDeleteAll(server.Ip);
+
+        StateHasChanged();
+    }
+}
+
+
+<div class="row" style="background-color: #fff; min-height: 100vh;">
+    <div class="col-lg-12" style="padding: 20px">
+
+        <MyButton ConfirmMessage="Vuoi eliminare tutte i file di log?" OnClickCallback="DeleteAllClick" Class="btn btn-default btn-xs" Text="Elimina" />
+
+        <br />
+        <br />
+
+        @{
+            Id = GetQueryLong("ServerId");
+
+            var server = Business.Entity.Server.GetItem(Id);
+
+            if (server != null)
+            {
+                var logs = MailFarms_SharedService.Code.RequestWindowsService.GetLogFileNameList(server.Ip).GetAwaiter().GetResult();
+
+                if (logs.Any())
+                {
+                    <table class="table table-bordered table-striped table-ultracondensed">
+
+                        @foreach (var log in logs)
+                        {
+                            <tr>
+                                <td style="padding: 10px"><LinkButton Object="log" OnClickCallback="OnFancyLog">@log</LinkButton></td>
+                                <td style="width: 80px; padding: 10px; text-align: center"><LinkButton Object="log" OnClickCallback="DeleteClick"><i class="fa fa-remove"></i></LinkButton></td>
+                            </tr>
+                        }
+
+                    </table>
+                }
+                else
+                {
+                    <p>Non ci sono file di log.</p>
+                }
+            }
+        }
+
+    </div>
+</div>

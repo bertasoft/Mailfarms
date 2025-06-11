@@ -1,0 +1,147 @@
+﻿@page "/"
+@namespace MailFarmsBlazor.Pages
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="utf-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>MailFarms</title>
+
+    <base href="~/" />
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:300,400,700|Roboto:300,400,700" rel="stylesheet">
+    <link href="/public/layout/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/layout/css/style.css" rel="stylesheet">
+    <link href="/layout/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+
+</head>
+<body>
+    <app>
+        <component type="typeof(App)" render-mode="ServerPrerendered" />
+    </app>
+
+    <script src="/layout/js/jquery-2.1.1.min.js"></script>
+    <script src="/layout/js/bootstrap.min.js"></script>
+    <script src="/layout/js/scripts.js"></script>
+    <script src="/layout/js/js.cookie.js"></script>
+    <script src="/layout/plugins/nanoscrollerjs/jquery.nanoscroller.min.js"></script>
+    <script src="/layout/plugins/metismenu/metismenu.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+    <script src="_framework/blazor.server.js"></script>
+
+    <!-- Reference the included moment.js javascript file. -->
+    <script src="_content/ChartJs.Blazor/moment-with-locales.min.js" type="text/javascript" language="javascript"></script>
+
+    <!-- Reference the included ChartJs javascript file. -->
+    <script src="_content/ChartJs.Blazor/Chart.min.js" type="text/javascript" language="javascript"></script>
+
+    <!-- This is the glue between the C# code and the ChartJs charts -->
+    <script src="_content/ChartJs.Blazor/ChartJsBlazorInterop.js" type="text/javascript" language="javascript"></script>
+
+    <!-- Some styling -->
+    <link rel="stylesheet" href="_content/ChartJs.Blazor/ChartJSBlazor.css" />
+
+<script>
+
+        //il riferimento alla pagina correntemente aperta nel browser
+        var blazorRefObject;
+
+        window.blazorExtensions = {
+
+            TakeObject: function (dotNetObject) {
+
+                blazorRefObject = dotNetObject;
+
+            },
+
+            FancyBoxRefresh: function (url) {
+
+                $.fancybox.open({
+                    src: url,
+                    type: 'iframe',
+                    iframe: {
+                        preload: false,
+                        css: {
+                            width: 'vw80'
+                        }
+                    },
+                    afterClose: function () {
+
+                        //chiamo il metodo refresh dell'istanza della pagina che ho passato con TakeObject
+                        if (blazorRefObject != null) {
+                            blazorRefObject.invokeMethodAsync('Refresh');
+                        }
+                    }
+
+                });
+
+            },
+
+            FancyBox: function (url) {
+
+                $.fancybox.open({
+                    src: url,
+                    type: 'iframe',
+                    iframe: {
+                        preload: false,
+                        css: {
+                            width: 'vw80'
+                        }
+                    }
+                });
+            },
+
+            GetIP: function () {
+
+                var valore = "";
+
+                jQuery.ajax({
+                    url: '/api/GetIP',
+                    success: function (result) {
+                        valore = result;
+                    },
+                    async: false
+                });
+
+                return valore;
+            },
+
+            GetUserAgent: function () {
+
+                var valore = "";
+
+                jQuery.ajax({
+                    url: '/api/GetUserAgent',
+                    success: function (result) {
+                        valore = result;
+                    },
+                    async: false
+                });
+
+                return valore;
+            },
+
+            CookieGet: function (name) {                                                                
+
+                return Cookies.get(name);
+
+            },
+
+            CookieSet: function (name, value) {                
+
+                Cookies.set(name, value);
+
+            }
+        }
+
+    </script>
+
+</body>
+</html>

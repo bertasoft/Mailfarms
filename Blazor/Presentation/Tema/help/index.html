@@ -1,0 +1,851 @@
+<!doctype html>
+<!--[if IE 6 ]><html lang="en-us" class="ie6"> <![endif]-->
+<!--[if IE 7 ]><html lang="en-us" class="ie7"> <![endif]-->
+<!--[if IE 8 ]><html lang="en-us" class="ie8"> <![endif]-->
+<!--[if (gt IE 7)|!(IE)]><!-->
+<html lang="en-us">
+<!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>Rayan - Documentation</title>
+<meta name="author" content="Square Media">
+<link href="assets/css/bootstrap.css" rel="stylesheet">
+<link href="assets/css/style.css" rel="stylesheet">
+</head>
+
+<body>
+<div id="header" class="header">
+   <div class="project-name">
+      <h3>Documentation</h3>
+   </div>
+   <nav>
+      <ul>
+         <li class="current">
+            <a href="#start">
+               <i class="glyphicon glyphicon-chevron-right"></i> Start
+            </a>
+         </li>
+         <li>
+            <a href="#html-struc">
+               <i class="glyphicon glyphicon-chevron-right"></i> HTML Structure
+            </a>
+         </li>
+         <li>
+            <a href="#css-struc">
+               <i class="glyphicon glyphicon-chevron-right"></i> Application Module
+            </a>
+         </li>
+         <li>
+            <a href="#javascript">
+               <i class="glyphicon glyphicon-chevron-right"></i> Utilities
+            </a>
+         </li>
+         <li>
+            <a href="#backgrounds">
+               <i class="glyphicon glyphicon-chevron-right"></i>  plugins and Resources
+            </a>
+         </li>
+         <li>
+            <a href="#icons">
+               <i class="glyphicon glyphicon-chevron-right"></i> credits
+            </a>
+         </li>
+         <li>
+            <a href="#support">
+               <i class="glyphicon glyphicon-chevron-right"></i> Support
+            </a>
+         </li>
+      </ul>
+   </nav>
+</div>
+<div class="page-sections">
+   <div id="start">
+      <div class="title">
+         <h1><i class="glyphicon glyphicon-send"></i> Start</h1>
+      </div>
+      <ul>
+         <li><span class="highlight-color">Created :</span> 11/08/2016 </li>
+         <li><span class="highlight-color">By :</span> Design Buddy </li>
+      </ul>
+      <p>Thanks for purchasing Rayan Admin Template. If you have any question you can ask through comments. Also you can find a lot of useful information right there. Thanks so much!</p>
+      <p> Rayan is a fully featured premium admin template built on top of awesome Bootstrap 3.3.5, modern web technologies HTML5, CSS3 and jQuery. The theme includes beautiful dashboards including many ready to use hand crafted components. The components can be used very easy on any page. The theme is fully responsive and customizable. All the code including css, and javascript is very easy and helps developer to turn this theme into real web application.</p>
+   </div>
+   <h3> Quick Tips : </h3>
+   <ol>
+      <li>ID and Class name - You may remove all ID or Class names which contain demo-, they are only used for demonstration.
+      </li>
+      <li>Plugins - Feel free to remove the plugins you won't use (along with their style).
+      </li>
+      <li> jQuery selectors - The main selector has been cached and used in all of plugins. To improve performance and load time, you don't need to create a new variable to get the main selector, just call the variables.
+      
+<table width="500" border="1">
+   <tr>
+      <th scope="col" align="center">Variable</th>
+      <th scope="col" align="center">Selectors</th>
+   </tr>
+   <tr>
+      <td align="center">window</td>
+      <td align="center">$('window')</td>
+   </tr>
+   <tr>
+      <td align="center">body</td>
+      <td align="center">$('body')</td>
+   </tr>
+   <tr>
+      <td align="center">document</td>
+      <td align="center">$('document')</td>
+   </tr>
+   <tr>
+      <td align="center">bodyHtml</td>
+      <td align="center">$('body, html')</td>
+   </tr>
+   <tr>
+      <td align="center">container</td>
+      <td align="center">$('#container')</td>
+   </tr>
+   <tr>
+      <td align="center">contentContainer</td>
+      <td align="center">$('#content-container')</td>
+   </tr>
+   <tr>
+      <td align="center">navbar</td>
+      <td align="center">$('#navbar')</td>
+   </tr>
+   <tr>
+      <td align="center">mainNav</td>
+      <td align="center">$('#mainnav-container')</td>
+   </tr>
+   <tr>
+      <td align="center">aside</td>
+      <td align="center">$('#aside-container')</td>
+   </tr>
+   <tr>
+      <td align="center">footer</td>
+      <td align="center">$('#footer')</td>
+   </tr>
+   <tr>
+      <td align="center">scrollTop</td>
+      <td align="center">$('#scroll-top')</td>
+   </tr>
+</table>
+
+      </li>
+      <li>
+      <h3>Useful functions</h3>
+       <p> List of useful functions might help you.  </p>
+<table width="500" border="1">
+   <tr>
+      <th scope="col" align="center">Function name</th>
+      <th scope="col" align="center">Returning value</th>
+   </tr>
+   <tr>
+      <td align="center">screenSize</td>
+      <td align="center">xs sm md lg</td>
+   </tr>
+   <tr>
+      <td align="center">isMobile</td>
+      <td align="center">true or false</td>
+   </tr>
+   <tr>
+      <td align="center">transition</td>
+      <td align="center">To test whether or not the browser supports transition properties ? // Return : true or false</td>
+   </tr>
+   <tr>
+      <td align="center">randomInt</td>
+      <td align="center">To generate random numbers in a selected range (min and max).</td>
+   </tr>
+</table>
+      </li>
+      <li>
+         <h3>User Names</h3>
+         <p> All user names used in the template are fictional and only used for demostration. They were randomly generated at uinames.com. </p>
+      </li>
+   </ol>
+   <hr>
+   <div id="html-struc">
+      <div class="title">
+         <h1><i class="glyphicon glyphicon-list-alt"></i> Folder Structure </h1>
+      </div>
+<table width="500" border="1">
+   <tr>
+      <th scope="col" align="center">Folder name</th>
+      <th scope="col" align="center">What it Contains</th>
+   </tr>
+   <tr>
+      <td align="center">Documentation</td>
+      <td align="center">xs sm md lg</td>
+   </tr>
+   <tr>
+      <td align="center">CSS</td>
+      <td align="center">true or false</td>
+   </tr>
+   <tr>
+      <td align="center">transition</td>
+      <td align="center">To test whether or not the browser supports transition properties ? // Return : true or false</td>
+   </tr>
+   <tr>
+      <td align="center">randomInt</td>
+      <td align="center">To generate random numbers in a selected range (min and max).</td>
+   </tr>
+</table>
+
+      <ol>
+         <li>The Admin template is based on latest
+            <a class="label label-primary" href="http://getbootstrap.com/">
+               Bootstrap
+            </a>
+            , the most popular framework for developing responsive, mobile friendly projects. </li>
+         <li>Bootstrap includes a responsive, mobile first fluid grid system that appropriately scales up to 12 columns as the device or viewport size increases. It includes predefined classes for easy layout options, as well as powerful mixins for generating more semantic layouts. </li>
+         <li>Create a .container (fixed-width) or .container-fluid (full-width) for proper alignment and padding, then create .row and add columns with appropriate device name (xs, sm, md, lg) and grid number (2, 4, 6, 12). </li>
+         <li> For full documentation, please visit Bootstrap 3 site: http://getbootstrap.com/css/</li>
+      </ol>
+      <div class="col-lg-12 highlight box">
+         <pre style="padding-bottom:00px"><code class="html">&lt;!-- ========== Left Sidebar Start ========== --&gt;
+
+            &lt;div class=&quot;left side-menu&quot;&gt;
+                &lt;div class=&quot;sidebar-inner slimscrollleft&quot;&gt;
+                    &lt;div class=&quot;user-details&quot;&gt;
+                        &lt;div class=&quot;pull-left&quot;&gt;
+                            &lt;img src=&quot;images/users/avatar-1.jpg&quot; alt=&quot;&quot; class=&quot;thumb-md img-circle&quot;&gt;
+                        &lt;/div&gt;
+                        &lt;div class=&quot;user-info&quot;&gt;
+                            &lt;div class=&quot;dropdown&quot;&gt;
+                                &lt;a href=&quot;#&quot; class=&quot;dropdown-toggle&quot; data-toggle=&quot;dropdown&quot; aria-expanded=&quot;false&quot;&gt;John Doe &lt;span class=&quot;caret&quot;&gt;&lt;/span&gt;&lt;/a&gt;
+                                &lt;ul class=&quot;dropdown-menu&quot;&gt;
+                                    &lt;li&gt;&lt;a href=&quot;javascript:void(0)&quot;&gt;&lt;i class=&quot;md md-face-unlock&quot;&gt;&lt;/i&gt; Profile&lt;div class=&quot;ripple-wrapper&quot;&gt;&lt;/div&gt;&lt;/a&gt;&lt;/li&gt;
+                                    &lt;li&gt;&lt;a href=&quot;javascript:void(0)&quot;&gt;&lt;i class=&quot;md md-settings&quot;&gt;&lt;/i&gt; Settings&lt;/a&gt;&lt;/li&gt;
+                                    &lt;li&gt;&lt;a href=&quot;javascript:void(0)&quot;&gt;&lt;i class=&quot;md md-lock&quot;&gt;&lt;/i&gt; Lock screen&lt;/a&gt;&lt;/li&gt;
+                                    &lt;li&gt;&lt;a href=&quot;javascript:void(0)&quot;&gt;&lt;i class=&quot;md md-settings-power&quot;&gt;&lt;/i&gt; Logout&lt;/a&gt;&lt;/li&gt;
+                                &lt;/ul&gt;
+                            &lt;/div&gt;
+                            
+                            &lt;p class=&quot;text-muted m-0&quot;&gt;Administrator&lt;/p&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                    &lt;!--- Divider --&gt;
+                    &lt;div id=&quot;sidebar-menu&quot;&gt;
+                        &lt;ul&gt;
+                            &lt;li&gt;
+
+                                &lt;a href=&quot;index.html&quot; class=&quot;waves-effect active&quot;&gt;&lt;i class=&quot;md md-home&quot;&gt;&lt;/i&gt;&lt;span&gt; Dashboard &lt;/span&gt;&lt;/a&gt;
+                            &lt;/li&gt;
+
+                            &lt;li class=&quot;has_sub&quot;&gt;
+                                &lt;a href=&quot;#&quot; class=&quot;waves-effect&quot;&gt;&lt;i class=&quot;md md-mail&quot;&gt;&lt;/i&gt;&lt;span&gt; Mail &lt;/span&gt;&lt;span class=&quot;pull-right&quot;&gt;&lt;i class=&quot;md md-add&quot;&gt;&lt;/i&gt;&lt;/span&gt;&lt;/a&gt;
+                                &lt;ul class=&quot;list-unstyled&quot;&gt;
+                                    &lt;li&gt;&lt;a href=&quot;inbox.html&quot;&gt;Inbox&lt;/a&gt;&lt;/li&gt;
+                                    &lt;li&gt;&lt;a href=&quot;email-compose.html&quot;&gt;Compose Mail&lt;/a&gt;&lt;/li&gt;
+                                    &lt;li&gt;&lt;a href=&quot;email-read.html&quot;&gt;View Mail&lt;/a&gt;&lt;/li&gt;
+                                &lt;/ul&gt;
+                            &lt;/li&gt;
+
+                            &lt;li&gt;
+                                &lt;a href=&quot;calendar.html&quot; class=&quot;waves-effect&quot;&gt;&lt;i class=&quot;md md-event&quot;&gt;&lt;/i&gt;&lt;span&gt; Calendar &lt;/span&gt;&lt;/a&gt;
+                            &lt;/li&gt;
+
+                            &lt;li class=&quot;has_sub&quot;&gt;
+                                &lt;a href=&quot;#&quot; class=&quot;waves-effect&quot;&gt;&lt;i class=&quot;md md-palette&quot;&gt;&lt;/i&gt; &lt;span&gt; Elements &lt;/span&gt; &lt;span class=&quot;pull-right&quot;&gt;&lt;i class=&quot;md md-add&quot;&gt;&lt;/i&gt;&lt;/span&gt;&lt;/a&gt;
+                                &lt;ul class=&quot;list-unstyled&quot;&gt;
+                                    &lt;li&gt;&lt;a href=&quot;typography.html&quot;&gt;Typography&lt;/a&gt;&lt;/li&gt;
+                                    &lt;li&gt;&lt;a href=&quot;buttons.html&quot;&gt;Buttons&lt;/a&gt;&lt;/li&gt;
+                                    &lt;li&gt;&lt;a href=&quot;panels.html&quot;&gt;Panels&lt;/a&gt;&lt;/li&gt;
+                                    &lt;li&gt;&lt;a href=&quot;checkbox-radio.html&quot;&gt;Checkboxs-Radios&lt;/a&gt;&lt;/li&gt;
+                                    &lt;li&gt;&lt;a href=&quot;tabs-accordions.html&quot;&gt;Tabs &amp;amp; Accordions&lt;/a&gt;&lt;/li&gt;
+                                    &lt;li&gt;&lt;a href=&quot;modals.html&quot;&gt;Modals&lt;/a&gt;&lt;/li&gt;
+                                    &lt;li&gt;&lt;a href=&quot;bootstrap-ui.html&quot;&gt;BS Elements&lt;/a&gt;&lt;/li&gt;
+                                    &lt;li&gt;&lt;a href=&quot;progressbars.html&quot;&gt;Progress Bars&lt;/a&gt;&lt;/li&gt;
+                                    &lt;li&gt;&lt;a href=&quot;notification.html&quot;&gt;Notification&lt;/a&gt;&lt;/li&gt;
+                                    &lt;li&gt;&lt;a href=&quot;sweet-alert.html&quot;&gt;Sweet-Alert&lt;/a&gt;&lt;/li&gt;
+                                &lt;/ul&gt;
+                            &lt;/li&gt;
+
+                            &lt;li class=&quot;has_sub&quot;&gt;
+                                &lt;a href=&quot;#&quot; class=&quot;waves-effect&quot;&gt;&lt;i class=&quot;md md-invert-colors-on&quot;&gt;&lt;/i&gt;&lt;span&gt; Components &lt;/span&gt;&lt;span class=&quot;pull-right&quot;&gt;&lt;i class=&quot;md md-add&quot;&gt;&lt;/i&gt;&lt;/span&gt;&lt;/a&gt;
+                                &lt;ul class=&quot;list-unstyled&quot;&gt;
+                                    &lt;li&gt;&lt;a href=&quot;grid.html&quot;&gt;Grid&lt;/a&gt;&lt;/li&gt;
+                                    &lt;li&gt;&lt;a href=&quot;portlets.html&quot;&gt;Portlets&lt;/a&gt;&lt;/li&gt;
+                                    &lt;li&gt;&lt;a href=&quot;widgets.html&quot;&gt;Widgets&lt;/a&gt;&lt;/li&gt;
+                                    &lt;li&gt;&lt;a href=&quot;nestable-list.html&quot;&gt;Nesteble&lt;/a&gt;&lt;/li&gt;
+                                    &lt;li&gt;&lt;a href=&quot;ui-sliders.html&quot;&gt;Sliders &lt;/a&gt;&lt;/li&gt;
+                                    &lt;li&gt;&lt;a href=&quot;gallery.html&quot;&gt;Gallery &lt;/a&gt;&lt;/li&gt;
+                                    &lt;li&gt;&lt;a href=&quot;pricing.html&quot;&gt;Pricing Table &lt;/a&gt;&lt;/li&gt;
+                                &lt;/ul&gt;
+                            &lt;/li&gt;
+
+                            &lt;li class=&quot;has_sub&quot;&gt;
+                                &lt;a href=&quot;#&quot; class=&quot;waves-effect&quot;&gt;&lt;i class=&quot;md md-redeem&quot;&gt;&lt;/i&gt; &lt;span&gt; Icons &lt;/span&gt; &lt;span class=&quot;pull-right&quot;&gt;&lt;i class=&quot;md md-add&quot;&gt;&lt;/i&gt;&lt;/span&gt;&lt;/a&gt;
+                                &lt;ul class=&quot;list-unstyled&quot;&gt;
+                                    &lt;li&gt;&lt;a href=&quot;material-icon.html&quot;&gt;Material Design&lt;/a&gt;&lt;/li&gt;
+                                    &lt;li&gt;&lt;a href=&quot;ion-icons.html&quot;&gt;Ion Icons&lt;/a&gt;&lt;/li&gt;
+                                    &lt;li&gt;&lt;a href=&quot;font-awesome.html&quot;&gt;Font awesome&lt;/a&gt;&lt;/li&gt;
+                                &lt;/ul&gt;
+                            &lt;/li&gt;
+                            
+                            &lt;li class=&quot;has_sub&quot;&gt;
+                                &lt;a href=&quot;#&quot; class=&quot;waves-effect&quot;&gt;&lt;i class=&quot;md md-now-widgets&quot;&gt;&lt;/i&gt;&lt;span&gt; Forms &lt;/span&gt;&lt;span class=&quot;pull-right&quot;&gt;&lt;i class=&quot;md md-add&quot;&gt;&lt;/i&gt;&lt;/span&gt;&lt;/a&gt;
+                                &lt;ul class=&quot;list-unstyled&quot;&gt;
+                                    &lt;li&gt;&lt;a href=&quot;form-elements.html&quot;&gt;General Elements&lt;/a&gt;&lt;/li&gt;
+                                    &lt;li&gt;&lt;a href=&quot;form-validation.html&quot;&gt;Form Validation&lt;/a&gt;&lt;/li&gt;
+                                    &lt;li&gt;&lt;a href=&quot;form-advanced.html&quot;&gt;Advanced Form&lt;/a&gt;&lt;/li&gt;
+                                    &lt;li&gt;&lt;a href=&quot;form-wizard.html&quot;&gt;Form Wizard&lt;/a&gt;&lt;/li&gt;
+                                    &lt;li&gt;&lt;a href=&quot;form-editor.html&quot;&gt;WYSIWYG Editor&lt;/a&gt;&lt;/li&gt;
+                                    &lt;li&gt;&lt;a href=&quot;code-editor.html&quot;&gt;Code Editors&lt;/a&gt;&lt;/li&gt;
+                                    &lt;li&gt;&lt;a href=&quot;form-uploads.html&quot;&gt;Multiple File Upload&lt;/a&gt;&lt;/li&gt;
+                                    &lt;li&gt;&lt;a href=&quot;form-xeditable.html&quot;&gt;X-editable&lt;/a&gt;&lt;/li&gt;
+                                &lt;/ul&gt;
+                            &lt;/li&gt;
+
+                            &lt;li class=&quot;has_sub&quot;&gt;
+                                &lt;a href=&quot;#&quot; class=&quot;waves-effect&quot;&gt;&lt;i class=&quot;md md-view-list&quot;&gt;&lt;/i&gt;&lt;span&gt; Data Tables &lt;/span&gt;&lt;span class=&quot;pull-right&quot;&gt;&lt;i class=&quot;md md-add&quot;&gt;&lt;/i&gt;&lt;/span&gt;&lt;/a&gt;
+                                &lt;ul class=&quot;list-unstyled&quot;&gt;
+                                    &lt;li&gt;&lt;a href=&quot;tables.html&quot;&gt;Basic Tables&lt;/a&gt;&lt;/li&gt;
+                                    &lt;li&gt;&lt;a href=&quot;table-datatable.html&quot;&gt;Data Table&lt;/a&gt;&lt;/li&gt;
+                                    &lt;li&gt;&lt;a href=&quot;tables-editable.html&quot;&gt;Editable Table&lt;/a&gt;&lt;/li&gt;
+                                    &lt;li&gt;&lt;a href=&quot;responsive-table.html&quot;&gt;Responsive Table&lt;/a&gt;&lt;/li&gt;
+                                &lt;/ul&gt;
+                            &lt;/li&gt;
+
+                            &lt;li class=&quot;has_sub&quot;&gt;
+                                &lt;a href=&quot;#&quot; class=&quot;waves-effect&quot;&gt;&lt;i class=&quot;md md-poll&quot;&gt;&lt;/i&gt;&lt;span&gt; Charts &lt;/span&gt;&lt;span class=&quot;pull-right&quot;&gt;&lt;i class=&quot;md md-add&quot;&gt;&lt;/i&gt;&lt;/span&gt;&lt;/a&gt;
+                                &lt;ul class=&quot;list-unstyled&quot;&gt;
+                                    &lt;li&gt;&lt;a href=&quot;morris-chart.html&quot;&gt;Morris Chart&lt;/a&gt;&lt;/li&gt;
+                                    &lt;li&gt;&lt;a href=&quot;chartjs.html&quot;&gt;Chartjs&lt;/a&gt;&lt;/li&gt;
+                                    &lt;li&gt;&lt;a href=&quot;flot-chart.html&quot;&gt;Flot Chart&lt;/a&gt;&lt;/li&gt;
+                                    &lt;li&gt;&lt;a href=&quot;peity-chart.html&quot;&gt;Peity Charts&lt;/a&gt;&lt;/li&gt;
+                                    &lt;li&gt;&lt;a href=&quot;charts-sparkline.html&quot;&gt;Sparkline Charts&lt;/a&gt;&lt;/li&gt;
+                                    &lt;li&gt;&lt;a href=&quot;chart-radial.html&quot;&gt;Radial charts&lt;/a&gt;&lt;/li&gt;
+                                    &lt;li&gt;&lt;a href=&quot;other-chart.html&quot;&gt;Other Chart&lt;/a&gt;&lt;/li&gt;
+                                &lt;/ul&gt;
+                            &lt;/li&gt;
+
+                            &lt;li class=&quot;has_sub&quot;&gt;
+                                &lt;a href=&quot;#&quot; class=&quot;waves-effect&quot;&gt;&lt;i class=&quot;md md-place&quot;&gt;&lt;/i&gt;&lt;span&gt; Maps &lt;/span&gt;&lt;span class=&quot;pull-right&quot;&gt;&lt;i class=&quot;md md-add&quot;&gt;&lt;/i&gt;&lt;/span&gt;&lt;/a&gt;
+                                &lt;ul class=&quot;list-unstyled&quot;&gt;
+                                    &lt;li&gt;&lt;a href=&quot;gmap.html&quot;&gt; Google Map&lt;/a&gt;&lt;/li&gt;
+                                    &lt;li&gt;&lt;a href=&quot;vector-map.html&quot;&gt; Vector Map&lt;/a&gt;&lt;/li&gt;
+                                &lt;/ul&gt;
+                            &lt;/li&gt;
+
+                            &lt;li class=&quot;has_sub&quot;&gt;
+                                &lt;a href=&quot;#&quot; class=&quot;waves-effect&quot;&gt;&lt;i class=&quot;md md-pages&quot;&gt;&lt;/i&gt;&lt;span&gt; Pages &lt;/span&gt;&lt;span class=&quot;pull-right&quot;&gt;&lt;i class=&quot;md md-add&quot;&gt;&lt;/i&gt;&lt;/span&gt;&lt;/a&gt;
+                                &lt;ul class=&quot;list-unstyled&quot;&gt;
+                                    &lt;li&gt;&lt;a href=&quot;profile.html&quot;&gt;Profile&lt;/a&gt;&lt;/li&gt;
+                                    &lt;li&gt;&lt;a href=&quot;timeline.html&quot;&gt;Timeline&lt;/a&gt;&lt;/li&gt;
+                                    &lt;li&gt;&lt;a href=&quot;invoice.html&quot;&gt;Invoice&lt;/a&gt;&lt;/li&gt;
+                                    &lt;li&gt;&lt;a href=&quot;email-template.html&quot;&gt;Email template&lt;/a&gt;&lt;/li&gt;
+                                    &lt;li&gt;&lt;a href=&quot;contact.html&quot;&gt;Contact-list&lt;/a&gt;&lt;/li&gt;
+                                    &lt;li&gt;&lt;a href=&quot;login.html&quot;&gt;Login&lt;/a&gt;&lt;/li&gt;
+                                    &lt;li&gt;&lt;a href=&quot;register.html&quot;&gt;Register&lt;/a&gt;&lt;/li&gt;
+                                    &lt;li&gt;&lt;a href=&quot;recoverpw.html&quot;&gt;Recover Password&lt;/a&gt;&lt;/li&gt;
+                                    &lt;li&gt;&lt;a href=&quot;lock-screen.html&quot;&gt;Lock Screen&lt;/a&gt;&lt;/li&gt;
+                                    &lt;li&gt;&lt;a href=&quot;blank.html&quot;&gt;Blank Page&lt;/a&gt;&lt;/li&gt;
+                                    &lt;li&gt;&lt;a href=&quot;maintenance.html&quot;&gt;Maintenance&lt;/a&gt;&lt;/li&gt;
+                                    &lt;li&gt;&lt;a href=&quot;coming-soon.html&quot;&gt;Coming-soon&lt;/a&gt;&lt;/li&gt;
+                                    &lt;li&gt;&lt;a href=&quot;404.html&quot;&gt;404 Error&lt;/a&gt;&lt;/li&gt;
+                                    &lt;li&gt;&lt;a href=&quot;404_alt.html&quot;&gt;404 alt&lt;/a&gt;&lt;/li&gt;
+                                    &lt;li&gt;&lt;a href=&quot;500.html&quot;&gt;500 Error&lt;/a&gt;&lt;/li&gt;
+                                &lt;/ul&gt;
+                            &lt;/li&gt;
+
+                            &lt;li class=&quot;has_sub&quot;&gt;
+                                &lt;a href=&quot;javascript:void(0);&quot; class=&quot;waves-effect&quot;&gt;&lt;i class=&quot;md md-share&quot;&gt;&lt;/i&gt;&lt;span&gt;Multi Level &lt;/span&gt;&lt;span class=&quot;pull-right&quot;&gt;&lt;i class=&quot;md md-add&quot;&gt;&lt;/i&gt;&lt;/span&gt;&lt;/a&gt;
+                                &lt;ul&gt;
+                                    &lt;li class=&quot;has_sub&quot;&gt;
+                                        &lt;a href=&quot;javascript:void(0);&quot; class=&quot;waves-effect&quot;&gt;&lt;span&gt;Menu Level 1.1&lt;/span&gt; &lt;span class=&quot;pull-right&quot;&gt;&lt;i class=&quot;md md-add&quot;&gt;&lt;/i&gt;&lt;/span&gt;&lt;/a&gt;
+                                        &lt;ul style=&quot;&quot;&gt;
+                                            &lt;li&gt;&lt;a href=&quot;javascript:void(0);&quot;&gt;&lt;span&gt;Menu Level 2.1&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+                                            &lt;li&gt;&lt;a href=&quot;javascript:void(0);&quot;&gt;&lt;span&gt;Menu Level 2.2&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+                                            &lt;li&gt;&lt;a href=&quot;javascript:void(0);&quot;&gt;&lt;span&gt;Menu Level 2.3&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+                                        &lt;/ul&gt;
+                                    &lt;/li&gt;
+                                    &lt;li&gt;
+                                        &lt;a href=&quot;javascript:void(0);&quot;&gt;&lt;span&gt;Menu Level 1.2&lt;/span&gt;&lt;/a&gt;
+                                    &lt;/li&gt;
+                                &lt;/ul&gt;
+                            &lt;/li&gt;
+                        &lt;/ul&gt;
+                        &lt;div class=&quot;clearfix&quot;&gt;&lt;/div&gt;
+                    &lt;/div&gt;
+                    &lt;div class=&quot;clearfix&quot;&gt;&lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;!-- Left Sidebar End --&gt; 
+    </code></pre>
+         <h2> Plugins</h2>
+         <p> All the plugins can be found in assets directory. Each plugin folder is containing files from plugins as well as initilization file for the plugin if required. Somep plugins don't require any initialization, they can direclt act on html markup itself, but some requires explicit intilization. So for them you'll be able to see the initialization js file in plugin directory itself. </p>
+      </div>
+   </div>
+   <div id="css-struc">
+      <div class="title">
+         <h1><i class="glyphicon glyphicon-list-alt"></i> Application Module </h1>
+      </div>
+         <p>We have crafted all the JS based components very carefuly. The theme follows prototype based approch which gives performance and efficiency. We have one common app module which is present in each and every page. This is called "jasmineApp", please see file <code>js/jquery.app.js</code> file. Note that when you are adding new page, you should add this file becuase it contains some common initialization code as mentioned below. </p>
+            <pre class="prettyprint"> <code>
+	//initializing tooltip
+	jasmineApp.prototype.initTooltipPlugin = function() {
+		$.fn.tooltip && $('[data-toggle="tooltip"]').tooltip()
+	},
+
+	//initializing popover
+	jasmineApp.prototype.initPopoverPlugin = function() {
+		$.fn.popover && $('[data-toggle="popover"]').popover()
+	},
+
+	//initializing nicescroll
+	jasmineApp.prototype.initNiceScrollPlugin = function() {
+		//You can change the color of scroll bar here
+		$.fn.niceScroll &&  $(".nicescroll").niceScroll({ cursorcolor: '#9d9ea5', cursorborderradius: '0px'});
+	},
+
+	//initializing knob
+	jasmineApp.prototype.initKnob = function() {
+		if ($(".knob").length > 0) {
+			$(".knob").knob();
+		}
+	}
+ </code>
+</pre>
+      <div id="javascript">
+         <div class="title">
+            <h1><i class="glyphicon glyphicon-map-marker"></i> Utilities </h1>
+         </div>
+            <p>The theme contains various utilies including some helper classes, widgets, etc. Please see below some helper classes.</p>
+            <p>Helper Classes : </p>
+         <table width="500" border="1">
+            <tr>
+               <th>Class</th>
+               <th>Description</th>
+            </tr>
+            <tr>
+               <td align="center"> .p-0 </td>
+               <td align="center"> Removes all padding space </td>
+            </tr>
+            <tr>
+               <td align="center"> .p-t-0 </td>
+               <td align="center"> Remove top padding </td>
+            </tr>
+            <tr>
+               <td align="center"> .p-t-10 </td>
+               <td align="center"> Adds 10px top padding </td>
+            </tr>
+            <tr>
+               <td align="center"> .p-b-10 </td>
+               <td align="center"> Adds 10px bottom padding </td>
+            </tr>
+            <tr>
+               <td align="center"> .m-0 </td>
+               <td align="center"> Remove all margin </td>
+            </tr>
+            <tr>
+               <td align="center"> .m-r-5 </td>
+               <td align="center"> Adds 5px right margin </td>
+            </tr>
+            <tr>
+               <td align="center"> .m-r-10 </td>
+               <td align="center"> Adds 10px right margin </td>
+            </tr>
+            <tr>
+               <td align="center"> .m-r-15 </td>
+               <td align="center"> Adds 15px right margin </td>
+            </tr>
+            <tr>
+               <td align="center"> .m-l-10 </td>
+               <td align="center"> Adds 10px left margin </td>
+            </tr>
+            <tr>
+               <td align="center"> .m-l-15 </td>
+               <td align="center"> Adds 15px left margin </td>
+            </tr>
+            <tr>
+               <td align="center"> .m-t-0 </td>
+               <td align="center"> Remove top margin </td>
+            </tr>
+            <tr>
+               <td align="center"> .m-t-10 </td>
+               <td align="center"> Adds 10px top margin </td>
+            </tr>
+            <tr>
+               <td align="center"> .m-t-15 </td>
+               <td align="center"> Adds 15px top margin </td>
+            </tr>
+            <tr>
+               <td align="center"> .m-t-20 </td>
+               <td align="center"> Adds 20px top margin </td>
+            </tr>
+            <tr>
+               <td align="center"> .m-t-30 </td>
+               <td align="center"> Adds 30px top margin </td>
+            </tr>
+            <tr>
+               <td align="center"> .m-t-40 </td>
+               <td align="center"> Adds 40px top margin </td>
+            </tr>
+            <tr>
+               <td align="center"> .m-b-0 </td>
+               <td align="center"> Remove bottom margin </td>
+            </tr>
+            <tr>
+               <td align="center"> .m-b-10 </td>
+               <td align="center"> Adds 10px bottom margin </td>
+            </tr>
+            <tr>
+               <td align="center"> .m-b-15 </td>
+               <td align="center"> Adds 15px bottom margin </td>
+            </tr>
+            <tr>
+               <td align="center"> .m-b-30 </td>
+               <td align="center"> Adds 30px bottom margin </td>
+            </tr>
+            <tr>
+               <td align="center"> .w-xs </td>
+               <td align="center"> Minimum width 80px </td>
+            </tr>
+            <tr>
+               <td align="center"> .w-sm </td>
+               <td align="center"> Minimum width 95px </td>
+            </tr>
+            <tr>
+               <td align="center"> .w-md </td>
+               <td align="center"> Minimum width 110px </td>
+            </tr>
+            <tr>
+               <td align="center"> .w-lg </td>
+               <td align="center"> Minimum width 140px </td>
+            </tr>
+            <tr>
+               <td align="center"> .b-0 </td>
+               <td align="center"> Remove all margin </td>
+            </tr>
+         </table>
+      </div>
+   </div>
+   <div id="backgrounds">
+      <div class="title">
+         <h1><i class="glyphicon glyphicon-envelope"></i> Plugins & Resources </h1>
+      </div>
+         <p> The theme is using various awesome plugins in order to provide some functionalitity e.g. Nestables, Calendars, beautiful graphs, data grid, vector maps, etc.
+            You can find them in below list. Click to expand it, you'll see more information </p>
+      <ul>
+         <li>
+            <a class="btn btn-link" data-toggle="collapse" href="#bscalender" aria-expanded="false" aria-controls="bscalender">
+               Bootstrap Calendar
+            </a>
+            <div class="collapse" id="bscalender">
+               <div class="well">
+                   A simple twitter bootstrap calendar / agenda to mark events and select range of dates.
+                 <pre class="prettyprint">&lt;link href="assets/bootstrap-calendarbic_calendar.css&quot; rel="stylesheet"&gt;</pre>
+                  <pre class="prettyprint">&lt;script src="assets/bootstrap-calendar/bic_calendar.min.js&quot;&gt;&lt;/script&gt;</pre>
+                  <p> See documentation here: http://bichotll.github.io/bic_calendar </p>
+               </div>
+            </div>
+         </li>
+         <li>
+            <a class="btn btn-link" data-toggle="collapse" href="#bootstrap-inputmask" aria-expanded="false" aria-controls="bootstrap-inputmask">
+               Bootstrap Inputmask
+            </a>
+            <div class="collapse" id="bootstrap-inputmask">
+               <div class="well">
+                  <p> Bootstrap bootstrap-inputmask plugin
+                  <pre class="prettyprint">&lt;script src="assets/bootstrap-inputmask/bootstrap-inputmask.min.js&quot;&gt;&lt;/script&gt;</pre>
+                  <p> See documentation here: http://getbootstrap.com </p>
+               </div>
+            </div>
+         </li>
+         <li>
+            <a class="btn btn-link" data-toggle="collapse" href="#wysihtml" aria-expanded="false" aria-controls="wysihtml">
+               Bootstrap Wysihtml5
+            </a>
+            <div class="collapse" id="wysihtml">
+               <div class="well">
+                  <p> Open source rich text editor based on HTML5 and the progressive-enhancement approach. Uses a sophisticated security concept
+                     and aims to generate fully valid HTML5 markup by preventing unmaintainable tag soups and inline styles.
+                  <pre class="prettyprint">&lt;link href="assets/bootstrap-wysihtml5/bootstrap-wysihtml5.css&quot; rel="stylesheet"&gt;</pre>
+                  <pre class="prettyprint">&lt;link href="assets/bootstrap-wysihtml5/wysiwyg-color.css&quot; rel="stylesheet"&gt;</pre>
+                  <pre class="prettyprint">&lt;script src="assets/bootstrap-wysihtml5/wysihtml5-0.3.0.js&quot;&gt;&lt;/script&gt;</pre>
+                  <pre class="prettyprint">&lt;script src="assets/bootstrap-wysihtml5/bootstrap-wysihtml5.js&quot;&gt;&lt;/script&gt;</pre>
+                  </p>
+                  <p> See documentation here: http://wysihtml.com/ </p>
+               </div>
+            </div>
+         </li>
+         <li>
+            <a class="btn btn-link" data-toggle="collapse" href="#bseditable" aria-expanded="false" aria-controls="bseditable">
+               Bootstrap Xeditable
+            </a>
+            <div class="collapse" id="bseditable">
+               <div class="well">
+                  <p> In-place editing with Twitter Bootstrap
+                  <pre class="prettyprint">&lt;link href="assets/bootstrap-xeditable/bootstrap-editable.css&quot; rel="stylesheet"&gt;</pre>
+                  <pre class="prettyprint">&lt;script src="assets/bootstrap-xeditable/bootstrap-editable.min&quot;&gt;&lt;/script&gt;</pre>
+                  </p>
+                  <p> See documentation here: http://github.com/vitalets/x-editable </p>
+               </div>
+            </div>
+         </li>
+         <p><b>You can add any plugins above.</b></p>
+      </ul>
+   </div>
+   <hr/>
+   <div id="icons">
+      <div class="title">
+         <h1><i class="glyphicon glyphicon-heart"></i> Credits & Official Documentation </h1>
+      </div>
+      <p>Ion Icons and Simple Line Icons are @font-face icons sets that you can change size, color etc.. using CSS. 
+         If you need more information about these icon sets, please visit this sites: </p>
+      <ul class="">
+         <li>
+            <a href="http://getbootstrap.com/">
+               Bootstrap
+            </a>
+         </li>
+         <li>
+            <a href="https://jquery.com/">
+               Jquery
+            </a>
+         </li>
+         <li>
+            <a href="http://fortawesome.github.io/Font-Awesome/">
+               Font-Awesome
+            </a>
+         </li>
+         <li>
+            <a href="http://ionicons.com/">
+               Ionicons
+            </a>
+         </li>
+         <li>
+            <a href="http://daneden.github.io/animate.css/">
+               Animate.css
+            </a>
+         </li>
+         <li>
+            <a href="https://github.com/matthieua/WOW">
+               Wow.js
+            </a>
+         </li>
+         <li>
+            <a href="http://tristanedwards.me/sweetalert">
+               Sweet-Alert
+            </a>
+         </li>
+         <li>
+            <a href="http://www.codrops.com">
+               Codrops
+            </a>
+         </li>
+         <li>
+            <a href="http://dbushell.com/">
+               Nestable
+            </a>
+         </li>
+         <li>
+            <a href="http://areaaperta.com/nicescroll/">
+               Nicescroll
+            </a>
+         </li>
+         <li>
+            <a href="http://arshaw.com/fullcalendar/">
+               Full Calendar
+            </a>
+         </li>
+         <li>
+            <a href="http://jqueryvalidation.org/">
+               Form Validator
+            </a>
+         </li>
+         <li>
+            <a href="https://github.com/xoxco/jQuery-Tags-Input">
+               Tags Input
+            </a>
+         </li>
+         <li>
+            <a href="http://simontabor.com/labs/toggles">
+               Toggels
+            </a>
+         </li>
+         <li>
+            <a href="http://jdewit.github.com/bootstrap-timepicker">
+               Bootstrap-timepicker
+            </a>
+         </li>
+         <li>
+            <a href="http://www.eyecon.ro/bootstrap-colorpicker">
+               Bootstrap Colorpicker
+            </a>
+         </li>
+         <li>
+            <a href="http://loudev.com/">
+               Multi-select
+            </a>
+         </li>
+         <li>
+            <a href="https://select2.github.io/">
+               Select2
+            </a>
+         </li>
+         <li>
+            <a href="http://bootstrapvalidator.com">
+               Bootstrapvalidator
+            </a>
+         </li>
+         <li>
+            <a href="http://www.jquery-steps.com">
+               Jquery-steps
+            </a>
+         </li>
+         <li>
+            <a href="https://github.com/xing/wysihtml5">
+               Wysihtml5
+            </a>
+         </li>
+         <li>
+            <a href="https://github.com/summernote/summernote">
+               Summernote
+            </a>
+         </li>
+         <li>
+            <a href="https://codemirror.net/">
+               Codemirror
+            </a>
+         </li>
+         <li>
+            <a href="http://www.dropzonejs.com/">
+               Dropzonejs
+            </a>
+         </li>
+         <li>
+            <a href="https://github.com/fengyuanchen/cropper">
+               Cropper
+            </a>
+         </li>
+         <li>
+            <a href="https://www.datatables.net">
+               Datatables
+            </a>
+         </li>
+         <li>
+            <a href="http://morrisjs.github.io/morris.js/">
+               Morris
+            </a>
+         </li>
+         <li>
+            <a href="http://chartjs.org/">
+               Chartjs
+            </a>
+         </li>
+         <li>
+            <a href="http://benpickles.github.io/peity">
+               Peity Chart
+            </a>
+         </li>
+         <li>
+            <a href="http://omnipotent.net/jquery.sparkline/">
+               Sparkline
+            </a>
+         </li>
+         <li>
+            <a href="https://github.com/aterrien/jQuery-Knob">
+               JQuery-Knob
+            </a>
+         </li>
+         <li>
+            <a href="http://robert-fleischmann.de">
+               Robert-fleischmann
+            </a>
+         </li>
+         <li>
+            <a href="https://hpneo.github.io/gmaps/">
+               Gmaps
+            </a>
+         </li>
+         <li>
+            <a href="http://jqvmap.com">
+               Vector Maps
+            </a>
+         </li>
+         <li>
+            <a href="http://uifaces.com/">
+               Uifaces (images)
+            </a>
+         </li>
+         <li>
+            <a href="https://stocksnap.io/">
+               Stocksnap (images)
+            </a>
+         </li>
+         <li>
+            <a href="http://www.flotcharts.org/">
+               Flot-charts
+            </a>
+         </li>
+         <li>
+            <a href="http://ionden.com/">
+               Ion-Slider
+            </a>
+         </li>
+         <li>
+            <a href="http://dimsemenov.com/plugins/magnific-popup/">
+               Magnific-popup
+            </a>
+         </li>
+         <li>
+            <a href="http://isotope.metafizzy.co">
+               Isotope
+            </a>
+         </li>
+         <li>
+            <a href="http://www.charlesmudy.com/respmail/">
+               Email-template
+            </a>
+         </li>
+         <li>
+            <a href="http://materializecss.com/">
+               Materialdesign Js
+            </a>
+         </li>
+         <li>
+            <a href="https://github.com/peachananr/simple-text-rotator">
+               Simple-text-rotator
+            </a>
+         </li>
+         <li>
+            <a href="http://github.com/rendro/countdown/">
+               Jquery.countdown.js
+            </a>
+         </li>
+         <li>
+            <a href="https://github.com/fians/Waves">
+               Waves Effect
+            </a>
+         </li>
+         <li>
+            <a href="http://codepen.io/">
+               Codepen
+            </a>
+         </li>
+         <li>
+            <a href="https://plus.google.com/photos/+BrianParkerson/albums/6079410227152958097?sort=1">
+               Profile background image
+            </a>
+         </li>
+      </ul>
+   </div>
+   <div id="support">
+      <div class="title">
+         <h1><i class="glyphicon glyphicon-heart"></i> Support </h1>
+      </div>
+      <p> We would be happy to help you if you have any questions relating to this theme. Please feel free to get back to us directly on the platform itself or via email </p>
+      <p class="highlight box"> Submit your support request either on platform itself or via an email. </p>
+   </div>
+</div>
+<div class="copyright">Copyright
+   <a href="http://squaredesigns.net/">
+      Square Media
+   </a>
+   2015</div>
+<script src="assets/js/jquery-1.10.2.min.js"></script>
+<script src="assets/js/bootstrap.js"></script>
+<script src="assets/js/easing.js"></script>
+<script src="assets/js/scripts.js"></script>
+</body>
+</html>

@@ -1,0 +1,127 @@
+﻿@layout PrivateLayout
+@using Business.Collection
+@using MailFarmsBlazor.Code
+@inherits PageComponent
+@inject LayoutService layoutService
+@inject IJSRuntime JSRuntime
+@page "/private/server/items"
+
+@code
+{
+    public EventCallback<LinkButton> OnFancyLog { get; set; }
+    public EventCallback<LinkButton> OnDomainBan { get; set; }
+
+    /// <summary>
+    /// Chiamato da js, dentro _Host.cshtml
+    /// </summary>
+    [JSInvokable]
+    public void Refresh()
+    {
+        StateHasChanged();
+    }
+
+    protected override void OnInitialized()
+    {
+        //invio a javascript il riferimento di questa pagina, della istanza della classe di questa pagina
+        //in modo che possa chiamare il metodo Refresh alla chiusura del fancybox
+        var dotNetReference = DotNetObjectReference.Create(this);
+        JSRuntime.InvokeVoidAsync("blazorExtensions.TakeObject", dotNetReference);
+
+        layoutService.OnTitlePageCallback.InvokeAsync("Server - Elenco");
+
+        OnFancyLog = new EventCallback<LinkButton>(null, (Action<LinkButton>)(p =>
+        {
+            var server = (Server)p.Object;
+            JSRuntime.InvokeVoidAsync("blazorExtensions.FancyBox", CommonNetCore.Settings.Config.WebPath + "/private/server/popuplog?ServerId=" + server.Id);
+            StateHasChanged();
+        }));
+
+        OnDomainBan = new EventCallback<LinkButton>(null, (Action<LinkButton>)(p =>
+        {
+            var server = (Server)p.Object;
+            JSRuntime.InvokeVoidAsync("blazorExtensions.FancyBoxRefresh", CommonNetCore.Settings.Config.WebPath + "/private/server/popupdominiban?ServerId=" + server.Id);
+            StateHasChanged();
+        }));
+    }
+}
+
+<LoginComponent />
+
+<div class="row">
+    <div class="col-lg-12">
+        <p>
+            <b>Riceve</b>: il server accetta nuove email in coda solo se selezionato.<br />
+            <b>Attivo</b>: il server processa le sue email in coda solo se è selezionato.
+        </p>
+    </div>
+    <div class="col-lg-12">
+        <div class="panel">
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>Server</th>
+                            <th style="width: 70px; text-align: center">Coda</th>
+                            <th style="width: 70px; text-align: center">Inviate</th>
+                            <th style="width: 70px; text-align: center">Errate</th>
+                            <th style="width: 70px; text-align: center">Riceve</th>
+                            <th style="width: 70px; text-align: center">Attivo</th>
+                            <th style="width: 110px; text-align: center">Domini Ban.</th>
+                            <th style="width: 110px; text-align: center">Service Log</th>
+                            <th style="width:110px"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @{
+                            var servers = Business.Collection.ServerCollection.GetList(orderPredicate: "Ip ASC");
+
+                            foreach (var server in servers)
+                            {
+                                <tr>
+                                    @((MarkupString)(MailFarms_SharedService.Code.RequestWindowsService.Ping(server.Ip) ?
+                            "<td style=\"background-color: "+GreenHex+"\">" + server.Ip + "</td>" :
+                            "<td style=\"background-color: "+RedHex+"\">" + server.Ip + "</td>"))
+
+                                    <td style="text-align:center">
+                                        @MailFarms_SharedService.Code.RequestWindowsService.InCoda(server.Ip).Result
+                                    </td>
+
+                                    <td style="text-align:center">
+                                        @server.Inviate
+                                    </td>
+
+                                    <td style="text-align:center">
+                                        @server.Errate
+                                    </td>
+
+                                    <td style="text-align:center">
+                                        <CheckBox Checked="server.Riceve" Object="server" OnChangeCallback="RiceveOnChangeCallback" Style="width:20px!important; text-align: center" />
+                                    </td>
+
+                                    <td style="text-align:center">
+                                        <CheckBox Checked="server.Attivo" Object="server" OnChangeCallback="AttivoOnChangeCallback" Style="width:20px!important; text-align: center" />
+                                    </td>
+
+                                    <td style="text-align:center">
+                                        <BlazorLibrary.Component.LinkButton Style="margin-right:8px" Object="server" OnClickCallback="OnDomainBan"><i class="fa fa-ban"></i></BlazorLibrary.Component.LinkButton> (@ServerDominiBannatiCollection.GetCount(wherePredicate: "IdServer = " + server.Id))
+                                    </td>
+
+                                    <td style="text-align:center">
+                                        <BlazorLibrary.Component.LinkButton Style="margin-right:8px" Object="server" OnClickCallback="OnFancyLog"><i class="fa fa-external-link-square"></i></BlazorLibrary.Component.LinkButton>
+                                    </td>
+
+                                    <td style="text-align:center">
+                                        <a style="margin-right:8px" href="/private/server/editor?ServerId=@server.Id"><i class="fa fa-edit"></i></a>
+                                        <BlazorLibrary.Component.LinkButton Object="server" ConfirmMessage="Vuoi eliminare il server?" OnClickCallback="EliminaServerClick"><i class="fa fa-remove"></i></BlazorLibrary.Component.LinkButton>
+                                    </td>
+                                </tr>
+                            }
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,50 @@
+﻿@layout PopupLayout
+@using CommonNetCore
+@inherits PageComponent
+
+@page "/private/email/popupanteprima"
+@code
+{
+    string contenuto = string.Empty;
+
+    string allegati = "";
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        base.OnAfterRenderAsync(firstRender);
+
+        if (!firstRender)
+            return;
+
+        Id = GetQueryLong("EmailId");
+
+        var email = Business.Entity.Email.GetItem(Id);
+
+        if (email == null)
+            return;
+
+        contenuto = email.Contenuto;
+
+        var emailAllegati = email.EmailAllegatiCollection;
+
+        if (emailAllegati.Any())
+        {
+            var list = new List<string>();
+
+            foreach (var allegato in emailAllegati)
+                list.Add("<a style=\"color:#000; text-decoration:underline\" href=\"" + Settings.Config.WebPath + "/download/emailallegato/" + allegato.Id + "\">" + allegato.NomeFile + "</a> <span style=\"font-size:80%\">(" + allegato.Dimensione.FormatBytes() + ")</span>");
+
+            allegati = "<div class=\"col-lg-12\" style=\"padding-top: 20px\">" + string.Join(", ", list.ToArray()) + "</span></div>";
+        }
+
+        StateHasChanged();
+    }
+}
+
+<div class="row" style="background-color: #fff; height: 100vh;">
+    @((MarkupString)allegati)
+    <div class="col-lg-12" style="background-color: #fff; padding: 20px">
+        @((MarkupString) contenuto)
+    </div>
+</div>
+

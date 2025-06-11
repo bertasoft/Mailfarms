@@ -1,0 +1,26 @@
+﻿@using BlazorLibrary.Code
+@inject AlertService alertService
+@inherits LayoutComponentBase
+@code
+{
+    AlertPopup alertPopup;
+
+    protected override void OnInitialized()
+    {
+        alertService.OnMessageCallback = new EventCallback<AlertService.MessageState>(null, (Action<AlertService.MessageState>)(result =>
+        {
+            if (result.Success)
+            {
+                alertPopup.Success(result.Message);
+            }
+            else
+            {
+                alertPopup.Fail(result.Message);
+            }
+        }));
+    }
+}
+
+<AlertPopup @ref="alertPopup" />
+
+<div class="container">@Body</div>

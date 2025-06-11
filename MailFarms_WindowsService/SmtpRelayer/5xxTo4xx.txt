@@ -1,0 +1,8 @@
+﻿An error occurred while attempting to establish an SSL or TLS connection
+A connection attempt failed because the connected party did not properly respond after a period of time
+RCPT command outside of MAIL transaction
+The operation has timed out
+The SMTP server has unexpectedly disconnected
+Unable to read data from the transport connection
+No connection could be made because the target machine
+Greylisted

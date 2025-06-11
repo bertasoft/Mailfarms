@@ -1,0 +1,41 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "32a35187-13d6-4572-a43f-32892b44d464": {
+      "ProjectGuid": "32a35187-13d6-4572-a43f-32892b44d464",
+      "DisplayName": "Business",
+      "ColorIndex": 0
+    },
+    "568b02c4-fc78-46cb-bfc2-774eb2e811cb": {
+      "ProjectGuid": "568b02c4-fc78-46cb-bfc2-774eb2e811cb",
+      "DisplayName": "MailFarmsBlazor",
+      "ColorIndex": 1
+    },
+    "f3fa6490-2454-4359-9cbb-07f82279e299": {
+      "ProjectGuid": "f3fa6490-2454-4359-9cbb-07f82279e299",
+      "DisplayName": "MailFarms_SharedService",
+      "ColorIndex": 2
+    },
+    "1ba9e4f1-7dbf-4331-b115-16296f11ed93": {
+      "ProjectGuid": "1ba9e4f1-7dbf-4331-b115-16296f11ed93",
+      "DisplayName": "BlazorLibrary",
+      "ColorIndex": 3
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Miscellaneous Files",
+      "ColorIndex": -1
+    },
+    "045632b1-1b14-4753-a480-529e81e2cb1c": {
+      "ProjectGuid": "045632b1-1b14-4753-a480-529e81e2cb1c",
+      "DisplayName": "CommonNetCore",
+      "ColorIndex": 4
+    },
+    "11a81e47-a046-45ba-a61c-ab030276c7ac": {
+      "ProjectGuid": "11a81e47-a046-45ba-a61c-ab030276c7ac",
+      "DisplayName": "MailFarms_SharedWeb",
+      "ColorIndex": 5
+    }
+  },
+  "NextColorIndex": 6
+}

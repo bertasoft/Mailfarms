@@ -1,0 +1,31 @@
+﻿@layout PopupLayout
+@using CommonNetCore
+@inherits PageComponent
+@page "/private/server/popuplogfile"
+
+@code
+{
+    string contenuto = string.Empty;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        await base.OnAfterRenderAsync(firstRender);
+
+        if (!firstRender)
+            return;
+
+        var ip = GetQueryString("Ip");
+
+        var fileName = GetQueryString("FileName");
+
+        contenuto = await MailFarms_SharedService.Code.RequestWindowsService.LogFileNameContent(ip, fileName);
+
+        StateHasChanged();
+    }
+}
+
+<div class="row" style="background-color: #fff; min-height: 100vh;">
+    <div class="col-lg-12" style="padding: 20px">
+        @((MarkupString) contenuto)
+    </div>
+</div>

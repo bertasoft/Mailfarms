@@ -1,0 +1,127 @@
+SELECT [Email].[UniqueIdentifier], [Email].[Server], [Email].[MittenteEmail], [Email].[MittenteNome], [Email].[DestinatarioEmail], [Email].[DestinatarioNome], [Email].[DestinatarioDataRegistrazione], [Email].[Oggetto], [Email].[Contenuto], [Email].[DataArrivo], [Email].[DataInvio], [Email].[DataUltimoTentativo], [Email].[DataProssimoTentativo], [Email].[DataVisualizzazione], [Email].[DataClick], [Email].[NumeroTentativi], [Email].[UrlEliminazione], [Email].[StatusCode4xx5xx], [Email].[Stato], [Email].[Immediata], [Email].[RispondiA], [Email].[Id] FROM [Email] WHERE [Email].[Id] = 0
+2|0|0|SEARCH TABLE Email USING INTEGER PRIMARY KEY (rowid=?)
+----------------------------
+SELECT [Server].[Ip], [Server].[Attivo], [Server].[Riceve], [Server].[Inviate], [Server].[Errate], [Server].[Id] FROM [Server] WHERE [Server].[Ip] = 0
+3|0|0|SEARCH TABLE Server USING INDEX sqlite_autoindex_Server_1 (Ip=?)
+----------------------------
+SELECT [Email].[UniqueIdentifier], [Email].[Server], [Email].[MittenteEmail], [Email].[MittenteNome], [Email].[DestinatarioEmail], [Email].[DestinatarioNome], [Email].[DestinatarioDataRegistrazione], [Email].[Oggetto], [Email].[Contenuto], [Email].[DataArrivo], [Email].[DataInvio], [Email].[DataUltimoTentativo], [Email].[DataProssimoTentativo], [Email].[DataVisualizzazione], [Email].[DataClick], [Email].[NumeroTentativi], [Email].[UrlEliminazione], [Email].[StatusCode4xx5xx], [Email].[Stato], [Email].[Immediata], [Email].[RispondiA], [Email].[Id] FROM [Email] WHERE [Email].[UniqueIdentifier] = 0
+3|0|0|SEARCH TABLE Email USING INDEX sqlite_autoindex_Email_1 (UniqueIdentifier=?)
+----------------------------
+SELECT [BloccoAccesso].[Email], [BloccoAccesso].[NumTentativo], [BloccoAccesso].[DataTentativo], [BloccoAccesso].[Id] FROM [BloccoAccesso] WHERE [BloccoAccesso].[DataTentativo] < 0
+3|0|0|SEARCH TABLE BloccoAccesso USING INDEX index_table_BloccoAccesso_DataTentativo_asc (DataTentativo<?)
+----------------------------
+SELECT [BloccoIp].[Ip], [BloccoIp].[UserAgent], [BloccoIp].[Data], [BloccoIp].[Tentativi], [BloccoIp].[Id] FROM [BloccoIp] WHERE [BloccoIp].[Data] < 0
+3|0|0|SEARCH TABLE BloccoIp USING INDEX index_table_BloccoIp_Data_asc (Data<?)
+----------------------------
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Server] = 0
+3|0|0|SEARCH TABLE Email USING COVERING INDEX index_table_Email_Server_asc (Server=?)
+----------------------------
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Stato] = 0
+3|0|0|SEARCH TABLE Email USING COVERING INDEX index_table_Email_Stato_asc (Stato=?)
+----------------------------
+SELECT [Email].[UniqueIdentifier], [Email].[Server], [Email].[MittenteEmail], [Email].[MittenteNome], [Email].[DestinatarioEmail], [Email].[DestinatarioNome], [Email].[DestinatarioDataRegistrazione], [Email].[Oggetto], [Email].[Contenuto], [Email].[DataArrivo], [Email].[DataInvio], [Email].[DataUltimoTentativo], [Email].[DataProssimoTentativo], [Email].[DataVisualizzazione], [Email].[DataClick], [Email].[NumeroTentativi], [Email].[UrlEliminazione], [Email].[StatusCode4xx5xx], [Email].[Stato], [Email].[Immediata], [Email].[RispondiA], [Email].[Id] FROM [Email] WHERE [Email].[Stato] = 0 ORDER BY [Email].[DataProssimoTentativo] DESC LIMIT 10 OFFSET 10 * @page
+8|0|0|SEARCH TABLE Email USING INDEX index_table_Email_Stato_asc_DataProssimoTentativo_desc (Stato=?)
+----------------------------
+SELECT [Utenti].[Nome], [Utenti].[Cognome], [Utenti].[Email], [Utenti].[Password], [Utenti].[Attivo], [Utenti].[Admin], [Utenti].[Id] FROM [Utenti] WHERE [Utenti].[Email] = 0
+3|0|0|SEARCH TABLE Utenti USING INDEX sqlite_autoindex_Utenti_1 (Email=?)
+----------------------------
+SELECT COUNT(([Server].[Id])) FROM [Server] WHERE [Server].[Riceve] = 0
+3|0|0|SEARCH TABLE Server USING COVERING INDEX index_table_Server_Riceve_asc (Riceve=?)
+----------------------------
+SELECT [Email].[UniqueIdentifier], [Email].[Server], [Email].[MittenteEmail], [Email].[MittenteNome], [Email].[DestinatarioEmail], [Email].[DestinatarioNome], [Email].[DestinatarioDataRegistrazione], [Email].[Oggetto], [Email].[Contenuto], [Email].[DataArrivo], [Email].[DataInvio], [Email].[DataUltimoTentativo], [Email].[DataProssimoTentativo], [Email].[DataVisualizzazione], [Email].[DataClick], [Email].[NumeroTentativi], [Email].[UrlEliminazione], [Email].[StatusCode4xx5xx], [Email].[Stato], [Email].[Immediata], [Email].[RispondiA], [Email].[Id] FROM [Email] WHERE [Email].[Server] = 0 ORDER BY [Email].[Immediata] DESC LIMIT 10 OFFSET 10 * @page
+8|0|0|SEARCH TABLE Email USING INDEX index_table_Email_Server_asc_Immediata_desc (Server=?)
+----------------------------
+SELECT [Server].[Ip], [Server].[Attivo], [Server].[Riceve], [Server].[Inviate], [Server].[Errate], [Server].[Id] FROM [Server] WHERE [Server].[Riceve] = 0
+3|0|0|SEARCH TABLE Server USING INDEX index_table_Server_Riceve_asc (Riceve=?)
+----------------------------
+SELECT [ServerDominiBannati].[IdServer], [ServerDominiBannati].[Dominio], [ServerDominiBannati].[Id] FROM [ServerDominiBannati] WHERE [ServerDominiBannati].[Dominio] = 0 AND [ServerDominiBannati].[IdServer] = 0
+2|0|0|SEARCH TABLE ServerDominiBannati USING COVERING INDEX index_uq_table_ServerDominiBannati_IdServer_asc_Dominio_asc (IdServer=? AND Dominio=?)
+----------------------------
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[DataProssimoTentativo] <= 0 AND [Email].[Stato] = 0 AND [Email].[Server] = 0
+4|0|0|SEARCH TABLE Email USING INDEX index_table_Email_Stato_asc_Server_desc (Stato=? AND Server=?)
+----------------------------
+SELECT [EmailAllegati].[IdEmail], [EmailAllegati].[NomeFile], [EmailAllegati].[Dimensione], [EmailAllegati].[Id] FROM [EmailAllegati] WHERE [EmailAllegati].[IdEmail] = 0 ORDER BY [EmailAllegati].[NomeFile] ASC
+4|0|0|SEARCH TABLE EmailAllegati USING INDEX index_table_EmailAllegati_IdEmail_asc_NomeFile_asc (IdEmail=?)
+----------------------------
+SELECT [EmailLog].[IdEmail], [EmailLog].[Data], [EmailLog].[Testo], [EmailLog].[UniqueIdentifier], [EmailLog].[Id] FROM [EmailLog] WHERE [EmailLog].[IdEmail] = 0 ORDER BY [EmailLog].[Data] ASC
+4|0|0|SEARCH TABLE EmailLog USING INDEX index_table_EmailLog_IdEmail_asc_Data_asc (IdEmail=?)
+----------------------------
+SELECT [EmailLog].[IdEmail], [EmailLog].[Data], [EmailLog].[Testo], [EmailLog].[UniqueIdentifier], [EmailLog].[Id] FROM [EmailLog] WHERE [EmailLog].[UniqueIdentifier] = 0
+3|0|0|SEARCH TABLE EmailLog USING INDEX sqlite_autoindex_EmailLog_1 (UniqueIdentifier=?)
+----------------------------
+SELECT [ServerImpostazioni].[Nome], [ServerImpostazioni].[Valore], [ServerImpostazioni].[Id] FROM [ServerImpostazioni] WHERE [ServerImpostazioni].[Nome] = 0
+3|0|0|SEARCH TABLE ServerImpostazioni USING INDEX sqlite_autoindex_ServerImpostazioni_1 (Nome=?)
+----------------------------
+SELECT [ServerStatistiche].[IdServer], [ServerStatistiche].[Data], [ServerStatistiche].[Inviate], [ServerStatistiche].[Errate], [ServerStatistiche].[Id] FROM [ServerStatistiche] WHERE [ServerStatistiche].[Data] = 0 AND [ServerStatistiche].[IdServer] = 0
+3|0|0|SEARCH TABLE ServerStatistiche USING INDEX index_uq_table_ServerStatistiche_IdServer_asc_Data_asc (IdServer=? AND Data=?)
+----------------------------
+SELECT [Email].[UniqueIdentifier], [Email].[Server], [Email].[MittenteEmail], [Email].[MittenteNome], [Email].[DestinatarioEmail], [Email].[DestinatarioNome], [Email].[DestinatarioDataRegistrazione], [Email].[Oggetto], [Email].[Contenuto], [Email].[DataArrivo], [Email].[DataInvio], [Email].[DataUltimoTentativo], [Email].[DataProssimoTentativo], [Email].[DataVisualizzazione], [Email].[DataClick], [Email].[NumeroTentativi], [Email].[UrlEliminazione], [Email].[StatusCode4xx5xx], [Email].[Stato], [Email].[Immediata], [Email].[RispondiA], [Email].[Id] FROM [Email] WHERE [Email].[Stato] = 0 ORDER BY [Email].[DataProssimoTentativo] ASC LIMIT 10 OFFSET 10 * @page
+8|0|0|SEARCH TABLE Email USING INDEX index_table_Email_Stato_asc_DataProssimoTentativo_desc (Stato=?)
+----------------------------
+SELECT [Email].[UniqueIdentifier], [Email].[Server], [Email].[MittenteEmail], [Email].[MittenteNome], [Email].[DestinatarioEmail], [Email].[DestinatarioNome], [Email].[DestinatarioDataRegistrazione], [Email].[Oggetto], [Email].[Contenuto], [Email].[DataArrivo], [Email].[DataInvio], [Email].[DataUltimoTentativo], [Email].[DataProssimoTentativo], [Email].[DataVisualizzazione], [Email].[DataClick], [Email].[NumeroTentativi], [Email].[UrlEliminazione], [Email].[StatusCode4xx5xx], [Email].[Stato], [Email].[Immediata], [Email].[RispondiA], [Email].[Id] FROM [Email] WHERE [Email].[Stato] = 0 ORDER BY [Email].[NumeroTentativi] ASC LIMIT 10 OFFSET 10 * @page
+8|0|0|SEARCH TABLE Email USING INDEX index_table_Email_Stato_asc_NumeroTentativi_asc (Stato=?)
+----------------------------
+SELECT [Email].[UniqueIdentifier], [Email].[Server], [Email].[MittenteEmail], [Email].[MittenteNome], [Email].[DestinatarioEmail], [Email].[DestinatarioNome], [Email].[DestinatarioDataRegistrazione], [Email].[Oggetto], [Email].[Contenuto], [Email].[DataArrivo], [Email].[DataInvio], [Email].[DataUltimoTentativo], [Email].[DataProssimoTentativo], [Email].[DataVisualizzazione], [Email].[DataClick], [Email].[NumeroTentativi], [Email].[UrlEliminazione], [Email].[StatusCode4xx5xx], [Email].[Stato], [Email].[Immediata], [Email].[RispondiA], [Email].[Id] FROM [Email] WHERE [Email].[Stato] = 0 ORDER BY [Email].[NumeroTentativi] DESC LIMIT 10 OFFSET 10 * @page
+8|0|0|SEARCH TABLE Email USING INDEX index_table_Email_Stato_asc_NumeroTentativi_asc (Stato=?)
+----------------------------
+SELECT [Email].[UniqueIdentifier], [Email].[Server], [Email].[MittenteEmail], [Email].[MittenteNome], [Email].[DestinatarioEmail], [Email].[DestinatarioNome], [Email].[DestinatarioDataRegistrazione], [Email].[Oggetto], [Email].[Contenuto], [Email].[DataArrivo], [Email].[DataInvio], [Email].[DataUltimoTentativo], [Email].[DataProssimoTentativo], [Email].[DataVisualizzazione], [Email].[DataClick], [Email].[NumeroTentativi], [Email].[UrlEliminazione], [Email].[StatusCode4xx5xx], [Email].[Stato], [Email].[Immediata], [Email].[RispondiA], [Email].[Id] FROM [Email] WHERE [Email].[Stato] = 0 ORDER BY [Email].[MittenteEmail] DESC LIMIT 10 OFFSET 10 * @page
+8|0|0|SEARCH TABLE Email USING INDEX index_table_Email_Stato_asc_MittenteEmail_desc (Stato=?)
+----------------------------
+SELECT [Email].[UniqueIdentifier], [Email].[Server], [Email].[MittenteEmail], [Email].[MittenteNome], [Email].[DestinatarioEmail], [Email].[DestinatarioNome], [Email].[DestinatarioDataRegistrazione], [Email].[Oggetto], [Email].[Contenuto], [Email].[DataArrivo], [Email].[DataInvio], [Email].[DataUltimoTentativo], [Email].[DataProssimoTentativo], [Email].[DataVisualizzazione], [Email].[DataClick], [Email].[NumeroTentativi], [Email].[UrlEliminazione], [Email].[StatusCode4xx5xx], [Email].[Stato], [Email].[Immediata], [Email].[RispondiA], [Email].[Id] FROM [Email] WHERE [Email].[Stato] = 0 ORDER BY [Email].[MittenteEmail] ASC LIMIT 10 OFFSET 10 * @page
+8|0|0|SEARCH TABLE Email USING INDEX index_table_Email_Stato_asc_MittenteEmail_desc (Stato=?)
+----------------------------
+SELECT [Email].[UniqueIdentifier], [Email].[Server], [Email].[MittenteEmail], [Email].[MittenteNome], [Email].[DestinatarioEmail], [Email].[DestinatarioNome], [Email].[DestinatarioDataRegistrazione], [Email].[Oggetto], [Email].[Contenuto], [Email].[DataArrivo], [Email].[DataInvio], [Email].[DataUltimoTentativo], [Email].[DataProssimoTentativo], [Email].[DataVisualizzazione], [Email].[DataClick], [Email].[NumeroTentativi], [Email].[UrlEliminazione], [Email].[StatusCode4xx5xx], [Email].[Stato], [Email].[Immediata], [Email].[RispondiA], [Email].[Id] FROM [Email] WHERE [Email].[Stato] = 0 ORDER BY [Email].[DestinatarioEmail] ASC LIMIT 10 OFFSET 10 * @page
+8|0|0|SEARCH TABLE Email USING INDEX index_table_Email_Stato_asc_DestinatarioEmail_asc (Stato=?)
+----------------------------
+SELECT [Email].[UniqueIdentifier], [Email].[Server], [Email].[MittenteEmail], [Email].[MittenteNome], [Email].[DestinatarioEmail], [Email].[DestinatarioNome], [Email].[DestinatarioDataRegistrazione], [Email].[Oggetto], [Email].[Contenuto], [Email].[DataArrivo], [Email].[DataInvio], [Email].[DataUltimoTentativo], [Email].[DataProssimoTentativo], [Email].[DataVisualizzazione], [Email].[DataClick], [Email].[NumeroTentativi], [Email].[UrlEliminazione], [Email].[StatusCode4xx5xx], [Email].[Stato], [Email].[Immediata], [Email].[RispondiA], [Email].[Id] FROM [Email] WHERE [Email].[Stato] = 0 ORDER BY [Email].[DestinatarioEmail] DESC LIMIT 10 OFFSET 10 * @page
+8|0|0|SEARCH TABLE Email USING INDEX index_table_Email_Stato_asc_DestinatarioEmail_asc (Stato=?)
+----------------------------
+SELECT [Email].[UniqueIdentifier], [Email].[Server], [Email].[MittenteEmail], [Email].[MittenteNome], [Email].[DestinatarioEmail], [Email].[DestinatarioNome], [Email].[DestinatarioDataRegistrazione], [Email].[Oggetto], [Email].[Contenuto], [Email].[DataArrivo], [Email].[DataInvio], [Email].[DataUltimoTentativo], [Email].[DataProssimoTentativo], [Email].[DataVisualizzazione], [Email].[DataClick], [Email].[NumeroTentativi], [Email].[UrlEliminazione], [Email].[StatusCode4xx5xx], [Email].[Stato], [Email].[Immediata], [Email].[RispondiA], [Email].[Id] FROM [Email] WHERE [Email].[Stato] = 0 ORDER BY [Email].[Server] DESC LIMIT 10 OFFSET 10 * @page
+8|0|0|SEARCH TABLE Email USING INDEX index_table_Email_Stato_asc_Server_desc (Stato=?)
+----------------------------
+SELECT [Email].[UniqueIdentifier], [Email].[Server], [Email].[MittenteEmail], [Email].[MittenteNome], [Email].[DestinatarioEmail], [Email].[DestinatarioNome], [Email].[DestinatarioDataRegistrazione], [Email].[Oggetto], [Email].[Contenuto], [Email].[DataArrivo], [Email].[DataInvio], [Email].[DataUltimoTentativo], [Email].[DataProssimoTentativo], [Email].[DataVisualizzazione], [Email].[DataClick], [Email].[NumeroTentativi], [Email].[UrlEliminazione], [Email].[StatusCode4xx5xx], [Email].[Stato], [Email].[Immediata], [Email].[RispondiA], [Email].[Id] FROM [Email] WHERE [Email].[Stato] = 0 ORDER BY [Email].[Server] ASC LIMIT 10 OFFSET 10 * @page
+8|0|0|SEARCH TABLE Email USING INDEX index_table_Email_Stato_asc_Server_desc (Stato=?)
+----------------------------
+SELECT [Email].[UniqueIdentifier], [Email].[Server], [Email].[MittenteEmail], [Email].[MittenteNome], [Email].[DestinatarioEmail], [Email].[DestinatarioNome], [Email].[DestinatarioDataRegistrazione], [Email].[Oggetto], [Email].[Contenuto], [Email].[DataArrivo], [Email].[DataInvio], [Email].[DataUltimoTentativo], [Email].[DataProssimoTentativo], [Email].[DataVisualizzazione], [Email].[DataClick], [Email].[NumeroTentativi], [Email].[UrlEliminazione], [Email].[StatusCode4xx5xx], [Email].[Stato], [Email].[Immediata], [Email].[RispondiA], [Email].[Id] FROM [Email] WHERE [Email].[Stato] = 0 ORDER BY [Email].[DataVisualizzazione] ASC LIMIT 10 OFFSET 10 * @page
+8|0|0|SEARCH TABLE Email USING INDEX index_table_Email_Stato_asc_DataVisualizzazione_asc (Stato=?)
+----------------------------
+SELECT [Email].[UniqueIdentifier], [Email].[Server], [Email].[MittenteEmail], [Email].[MittenteNome], [Email].[DestinatarioEmail], [Email].[DestinatarioNome], [Email].[DestinatarioDataRegistrazione], [Email].[Oggetto], [Email].[Contenuto], [Email].[DataArrivo], [Email].[DataInvio], [Email].[DataUltimoTentativo], [Email].[DataProssimoTentativo], [Email].[DataVisualizzazione], [Email].[DataClick], [Email].[NumeroTentativi], [Email].[UrlEliminazione], [Email].[StatusCode4xx5xx], [Email].[Stato], [Email].[Immediata], [Email].[RispondiA], [Email].[Id] FROM [Email] WHERE [Email].[Stato] = 0 ORDER BY [Email].[DataVisualizzazione] DESC LIMIT 10 OFFSET 10 * @page
+8|0|0|SEARCH TABLE Email USING INDEX index_table_Email_Stato_asc_DataVisualizzazione_asc (Stato=?)
+----------------------------
+SELECT [Email].[UniqueIdentifier], [Email].[Server], [Email].[MittenteEmail], [Email].[MittenteNome], [Email].[DestinatarioEmail], [Email].[DestinatarioNome], [Email].[DestinatarioDataRegistrazione], [Email].[Oggetto], [Email].[Contenuto], [Email].[DataArrivo], [Email].[DataInvio], [Email].[DataUltimoTentativo], [Email].[DataProssimoTentativo], [Email].[DataVisualizzazione], [Email].[DataClick], [Email].[NumeroTentativi], [Email].[UrlEliminazione], [Email].[StatusCode4xx5xx], [Email].[Stato], [Email].[Immediata], [Email].[RispondiA], [Email].[Id] FROM [Email] WHERE [Email].[Stato] = 0 ORDER BY [Email].[DataClick] DESC LIMIT 10 OFFSET 10 * @page
+8|0|0|SEARCH TABLE Email USING INDEX index_table_Email_Stato_asc_DataClick_desc (Stato=?)
+----------------------------
+SELECT [Email].[UniqueIdentifier], [Email].[Server], [Email].[MittenteEmail], [Email].[MittenteNome], [Email].[DestinatarioEmail], [Email].[DestinatarioNome], [Email].[DestinatarioDataRegistrazione], [Email].[Oggetto], [Email].[Contenuto], [Email].[DataArrivo], [Email].[DataInvio], [Email].[DataUltimoTentativo], [Email].[DataProssimoTentativo], [Email].[DataVisualizzazione], [Email].[DataClick], [Email].[NumeroTentativi], [Email].[UrlEliminazione], [Email].[StatusCode4xx5xx], [Email].[Stato], [Email].[Immediata], [Email].[RispondiA], [Email].[Id] FROM [Email] WHERE [Email].[Stato] = 0 ORDER BY [Email].[DataClick] ASC LIMIT 10 OFFSET 10 * @page
+8|0|0|SEARCH TABLE Email USING INDEX index_table_Email_Stato_asc_DataClick_desc (Stato=?)
+----------------------------
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Oggetto] LIKE 0 AND [Email].[Stato] = 0
+4|0|0|SEARCH TABLE Email USING INDEX index_table_Email_Stato_asc_DataClick_desc (Stato=?)
+----------------------------
+SELECT [Email].[UniqueIdentifier], [Email].[Server], [Email].[MittenteEmail], [Email].[MittenteNome], [Email].[DestinatarioEmail], [Email].[DestinatarioNome], [Email].[DestinatarioDataRegistrazione], [Email].[Oggetto], [Email].[Contenuto], [Email].[DataArrivo], [Email].[DataInvio], [Email].[DataUltimoTentativo], [Email].[DataProssimoTentativo], [Email].[DataVisualizzazione], [Email].[DataClick], [Email].[NumeroTentativi], [Email].[UrlEliminazione], [Email].[StatusCode4xx5xx], [Email].[Stato], [Email].[Immediata], [Email].[RispondiA], [Email].[Id] FROM [Email] WHERE [Email].[Oggetto] LIKE 0 AND [Email].[Stato] = 0 ORDER BY [Email].[DataClick] ASC LIMIT 10 OFFSET 10 * @page
+8|0|0|SEARCH TABLE Email USING INDEX index_table_Email_Stato_asc_DataVisualizzazione_asc (Stato=?)
+46|0|0|USE TEMP B-TREE FOR ORDER BY
+----------------------------
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[Server] LIKE 0 AND [Email].[Stato] = 0
+3|0|0|SEARCH TABLE Email USING COVERING INDEX index_table_Email_Stato_asc_Server_desc (Stato=?)
+----------------------------
+SELECT [Email].[UniqueIdentifier], [Email].[Server], [Email].[MittenteEmail], [Email].[MittenteNome], [Email].[DestinatarioEmail], [Email].[DestinatarioNome], [Email].[DestinatarioDataRegistrazione], [Email].[Oggetto], [Email].[Contenuto], [Email].[DataArrivo], [Email].[DataInvio], [Email].[DataUltimoTentativo], [Email].[DataProssimoTentativo], [Email].[DataVisualizzazione], [Email].[DataClick], [Email].[NumeroTentativi], [Email].[UrlEliminazione], [Email].[StatusCode4xx5xx], [Email].[Stato], [Email].[Immediata], [Email].[RispondiA], [Email].[Id] FROM [Email] WHERE [Email].[Server] LIKE 0 AND [Email].[Stato] = 0 ORDER BY [Email].[DataClick] ASC LIMIT 10 OFFSET 10 * @page
+8|0|0|SEARCH TABLE Email USING INDEX index_table_Email_Stato_asc_DataVisualizzazione_asc (Stato=?)
+46|0|0|USE TEMP B-TREE FOR ORDER BY
+----------------------------
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[DestinatarioEmail] LIKE 0 AND [Email].[Stato] = 0
+3|0|0|SEARCH TABLE Email USING COVERING INDEX index_table_Email_Stato_asc_DestinatarioEmail_asc (Stato=?)
+----------------------------
+SELECT [Email].[UniqueIdentifier], [Email].[Server], [Email].[MittenteEmail], [Email].[MittenteNome], [Email].[DestinatarioEmail], [Email].[DestinatarioNome], [Email].[DestinatarioDataRegistrazione], [Email].[Oggetto], [Email].[Contenuto], [Email].[DataArrivo], [Email].[DataInvio], [Email].[DataUltimoTentativo], [Email].[DataProssimoTentativo], [Email].[DataVisualizzazione], [Email].[DataClick], [Email].[NumeroTentativi], [Email].[UrlEliminazione], [Email].[StatusCode4xx5xx], [Email].[Stato], [Email].[Immediata], [Email].[RispondiA], [Email].[Id] FROM [Email] WHERE [Email].[DestinatarioEmail] LIKE 0 AND [Email].[Stato] = 0 ORDER BY [Email].[DataClick] ASC LIMIT 10 OFFSET 10 * @page
+8|0|0|SEARCH TABLE Email USING INDEX index_table_Email_Stato_asc_DataVisualizzazione_asc (Stato=?)
+46|0|0|USE TEMP B-TREE FOR ORDER BY
+----------------------------
+SELECT COUNT(([Email].[Id])) FROM [Email] WHERE [Email].[MittenteEmail] LIKE 0 AND [Email].[Stato] = 0
+3|0|0|SEARCH TABLE Email USING COVERING INDEX index_table_Email_Stato_asc_MittenteEmail_desc (Stato=?)
+----------------------------
+SELECT [Email].[UniqueIdentifier], [Email].[Server], [Email].[MittenteEmail], [Email].[MittenteNome], [Email].[DestinatarioEmail], [Email].[DestinatarioNome], [Email].[DestinatarioDataRegistrazione], [Email].[Oggetto], [Email].[Contenuto], [Email].[DataArrivo], [Email].[DataInvio], [Email].[DataUltimoTentativo], [Email].[DataProssimoTentativo], [Email].[DataVisualizzazione], [Email].[DataClick], [Email].[NumeroTentativi], [Email].[UrlEliminazione], [Email].[StatusCode4xx5xx], [Email].[Stato], [Email].[Immediata], [Email].[RispondiA], [Email].[Id] FROM [Email] WHERE [Email].[MittenteEmail] LIKE 0 AND [Email].[Stato] = 0 ORDER BY [Email].[DataClick] ASC LIMIT 10 OFFSET 10 * @page
+8|0|0|SEARCH TABLE Email USING INDEX index_table_Email_Stato_asc_DataVisualizzazione_asc (Stato=?)
+46|0|0|USE TEMP B-TREE FOR ORDER BY
+----------------------------
+SELECT COUNT(([ServerDominiBannati].[Id])) FROM [ServerDominiBannati] WHERE [ServerDominiBannati].[IdServer] = 0
+3|0|0|SEARCH TABLE ServerDominiBannati USING COVERING INDEX index_uq_table_ServerDominiBannati_IdServer_asc_Dominio_asc (IdServer=?)
+----------------------------

@@ -1,0 +1,280 @@
+﻿@using System.Web
+@using BlazorLibrary.Code
+@using Business.Code
+@using Business.Collection
+@using Business.Entity
+@using CommonNetCore.GlobalExtension
+@using MailFarmsBlazor.Code
+@using Microsoft.AspNetCore.Http
+@using Hanssens.Net
+@inherits MyLayoutComponentBase
+@inject AlertService alertService
+@inject LayoutService layoutService
+@inject NavigationManager navigationManager
+@inject RefreshService emailRefreshService
+@inject IJSRuntime JsRuntime
+@inject SessionDictionary sessionDictionary
+@code
+{
+    AlertPopup alertPopup;
+
+    LinkButton linkButton;
+
+    string titlePage;
+    string userName;
+
+    long countEmailCoda;
+    long countSmsCoda;
+
+    Business.Entity.Utenti utente = null;
+
+    private async Task LoadCodaAsync()
+    {
+        countEmailCoda = EmailCollection.GetCount(wherePredicate: "Stato = 0");
+        countSmsCoda = SmsCollection.GetCount(wherePredicate: "Stato = 0");
+
+        await InvokeAsync(StateHasChanged);
+    }
+
+    protected override async void OnInitialized()
+    {
+        alertService.OnMessageCallback = new EventCallback<AlertService.MessageState>(null, (Action<AlertService.MessageState>)(result =>
+        {
+            if (result.Success)
+            {
+                alertPopup.Success(result.Message);
+            }
+            else
+            {
+                alertPopup.Fail(result.Message);
+            }
+        }));
+
+        layoutService.OnTitlePageCallback = new EventCallback<string>(null, (Action<string>)(result =>
+        {
+            titlePage = result;
+
+            StateHasChanged();
+
+        }));
+
+        layoutService.OnUserNameCallback = new EventCallback<string>(null, (Action<string>)(result =>
+        {
+            userName = result;
+
+            StateHasChanged();
+
+        }));
+
+
+        emailRefreshService.OnCodaRefreshCallback = delegate
+        {
+            LoadCodaAsync().Wait();
+        };
+        
+
+        if (sessionDictionary.TryGetValue("email", out string email))
+        {
+            utente = Business.Entity.Utenti.GetItem(email);
+
+            if (utente != null && utente.Attivo)
+            {
+                await layoutService.OnUserNameCallback.InvokeAsync(utente.Nome);
+            }
+        }
+        else
+            utente = null;
+    }
+
+    protected void EsciClick()
+    {
+        if (linkButton.ConfirmResponse)
+        {
+            sessionDictionary.Remove("email");
+
+            JsRuntime.InvokeVoidAsync("blazorExtensions.CookieSet", "email", "");
+
+            utente = null;
+
+            navigationManager.NavigateTo("/login", true);
+        }
+    }
+}
+
+<AlertPopup @ref="alertPopup" />
+
+<div id="container" class="effect mainnav-lg navbar-fixed mainnav-fixed">
+    <header id="navbar">
+        <div id="navbar-container" class="boxed">
+            <div class="navbar-header">
+                <a href="/private" class="navbar-brand">
+                    <i class="fa fa-envelope brand-icon"></i>
+                    <div class="brand-title">
+                        <span class="brand-text">Mailfarms</span>
+                    </div>
+                </a>
+            </div>
+            <div class="navbar-content clearfix">
+                <ul class="nav navbar-top-links pull-right">
+                    <li id="dropdown-user" class="dropdown">
+                        <div class="username hidden-xs">@userName</div>
+                    </li>
+                    <li>
+                        <LinkButton @ref="linkButton" Class="fa fa-sign-out" ConfirmMessage="Vuoi scollegarti?" No="No" Yes="Si" OnClickCallback="EsciClick" />
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <div class="boxed">
+        <div id="content-container">
+            <div class="pageheader">
+                <h3>@titlePage</h3>
+            </div>
+            <div id="page-content">
+                @Body
+            </div>
+        </div>
+        <nav id="mainnav-container">
+            <div id="mainnav">
+                <div id="mainnav-menu-wrap">
+                    <div class="nano">
+                        <div class="nano-content">
+
+                            <ul id="mainnav-menu" class="list-group">
+                                <li>
+                                    <a href="/private">
+                                        <i class="fa fa-home"></i>
+                                        <span class="menu-title">Home</span>
+                                    </a>
+                                </li>
+                            </ul>
+
+                            <ul id="mainnav-menu" class="list-group">
+                                <li class="list-header">Email</li>
+                                <li>
+                                    <a href="/private/email/coda">
+                                        <i class="fa fa-clock-o"></i>
+                                        <span class="menu-title">Coda</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/private/email/inviate">
+                                        <i class="fa fa-check"></i>
+                                        <span class="menu-title">Inviate</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/private/email/errate">
+                                        <i class="fa fa-times"></i>
+                                        <span class="menu-title">Errate</span>
+                                    </a>
+                                </li>
+                            </ul>
+
+                            <ul id="mainnav-menu" class="list-group">
+                                <li class="list-header">SMS</li>
+                                <li>
+                                    <a href="/private/sms/coda">
+                                        <i class="fa fa-clock-o"></i>
+                                        <span class="menu-title">Coda</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/private/sms/inviati">
+                                        <i class="fa fa-check"></i>
+                                        <span class="menu-title">Inviati</span>
+                                    </a>
+                                </li>
+                            </ul>
+
+                            @if (utente != null && utente.Admin)
+                            {
+                                <ul id="mainnav-menu" class="list-group">
+                                    <li class="list-header">Server SMTP</li>
+                                    <li>
+                                        <a href="/private/server/editor">
+                                            <i class="fa fa-plus"></i>
+                                            <span class="menu-title">Nuovo</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/private/server/items">
+                                            <i class="fa fa-server"></i>
+                                            <span class="menu-title">Elenco</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/private/server/configurazione">
+                                            <i class="fa fa-cogs"></i>
+                                            <span class="menu-title">Configurazione</span>
+                                        </a>
+                                    </li>
+                                </ul>
+
+                                <ul id="mainnav-menu" class="list-group">
+                                    <li class="list-header">Utenti</li>
+                                    <li>
+                                        <a href="/private/utenti/editor">
+                                            <i class="fa fa-user-plus"></i>
+                                            <span class="menu-title">Nuovo</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/private/utenti/items">
+                                            <i class="fa fa-users"></i>
+                                            <span class="menu-title">Elenco</span>
+                                        </a>
+                                    </li>
+                                </ul>
+
+                                <ul id="mainnav-menu" class="list-group">
+                                    <li class="list-header">Configurazione</li>
+                                    <li>
+                                        <a href="/private/configurazione/etichette">
+                                            <i class="fa fa-align-center"></i>
+                                            <span class="menu-title">Etichette</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/private/configurazione/impostazioni">
+                                            <i class="fa fa-cog"></i>
+                                            <span class="menu-title">Impostazioni</span>
+                                        </a>
+                                    <li>
+                                        <a href="/private/configurazione/download">
+                                            <i class="fa fa-download"></i>
+                                            <span class="menu-title">Download</span>
+                                        </a>
+                                    </li>
+                                    </li>
+                                </ul>
+                            }
+
+                            <div class="mainnav-widget">
+                                <!-- Hide the content on collapsed navigation -->
+                                <div id="demo-wg-server" class="hide-small mainnav-widget-content">
+                                    <ul class="list-group">
+                                        <li class="list-header pad-no pad-ver">Coda</li>
+                                        <li class="mar-btm">
+                                            <span class="label label-primary pull-right">@countSmsCoda</span>
+                                            <p>SMS</p>
+                                        </li>
+                                        <li class="mar-btm">
+                                            <span class="label label-primary pull-right">@countEmailCoda</span>
+                                            <p>EMAIL</p>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <footer id="footer">
+        <p class="pad-lft">Powered by <a target="_blank" href="https://doweb.srl"><b><span style="color:#6f6f6f">DOWEB</span><span style="color: #3366cc">.SRL</span></b></a></p>
+    </footer>
+</div>

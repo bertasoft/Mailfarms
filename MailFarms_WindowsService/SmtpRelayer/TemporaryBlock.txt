@@ -1,0 +1,5 @@
+﻿too many messages, slow down
+too many invalid recipients
+temporarily deferred due to user complaints
+Too many concurrent SMTP connections
+has been temporarily rate limited due to IP reputation

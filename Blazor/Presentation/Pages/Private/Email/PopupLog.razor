@@ -1,0 +1,32 @@
+﻿@layout PopupLayout
+@using CommonNetCore
+@inherits PageComponent
+
+@page "/private/email/popuplog"
+
+<div class="row" style="background-color: #fff; height: 100vh;">
+    <div class="col-lg-12" style="background-color: #fff; padding: 20px">
+
+        @{
+            Id = GetQueryLong("EmailId");
+
+            var email = Business.Entity.Email.GetItem(Id);
+
+            if (email != null)
+            {
+                <table class="table table-bordered table-striped table-ultracondensed">
+
+                    @foreach (var log in email.EmailLogCollection)
+                    {
+                        <tr>
+                            <td style="vertical-align: top; width: 180px; text-align: center; padding: 10px 0">@log.Data</td>
+                            <td style="padding: 10px 0">@((MarkupString) string.Join("<br>", log.Testo.Split(Environment.NewLine)))</td>
+                        </tr>
+                    }
+
+                </table>
+            }
+        }
+
+    </div>
+</div>

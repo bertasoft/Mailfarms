@@ -1,0 +1,154 @@
+﻿@using ChartJs.Blazor.Charts
+@using ChartJs.Blazor.ChartJS.PieChart
+@using ChartJs.Blazor.ChartJS.Common.Properties
+@using ChartJs.Blazor.Util
+@using Business.Collection
+@using ChartJs.Blazor.ChartJS
+@using ChartJs.Blazor.ChartJS.Common.Axes
+@using ChartJs.Blazor.ChartJS.Common.Axes.Ticks
+@using ChartJs.Blazor.ChartJS.Common.Enums
+@using ChartJs.Blazor.ChartJS.Common.Handlers
+@using ChartJs.Blazor.ChartJS.Common.Time
+@using ChartJs.Blazor.ChartJS.LineChart
+@using CommonNetCore.Misc
+@layout PrivateLayout
+@inherits BlazorLibrary.Code.MyComponentBase
+@page "/private"
+@inject LayoutService layoutService
+@inject NavigationManager uriHelper
+@inject IJSRuntime JsRuntime
+
+<LoginComponent />
+
+<div class="row">
+    <div class="col-md-6 col-sm-6 col-xs-12">
+        <div class="panel">
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-9 col-sm-9 col-xs-10">
+                        <h3 class="mar-no"> <span class="counter">@EmailCollection.GetCount(wherePredicate: "DataInvio >= " + DateTime.Today + " AND DataInvio < " + DateTime.Today.AddDays(1))</span></h3>
+                        <p>EMAIL GIORNALIERE</p>
+                    </div>
+                    <div class="col-md-3 col-sm-3 col-xs-2"> <i class="fa fa-envelope fa-3x text-info"></i> </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 col-sm-6 col-xs-12">
+        <div class="panel">
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-9 col-sm-9 col-xs-10">
+                        <h3 class="mar-no"> <span class="counter">@SmsCollection.GetCount(wherePredicate: "DataInvio >= " + DateTime.Today + " AND DataInvio < " + DateTime.Today.AddDays(1))</span></h3>
+                        <p>SMS GIORNALIERI</p>
+                    </div>
+                    <div class="col-md-3 col-sm-3 col-xs-2"> <i class="fa fa-mobile fa-3x text-info"></i> </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel">
+            <div class="panel-body">
+
+                <ChartJsLineChart Config="@_lineConfig" Width="600" Height="200" />
+
+                <MyButton Text="-10" Class="btn btn-xs" OnClickCallback="Indietro10Click" />
+                <MyButton Text="-1" Class="btn btn-xs" OnClickCallback="IndietroClick" />
+                <MyButton Text="+1" Class="btn btn-xs" OnClickCallback="AvantiClick" />
+                <MyButton Text="+10" Class="btn btn-xs" OnClickCallback="Avanti10Click" />
+
+            </div>
+        </div>
+    </div>
+</div>
+
+@{
+    var totCoda = EmailCollection.GetCount("Stato == 0");
+    var totInviate = EmailCollection.GetCount("Stato == 1");
+    var totErrate = EmailCollection.GetCount("Stato == 2");
+
+    foreach (var server in ServerCollection.GetList())
+    {
+        <div class="row">
+
+            @{
+                var codaLocale = EmailCollection.GetCount("Server == '" + server.Ip + "' AND Stato = 0");
+                var inviateLocale = EmailCollection.GetCount("Server == '" + server.Ip + "' AND Stato = 1");
+                var errateLocale = EmailCollection.GetCount("Server == '" + server.Ip + "' AND Stato = 2");
+
+                var percentualeCoda = Math.Round(totCoda > 0 ? (decimal)codaLocale / totCoda * 100 : 100, 0, MidpointRounding.AwayFromZero);
+                var percentualeInviate = Math.Round(totInviate > 0 ? (decimal)inviateLocale / totInviate * 100 : 100, 0, MidpointRounding.AwayFromZero);
+                var percentualeErrate = Math.Round(totErrate > 0 ? (decimal)errateLocale / totErrate * 100 : 100, 0, MidpointRounding.AwayFromZero);
+
+                <div class="col-lg-12">
+                    <div class="panel">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">
+                                <div class="label label-table @(MailFarms_SharedService.Code.RequestWindowsService.Ping(server.Ip) ? "label-success" : "label-danger")"><b><a href="/private/server/editor?ServerId=@server.Id">@server.Ip</a></b></div></h3>
+                        </div>
+                        <div class="panel-body">
+
+                            <div class="col-md-4 col-sm-4 col-xs-12">
+                                <div class="panel" style="background-color: #f5f5f5">
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <div class="col-md-9 col-sm-9 col-xs-10">
+                                                <h3 class="mar-no"> <span class="counter">@codaLocale</span></h3>
+                                                <p>In coda</p>
+                                            </div>
+                                            <div class="col-md-3 col-sm-3 col-xs-2"> <i class="fa fa-clock-o fa-3x text-warning"></i> </div>
+                                        </div>
+                                        <div class="progress progress-striped progress-sm">
+                                            <div style="width: @percentualeCoda%;" aria-valuemax="100" aria-valuemin="0" aria-valuenow="@percentualeCoda" role="progressbar" class="progress-bar progress-bar-warning"></div>
+                                        </div>
+                                        <p>@percentualeCoda%</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-4 col-xs-12">
+                                <div class="panel" style="background-color: #f5f5f5">
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <div class="col-md-9 col-sm-9 col-xs-10">
+                                                <h3 class="mar-no"> <span class="counter">@inviateLocale</span></h3>
+                                                <p>Inviate</p>
+                                            </div>
+                                            <div class="col-md-3 col-sm-3 col-xs-2"> <i class="fa fa-check fa-3x text-success"></i> </div>
+                                        </div>
+                                        <div class="progress progress-striped progress-sm">
+                                            <div style="width: @percentualeInviate%;" aria-valuemax="100" aria-valuemin="0" aria-valuenow="@percentualeInviate" role="progressbar" class="progress-bar progress-bar-success"></div>
+                                        </div>
+                                        <p>@percentualeInviate%</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-4 col-xs-12">
+                                <div class="panel" style="background-color: #f5f5f5">
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <div class="col-md-9 col-sm-9 col-xs-10">
+                                                <h3 class="mar-no"> <span class="counter">@errateLocale</span></h3>
+                                                <p>Errate</p>
+                                            </div>
+                                            <div class="col-md-3 col-sm-3 col-xs-2"> <i class="fa fa-remove fa-3x text-danger"></i> </div>
+                                        </div>
+                                        <div class="progress progress-striped progress-sm">
+                                            <div style="width: @percentualeErrate%;" aria-valuemax="100" aria-valuemin="0" aria-valuenow="@percentualeErrate" role="progressbar" class="progress-bar progress-bar-danger"></div>
+                                        </div>
+                                        <p>@percentualeErrate%</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            }
+
+        </div>
+    }
+}

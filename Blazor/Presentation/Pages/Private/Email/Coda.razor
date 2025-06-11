@@ -1,0 +1,150 @@
+﻿@layout PrivateLayout
+@inherits PageComponent
+@inject LayoutService layoutService
+@inject IJSRuntime JSRuntime
+@page "/private/email/coda"
+@using Hanssens.Net;
+@code
+{
+    string OrderBy = "DataProssimoTentativo";
+    string wherePredicate = string.Empty;
+    List<object> whereObj = new List<object>();
+
+    long paginaCorrente = 0;
+    int elementiPerPagina = 100;
+    long elementiTotali;
+
+    int[] range = new[] { 30, 100, 200 };
+
+    bool asc = false;
+
+    LinkOrder __LinkOrder_UniqueIdentifier;
+    LinkOrder __LinkOrder_DataOra;
+    LinkOrder __LinkOrder_Tentativi;
+    LinkOrder __LinkOrder_MittenteEmail;
+    LinkOrder __LinkOrder_DestinatarioEmail;
+    LinkOrder __LinkOrder_Oggetto;
+    LinkOrder __LinkOrder_Server;
+    LinkOrder __LinkOrder_Immediata;
+
+    TextBox __TextBox_UniqueIdentifier;
+    TextBox __TextBox_Mittente;
+    TextBox __TextBox_Destinatario;
+    TextBox __TextBox_Oggetto;
+    TextBox __TextBox_Server;
+
+    public EventCallback<LinkButton> OnFancy { get; set; }
+    public EventCallback<LinkButton> OnFancyLog { get; set; }
+
+    protected override void OnInitialized()
+    {
+        using var storage = new LocalStorage();
+
+        if (storage.Exists("codaPager"))
+            elementiPerPagina = storage.Get<int>("codaPager");
+
+        layoutService.OnTitlePageCallback.InvokeAsync("Email - Coda");
+
+        OnFancy = new EventCallback<LinkButton>(null, (Action<LinkButton>)(p =>
+        {
+            var email = (Email)p.Object;
+            JSRuntime.InvokeVoidAsync("blazorExtensions.FancyBox", CommonNetCore.Settings.Config.WebPath + "/private/email/popupanteprima?EmailId=" + email.Id);
+            StateHasChanged();
+        }));
+
+        OnFancyLog = new EventCallback<LinkButton>(null, (Action<LinkButton>)(p =>
+        {
+            var email = (Email)p.Object;
+            JSRuntime.InvokeVoidAsync("blazorExtensions.FancyBox", CommonNetCore.Settings.Config.WebPath + "/private/email/popuplog?EmailId=" + email.Id);
+            StateHasChanged();
+        }));
+
+    }
+
+    public void CambiaPagina(Tuple<long, int> paginaElementi)
+    {
+        paginaCorrente = paginaElementi.Item1;
+        elementiPerPagina = paginaElementi.Item2;
+
+        using var storage = new LocalStorage();
+        storage.Store("codaPager", elementiPerPagina);
+
+        StateHasChanged();
+    }
+}
+
+@{
+    elementiTotali = Business.Collection.EmailCollection.GetCount(wherePredicate: wherePredicate + "Stato = 0", whereValues: whereObj.ToArray());
+
+    while (elementiTotali < elementiPerPagina * paginaCorrente && paginaCorrente > 0)
+    {
+        paginaCorrente--;
+    }
+}
+
+<LoginComponent />
+
+<div class="row">
+    <div class="col-lg-12" style="margin-bottom: 20px">
+        <Pager NumeroPulsanti="4" ChangePageCallback="CambiaPagina" ElementiSelezionabili="@range" ClassPulsante="btn btn-xs btn-default" ClassPulsanteSelected="btn btn-xs btn-primary" ElementiPagina="@elementiPerPagina" PaginaCorrente="@paginaCorrente" ElementiTotali="@elementiTotali" ClassSelect="btn btn-xs" StyleSelect="float:right"></Pager>
+    </div>
+    <div class="col-lg-12">
+        <div class="panel">
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped table-ultracondensed">
+                    <thead>
+                    <tr>
+                        <th style="width: 222px;"><LinkOrder @ref="__LinkOrder_UniqueIdentifier" TableName="Table" OnClickCallback="OrdinamentoClick" OrderColumn="UniqueIdentifier" Name="UniqueIdentifier" /></th>
+                        <th style="width: 95px;"><LinkOrder @ref="__LinkOrder_DataOra" TableName="Table" OnClickCallback="OrdinamentoClick" OrderColumn="DataProssimoTentativo" Name="Tentativo"/></th>
+                        <th style="width: 40px;"><LinkOrder @ref="__LinkOrder_Tentativi" TableName="Table" OnClickCallback="OrdinamentoClick" OrderColumn="NumeroTentativi" Name="Log"/></th>
+                        <th style="width: 180px;"><LinkOrder @ref="__LinkOrder_MittenteEmail" TableName="Table" OnClickCallback="OrdinamentoClick" OrderColumn="MittenteEmail" Name="Mittente"/></th>
+                        <th style="width: 180px;"><LinkOrder @ref="__LinkOrder_DestinatarioEmail" TableName="Table" OnClickCallback="OrdinamentoClick" OrderColumn="DestinatarioEmail" Name="Destinatario"/></th>
+                        <th style="width: 80px;"><LinkOrder @ref="__LinkOrder_Server" TableName="Table" OnClickCallback="OrdinamentoClick" OrderColumn="Server" Name="Server"/></th>
+                        <th><LinkOrder @ref="__LinkOrder_Oggetto" TableName="Table" OnClickCallback="OrdinamentoClick" OrderColumn="Oggetto" Name="Oggetto"/></th>
+                        <th style="width: 40px;"><LinkOrder @ref="__LinkOrder_Immediata" TableName="Table" OnClickCallback="OrdinamentoClick" OrderColumn="Immediata" Name="Fast"/></th>
+                        <th style="width: 40px"></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td><TextBox @ref="__TextBox_UniqueIdentifier" OnInputCallback="FiltraTextChange" class="form-control input-xs" /></td>
+                        <td></td>
+                        <td></td>
+                        <td><TextBox @ref="__TextBox_Mittente" OnInputCallback="FiltraTextChange" class="form-control input-xs"/></td>
+                        <td><TextBox @ref="__TextBox_Destinatario" OnInputCallback="FiltraTextChange" class="form-control input-xs"/></td>
+                        <td><TextBox @ref="__TextBox_Server" OnInputCallback="FiltraTextChange" class="form-control input-xs"/></td>
+                        <td><TextBox @ref="__TextBox_Oggetto" OnInputCallback="FiltraTextChange" class="form-control input-xs"/></td>
+                        <td></td>
+                        <td style="text-align: center"><BlazorLibrary.Component.LinkButton OnClickCallback="FiltraResetClick"><i class="fa fa-remove"></i></BlazorLibrary.Component.LinkButton></td>
+                    </tr>
+
+                        @{
+                            var emails = Business.Collection.EmailCollection.GetList(wherePredicate: wherePredicate + "Stato = 0", whereValues: whereObj.ToArray(), item4Page: elementiPerPagina, page: paginaCorrente, orderPredicate: OrderBy + (asc ? " ASC" : " DESC"));
+
+                            foreach (var email in emails)
+                            {
+                                <tr>
+                                    <td style="text-align:center">@email.UniqueIdentifier</td>
+                                    <td style="text-align: center">@email.DataProssimoTentativo.ToStringNoSecondi2()</td>
+                                    <td style="text-align: center"><LinkButton OnClickCallback="OnFancyLog" Object="email" Style="text-decoration: underline">@email.NumeroTentativi</LinkButton></td>
+                                    <td>@email.MittenteEmail</td>
+                                    <td>@email.DestinatarioEmail</td>
+                                    <td>@email.Server</td>
+                                    <td><LinkButton OnClickCallback="OnFancy" Object="email" Style="text-decoration: underline">@email.Oggetto</LinkButton></td>
+                                    <td>@email.Immediata.SiNo()</td>
+                                    <td style="text-align: center">
+                                        <BlazorLibrary.Component.LinkButton Object="email" ConfirmMessage="Vuoi eliminare la mail?" OnClickCallback="EliminaMailClick"><i class="fa fa-remove"></i></BlazorLibrary.Component.LinkButton>
+                                    </td>
+                                </tr>
+                            }
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12">
+        <Pager NumeroPulsanti="4" ChangePageCallback="CambiaPagina" ElementiSelezionabili="@range" ClassPulsante="btn btn-xs btn-default" ClassPulsanteSelected="btn btn-xs btn-primary" ElementiPagina="@elementiPerPagina" PaginaCorrente="@paginaCorrente" ElementiTotali="@elementiTotali" ClassSelect="btn btn-xs" StyleSelect="float:right"></Pager>
+    </div>
+</div>

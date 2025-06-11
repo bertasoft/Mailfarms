@@ -1,0 +1,45 @@
+﻿@layout PublicLayout
+@inherits MailFarmsBlazor.Code.PageComponent
+@page "/reset"
+@code
+{
+    TextBox __TextBox_Email;
+
+    public void ResettaClick()
+    {
+        var utente = Business.Entity.Utenti.GetItem(__TextBox_Email.Value);
+
+        if (utente == null)
+        {
+            AlertFail("L'email indicata non è registrata");
+            return;
+        }
+
+        Business.Code.ManagerEmail.RecuperaPassword(utente);
+
+        __TextBox_Email.Value = string.Empty;        
+
+        AlertSuccess("Ti abbiamo inviato una email con i dettagli per resettare la password di accesso");
+    }
+}
+
+<div class="lock-wrapper">
+    <div class="panel lock-box">
+        <h4>MailFarms</h4>
+        <p class="text-center">Resetta la password di accesso</p>
+        <div class="row">
+            <div class="form-inline">
+                <div class="form-group col-md-12 col-sm-12 col-xs-12">
+
+                    <div class="text-left">
+                        <label class="text-muted">Email</label>
+                        <TextBox placeholder="Email" class="form-control lock-input" @ref="__TextBox_Email" />
+                    </div>
+
+                    <button type="submit" class="btn btn-block btn-primary" @onclick="ResettaClick">Resetta la password</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="registration"><a href="/login"> <span class="text-primary"> Effettua l'accesso </span> </a> </div>
+</div>

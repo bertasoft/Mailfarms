@@ -1,0 +1,42 @@
+﻿@layout PublicLayout
+@inherits MailFarmsBlazor.Code.PageComponent
+@inject NavigationManager navigationManager
+@page "/login"
+@code
+{
+    TextBox __TextBox_Email;
+    TextBox __TextBox_Password;
+
+    public async Task KeyWasPressed(KeyboardEventArgs ev)
+    {
+        if (ev.Key == "Enter")
+        {
+           await AccediClick();
+        }
+    }
+}
+
+<div class="lock-wrapper">
+    <div class="panel lock-box">
+        <h4>MailFarms</h4>
+        <p class="text-center">Accedi al pannello di controllo</p>
+        <div class="row">
+            <div class="form-inline">
+                <div class="form-group col-md-12 col-sm-12 col-xs-12">
+                    <div class="text-left">
+                        <label class="text-muted">Email</label>
+                        <TextBox @ref="__TextBox_Email" placeholder="Email" class="form-control lock-input" @onkeypress="KeyWasPressed" />
+                    </div>
+                    <div class="text-left">
+                        <label for="signupInputPassword" class="text-muted">Password</label>
+                        <TextBox @ref="__TextBox_Password" Type="TextBox.TextBoxTypeEnum.Password" placeholder="Password" class="form-control lock-input" @onkeypress="KeyWasPressed" />
+                    </div>
+
+                    <MyButton ButtonType="BlazorLibrary.Component.MyButton.ButtonTypeEnum.Button" Text="Accedi" OnClickCallback="AccediClick" Class="btn btn-block btn-primary" />
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="registration"> Hai dimenticato la password? <a href="/reset"> <span class="text-primary"> Resetta la password </span> </a> </div>
+</div>

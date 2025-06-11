@@ -1,0 +1,158 @@
+﻿@layout PrivateLayout
+@using Hanssens.Net
+@inherits PageComponent
+@inject LayoutService layoutService
+@inject IJSRuntime JSRuntime
+@page "/private/sms/inviati"
+@code
+{
+    string OrderBy = "DataInvio";
+    string wherePredicate = string.Empty;
+    List<object> whereObj = new List<object>();
+
+    long paginaCorrente = 0;
+    int elementiPerPagina = 100;
+    long elementiTotali;
+
+    int[] range = new[] { 30, 100, 200 };
+
+    bool asc = false;
+
+    LinkOrder __LinkOrder_DataOra;
+    LinkOrder __LinkOrder_Sistema;
+    LinkOrder __LinkOrder_Numero;
+    LinkOrder __LinkOrder_Mittente;
+    LinkOrder __LinkOrder_MittenteSms;
+    LinkOrder __LinkOrder_Destinatario;
+    LinkOrder __LinkOrder_Testo;
+    LinkOrder __LinkOrder_NumeroMessaggi;
+    LinkOrder __LinkOrder_Caratteri;
+
+    TextBox __TextBox_Sistema;
+    TextBox __TextBox_Mittente;
+    TextBox __TextBox_MittenteSms;
+    TextBox __TextBox_Destinatario;
+    TextBox __TextBox_Testo;
+    TextBox __TextBox_Numero;
+    TextBox __TextBox_NumeroMessaggi;
+    TextBox __TextBox_Caratteri;
+
+
+    protected override void OnInitialized()
+    {
+        using var storage = new LocalStorage();
+
+        if (storage.Exists("codaPager"))
+            elementiPerPagina = storage.Get<int>("codaPager");
+
+        layoutService.OnTitlePageCallback.InvokeAsync("SMS - Inviati");
+    }
+
+    public void CambiaPagina(Tuple<long, int> paginaElementi)
+    {
+        paginaCorrente = paginaElementi.Item1;
+        elementiPerPagina = paginaElementi.Item2;
+
+        using var storage = new LocalStorage();
+        storage.Store("codaPager", elementiPerPagina);
+
+        StateHasChanged();
+    }
+}
+
+@{
+    elementiTotali = Business.Collection.SmsCollection.GetCount(wherePredicate: wherePredicate + "Stato = 1", whereValues: whereObj.ToArray());
+
+    while (elementiTotali < elementiPerPagina * paginaCorrente && paginaCorrente > 0)
+    {
+        paginaCorrente--;
+    }
+}
+
+<LoginComponent />
+
+<div class="row">
+    <div class="col-lg-12" style="margin-bottom: 20px">
+        <Pager NumeroPulsanti="4" ChangePageCallback="CambiaPagina" ElementiSelezionabili="@range" ClassPulsante="btn btn-xs btn-default" ClassPulsanteSelected="btn btn-xs btn-primary" ElementiPagina="@elementiPerPagina" PaginaCorrente="@paginaCorrente" ElementiTotali="@elementiTotali" ClassSelect="btn btn-xs" StyleSelect="float:right"></Pager>
+    </div>
+    <div class="col-lg-12">
+        <div class="panel">
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped table-ultracondensed">
+                    <thead>
+                        <tr>
+                            <th style="width: 95px;"><LinkOrder @ref="__LinkOrder_DataOra" TableName="Table" OnClickCallback="OrdinamentoClick" OrderColumn="DataInvio" Name="Data Invio" /></th>
+                            <th style="width: 180px;"><LinkOrder @ref="__LinkOrder_Sistema" TableName="Table" OnClickCallback="OrdinamentoClick" OrderColumn="Sistema" Name="Sistema" /></th>
+                            <th style="width: 90px;"><LinkOrder @ref="__LinkOrder_MittenteSms" TableName="Table" OnClickCallback="OrdinamentoClick" OrderColumn="MittenteSms" Name="Mitt. Sms" /></th>
+                            <th style="width: 180px;"><LinkOrder @ref="__LinkOrder_Mittente" TableName="Table" OnClickCallback="OrdinamentoClick" OrderColumn="Mittente" Name="Mittente" /></th>
+                            <th style="width: 180px;"><LinkOrder @ref="__LinkOrder_Destinatario" TableName="Table" OnClickCallback="OrdinamentoClick" OrderColumn="Destinatario" Name="Destinatario" /></th>
+                            <th style="width: 100px;"><LinkOrder @ref="__LinkOrder_Numero" TableName="Table" OnClickCallback="OrdinamentoClick" OrderColumn="Numero" Name="Numero" /></th>
+                            <th style="width: 50px;"><LinkOrder @ref="__LinkOrder_NumeroMessaggi" TableName="Table" OnClickCallback="OrdinamentoClick" OrderColumn="NumeroMessaggi" Name="Msg" /></th>
+                            <th style="width: 50px;"><LinkOrder @ref="__LinkOrder_Caratteri" TableName="Table" OnClickCallback="OrdinamentoClick" OrderColumn="Caratteri" Name="Car" /></th>
+                            <th><LinkOrder @ref="__LinkOrder_Testo" TableName="Table" OnClickCallback="OrdinamentoClick" OrderColumn="Testo" Name="Testo" /></th>
+                            <th style="width:40px"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td></td>
+                            <td><TextBox @ref="__TextBox_Sistema" OnInputCallback="FiltraTextChange" class="form-control input-xs" /></td>
+                            <td><TextBox @ref="__TextBox_MittenteSms" OnInputCallback="FiltraTextChange" class="form-control input-xs" /></td>
+                            <td><TextBox @ref="__TextBox_Mittente" OnInputCallback="FiltraTextChange" class="form-control input-xs" /></td>
+                            <td><TextBox @ref="__TextBox_Destinatario" OnInputCallback="FiltraTextChange" class="form-control input-xs" /></td>
+                            <td><TextBox @ref="__TextBox_Numero" OnInputCallback="FiltraTextChange" class="form-control input-xs" /></td>
+                            <td><TextBox @ref="__TextBox_NumeroMessaggi" OnInputCallback="FiltraTextChange" class="form-control input-xs" /></td>
+                            <td><TextBox @ref="__TextBox_Caratteri" OnInputCallback="FiltraTextChange" class="form-control input-xs" /></td>
+                            <td><TextBox @ref="__TextBox_Testo" OnInputCallback="FiltraTextChange" class="form-control input-xs" /></td>
+                            <td style="text-align:center"><BlazorLibrary.Component.LinkButton OnClickCallback="FiltraResetClick"><i class="fa fa-remove"></i></BlazorLibrary.Component.LinkButton></td>
+                        </tr>
+
+                        @{
+                            var smss = Business.Collection.SmsCollection.GetList(wherePredicate: wherePredicate + "Stato = 1", whereValues: whereObj.ToArray(), item4Page: elementiPerPagina, page: paginaCorrente, orderPredicate: OrderBy + (asc ? " ASC" : " DESC"));
+
+                            foreach (var sms in smss)
+                            {
+                                <tr>
+                                    
+                                    @if (!string.IsNullOrEmpty(sms.Errore))
+                                    {
+                                        <td style="text-align: center" rowspan="2">@sms.DataInvio.ToStringNoSecondi2()</td>
+                                    }
+                                    else
+                                    {
+                                        <td style="text-align: center">@sms.DataInvio.ToStringNoSecondi2()</td>
+                                    }
+
+                                    <td>@sms.Sistema</td>
+                                    <td>@sms.MittenteSms</td>
+                                    <td>@sms.Mittente.Decode()</td>
+                                    <td>@sms.Destinatario.Decode()</td>
+                                    <td>@sms.Numero</td>
+                                    <td>@sms.NumeroMessaggi</td>
+                                    <td>@sms.Caratteri</td>
+                                    <td>@sms.Testo</td>
+                                    <td style="text-align: center">
+                                        <BlazorLibrary.Component.LinkButton Object="sms" ConfirmMessage="Vuoi eliminare l'sms?" OnClickCallback="EliminaSmsClick"><i class="fa fa-remove"></i></BlazorLibrary.Component.LinkButton>
+                                    </td>
+                                </tr>
+
+                                if (!string.IsNullOrEmpty(sms.Errore))
+                                {
+                                    <tr>
+                                        <td colspan="9">
+                                            <span style="color: darkred">@sms.Errore</span>
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12">
+        <Pager NumeroPulsanti="4" ChangePageCallback="CambiaPagina" ElementiSelezionabili="@range" ClassPulsante="btn btn-xs btn-default" ClassPulsanteSelected="btn btn-xs btn-primary" ElementiPagina="@elementiPerPagina" PaginaCorrente="@paginaCorrente" ElementiTotali="@elementiTotali" ClassSelect="btn btn-xs" StyleSelect="float:right"></Pager>
+    </div>
+</div>
