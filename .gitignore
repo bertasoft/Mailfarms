@@ -195,3 +195,15 @@ $RECYCLE.BIN/
 /.vs/MailFarms/FileContentIndex
 /.vs/MailFarms/CopilotIndices/17.14.670.39694
 /Blazor/.vs/MailFarmsBlazor/CopilotIndices/17.14.670.39694
+/.vs/slnx.sqlite
+/.vs/ProjectSettings.json
+/.vs/MailFarms/v17/DocumentLayout.backup.json
+/.vs/MailFarms/v17/.wsuo
+/.vs/MailFarms/v17/DocumentLayout.json
+*.bin
+/.vs/VSWorkspaceState.json
+/Blazor/.vs/MailFarmsBlazor/DesignTimeBuild/.dtbcache.v2
+/Blazor/.vs/MailFarmsBlazor/v17/.futdcache.v2
+/Blazor/.vs/MailFarmsBlazor/v17/DocumentLayout.backup.json
+/Blazor/.vs/MailFarmsBlazor/v17/DocumentLayout.json
+/Blazor/.vs/MailFarmsBlazor/v17/fileList.bin
